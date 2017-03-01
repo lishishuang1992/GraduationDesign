@@ -1,14 +1,14 @@
 //
-//  CircleOfFriendsViewController.swift
+//  RegisterController.swift
 //  君子好球
 //
-//  Created by 李世爽 on 2017/2/22.
-//  Copyright © 2017年 shuang. All rights reserved.
+//  Created by 李世爽 on 2017/3/1.
+//  Copyright © 2017年 myself. All rights reserved.
 //
 
 import UIKit
 
-class CircleOfFriendsViewController: UIViewController {
+class RegisterController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

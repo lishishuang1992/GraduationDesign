@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AboutBallViewController: UIViewController {
+class ReleaseBallController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

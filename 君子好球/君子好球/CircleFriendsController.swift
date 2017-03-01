@@ -1,5 +1,5 @@
 //
-//  UserCenterViewController.swift
+//  CircleOfFriendsViewController.swift
 //  君子好球
 //
 //  Created by 李世爽 on 2017/2/22.
@@ -8,12 +8,11 @@
 
 import UIKit
 
-class UserCenterViewController: UIViewController {
+class CircleFriendsController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         // Do any additional setup after loading the view.
     }
 
