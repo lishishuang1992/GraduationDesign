@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SnapKit
 class UserCenterController: UITableViewController {
 
     override func viewDidLoad() {
@@ -18,6 +18,7 @@ class UserCenterController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.view.backgroundColor = UIColor.white;
         self.navigationItem.title = "用户中心"
 
     }
@@ -73,6 +74,10 @@ class UserCenterController: UITableViewController {
             nameLabel.textAlignment = .center
             nameLabel.text = "小李"
             headView.addSubview(nameLabel)
+            nameLabel.snp.makeConstraints {
+                $0.bottom.equalTo(self.view)
+                
+            }
         }
         return headView
     }

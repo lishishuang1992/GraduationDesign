@@ -68,9 +68,8 @@ class LoginController: UIViewController,UITextFieldDelegate {
     }
     
     
-    
+    //收起键盘
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        //收起键盘
         textField.resignFirstResponder()
        
         return true;

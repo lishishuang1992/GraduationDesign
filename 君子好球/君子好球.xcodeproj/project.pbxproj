@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD0D4FE21E77B91400E5D942 /* TabelHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D4FE11E77B91400E5D942 /* TabelHeadView.swift */; };
 		BD6627BA1E66C28D007BFEDF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6627B91E66C28D007BFEDF /* LoginController.swift */; };
 		BD6627BC1E66C58A007BFEDF /* LoginManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6627BB1E66C58A007BFEDF /* LoginManagement.swift */; };
 		BD6627BE1E66D883007BFEDF /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6627BD1E66D883007BFEDF /* RegisterController.swift */; };
@@ -21,9 +22,15 @@
 		BDA499B51E6676EE001DB844 /* release.png in Resources */ = {isa = PBXBuildFile; fileRef = BDA499B21E6676EE001DB844 /* release.png */; };
 		BDA499B61E6676EE001DB844 /* userCenter.png in Resources */ = {isa = PBXBuildFile; fileRef = BDA499B31E6676EE001DB844 /* userCenter.png */; };
 		BDA499B81E669AB8001DB844 /* default_face.png in Resources */ = {isa = PBXBuildFile; fileRef = BDA499B71E669AB8001DB844 /* default_face.png */; };
+		D8DB895945B1C1BA2FC8BEF7 /* Pods_____.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E67878A3749EC4F0DF2297F /* Pods_____.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E67878A3749EC4F0DF2297F /* Pods_____.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_____.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		623A9E0ED0378E45190B5DAB /* Pods-君子好球.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-君子好球.debug.xcconfig"; path = "Pods/Target Support Files/Pods-君子好球/Pods-君子好球.debug.xcconfig"; sourceTree = "<group>"; };
+		7C91930395D07A9FAACA906E /* Pods-君子好球.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-君子好球.release.xcconfig"; path = "Pods/Target Support Files/Pods-君子好球/Pods-君子好球.release.xcconfig"; sourceTree = "<group>"; };
+		BD0D4FD21E76DEEE00E5D942 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
+		BD0D4FE11E77B91400E5D942 /* TabelHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabelHeadView.swift; sourceTree = "<group>"; };
 		BD6627B91E66C28D007BFEDF /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		BD6627BB1E66C58A007BFEDF /* LoginManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManagement.swift; sourceTree = "<group>"; };
 		BD6627BD1E66D883007BFEDF /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
@@ -47,17 +54,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8DB895945B1C1BA2FC8BEF7 /* Pods_____.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C5CB21B9B8592CC879187A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E67878A3749EC4F0DF2297F /* Pods_____.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		454C91B10BEE3829C707AEA6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				623A9E0ED0378E45190B5DAB /* Pods-君子好球.debug.xcconfig */,
+				7C91930395D07A9FAACA906E /* Pods-君子好球.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BD6780BB1E5E76C100AD4D93 = {
 			isa = PBXGroup;
 			children = (
 				BD6780C61E5E76C200AD4D93 /* 君子好球 */,
 				BD6780C51E5E76C200AD4D93 /* Products */,
+				2C5CB21B9B8592CC879187A0 /* Frameworks */,
+				454C91B10BEE3829C707AEA6 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,6 +99,7 @@
 		BD6780C61E5E76C200AD4D93 /* 君子好球 */ = {
 			isa = PBXGroup;
 			children = (
+				BD0D4FD21E76DEEE00E5D942 /* SnapKit.framework */,
 				BDA499A71E666D9B001DB844 /* controller */,
 				BDA499A61E666D95001DB844 /* view */,
 				BDA499A51E666D8B001DB844 /* model */,
@@ -95,6 +123,7 @@
 		BDA499A61E666D95001DB844 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				BD0D4FE11E77B91400E5D942 /* TabelHeadView.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -130,9 +159,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BD6780E11E5E76C200AD4D93 /* Build configuration list for PBXNativeTarget "君子好球" */;
 			buildPhases = (
+				AD09C4F5F450A430875BAD7C /* [CP] Check Pods Manifest.lock */,
 				BD6780C01E5E76C100AD4D93 /* Sources */,
 				BD6780C11E5E76C100AD4D93 /* Frameworks */,
 				BD6780C21E5E76C100AD4D93 /* Resources */,
+				FA7F9CE4510D572BBAABE4E8 /* [CP] Embed Pods Frameworks */,
+				46C090DA48A0098350AA9050 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -195,6 +227,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		46C090DA48A0098350AA9050 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-君子好球/Pods-君子好球-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD09C4F5F450A430875BAD7C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FA7F9CE4510D572BBAABE4E8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-君子好球/Pods-君子好球-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BD6780C01E5E76C100AD4D93 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -204,6 +284,7 @@
 				BD6780EF1E5E76E900AD4D93 /* ReleaseBallController.swift in Sources */,
 				BD6780EC1E5E76E900AD4D93 /* AppDelegate.swift in Sources */,
 				BD6627BC1E66C58A007BFEDF /* LoginManagement.swift in Sources */,
+				BD0D4FE21E77B91400E5D942 /* TabelHeadView.swift in Sources */,
 				BD6627BE1E66D883007BFEDF /* RegisterController.swift in Sources */,
 				BD6780F01E5E76E900AD4D93 /* CircleFriendsController.swift in Sources */,
 				BDA499A91E66713F001DB844 /* UserCenterController.swift in Sources */,
@@ -318,14 +399,22 @@
 		};
 		BD6780E21E5E76C200AD4D93 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 623A9E0ED0378E45190B5DAB /* Pods-君子好球.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = QH6UWLXE3R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/君子好球",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "君子好球/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lishishuan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lishish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -334,14 +423,22 @@
 		};
 		BD6780E31E5E76C200AD4D93 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C91930395D07A9FAACA906E /* Pods-君子好球.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = QH6UWLXE3R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/君子好球",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "君子好球/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lishishuan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lishish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
