@@ -10,7 +10,9 @@ import UIKit
 import SnapKit
 class TabelHeadView: UIView {
     
-    var nameLabel = UILabel()
+    var nameBt = UIButton()
+    var numSince = UILabel()    //点赞数
+    var numRelease = UILabel()   //发布数
     let userAvatar = UIButton()
     override init(frame: CGRect) {
         super.init(frame:frame)
@@ -25,13 +27,30 @@ class TabelHeadView: UIView {
             make.width.equalTo(80)
             make.height.equalTo(80)
         }
-        self.nameLabel.backgroundColor = UIColor.clear
-        self.nameLabel.textAlignment = .center
-        self.nameLabel.text = "小李"
-        self.addSubview(nameLabel)
-        nameLabel.snp.makeConstraints {
-            $0.top.equalTo(userAvatar.snp.bottom).offset(20)
-            $0.centerX.equalTo(self.snp.centerY)
+        self.nameBt.backgroundColor = UIColor.clear
+        self.addSubview(nameBt)
+        self.nameBt.snp.makeConstraints {(make) in
+            make.top.equalTo(userAvatar.snp.bottom).offset(20)
+            make.centerX.equalTo(self.snp.centerX)
+            make.width.equalTo(80)
+            make.height.equalTo(20)
+        }
+      
+        self.numSince = UILabel()
+        self.addSubview(self.numSince)
+        self.numSince.snp.makeConstraints { (make) in
+            make.bottom.equalTo(self.snp.bottom)
+            make.left.equalTo(self.snp.left)
+            make.width.equalTo(80)
+            make.height.equalTo(20)
+        }
+        self.numRelease = UILabel()
+        self.addSubview(self.numRelease)
+        self.numRelease.snp.makeConstraints { (make) in
+            make.bottom.equalTo(self.snp.bottom)
+            make.right.equalTo(self.snp.right)
+            make.width.equalTo(80)
+            make.height.equalTo(20)
         }
     }
 
@@ -39,8 +58,15 @@ class TabelHeadView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func addTarget(target: Any?, action: Selector, for controlEvents: UIControlEvents){
+    func addTargetUserAvatar(target: Any?, action: Selector, for controlEvents: UIControlEvents){
         userAvatar.addTarget(target, action:action, for:.touchUpInside)
+    }
+    func addTargetNameBt(target: Any?, action: Selector, for controlEvents: UIControlEvents){
+        nameBt.addTarget(target, action:action, for:.touchUpInside)
+    }
+    func sinceAndReleaseNum(numSince: NSString,numRelease: NSString)->Void {
+        self.numSince.text = "点赞数:" + (numSince as String)
+        self.numRelease.text = "已发布:" + (numRelease as String)
     }
     
 }

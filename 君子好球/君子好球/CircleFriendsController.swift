@@ -14,6 +14,11 @@ class CircleFriendsController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white;
         // Do any additional setup after loading the view.
+        let items = ["同城约球","热门动态",UIImage(named:"star")!]
+        let segment = UISegmentedControl()
+        
+        self.navigationController?.navigationBar.addSubview(<#T##view: UIView##UIView#>)
+        
     }
 
     override func didReceiveMemoryWarning() {
