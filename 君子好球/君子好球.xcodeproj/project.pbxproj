@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BD0D4FE21E77B91400E5D942 /* TabelHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D4FE11E77B91400E5D942 /* TabelHeadView.swift */; };
+		BD195E421E82B14900AA5E71 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = BD195E411E82B14900AA5E71 /* star.png */; };
 		BD6627BA1E66C28D007BFEDF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6627B91E66C28D007BFEDF /* LoginController.swift */; };
 		BD6627BC1E66C58A007BFEDF /* LoginManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6627BB1E66C58A007BFEDF /* LoginManagement.swift */; };
 		BD6627BE1E66D883007BFEDF /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6627BD1E66D883007BFEDF /* RegisterController.swift */; };
@@ -31,6 +32,7 @@
 		7C91930395D07A9FAACA906E /* Pods-君子好球.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-君子好球.release.xcconfig"; path = "Pods/Target Support Files/Pods-君子好球/Pods-君子好球.release.xcconfig"; sourceTree = "<group>"; };
 		BD0D4FD21E76DEEE00E5D942 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
 		BD0D4FE11E77B91400E5D942 /* TabelHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabelHeadView.swift; sourceTree = "<group>"; };
+		BD195E411E82B14900AA5E71 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		BD6627B91E66C28D007BFEDF /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		BD6627BB1E66C58A007BFEDF /* LoginManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManagement.swift; sourceTree = "<group>"; };
 		BD6627BD1E66D883007BFEDF /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BD195E401E82B12A00AA5E71 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				BD195E411E82B14900AA5E71 /* star.png */,
+			);
+			name = image;
+			sourceTree = "<group>";
+		};
 		BD6780BB1E5E76C100AD4D93 = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +133,7 @@
 		BDA499A61E666D95001DB844 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				BD195E401E82B12A00AA5E71 /* image */,
 				BD0D4FE11E77B91400E5D942 /* TabelHeadView.swift */,
 			);
 			name = view;
@@ -220,6 +231,7 @@
 				BDA499B61E6676EE001DB844 /* userCenter.png in Resources */,
 				BDA499B41E6676EE001DB844 /* circle.png in Resources */,
 				BD6780D21E5E76C200AD4D93 /* LaunchScreen.storyboard in Resources */,
+				BD195E421E82B14900AA5E71 /* star.png in Resources */,
 				BD6780CF1E5E76C200AD4D93 /* Assets.xcassets in Resources */,
 				BDA499B51E6676EE001DB844 /* release.png in Resources */,
 			);

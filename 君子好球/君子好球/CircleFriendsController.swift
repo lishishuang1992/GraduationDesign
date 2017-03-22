@@ -14,11 +14,24 @@ class CircleFriendsController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white;
         // Do any additional setup after loading the view.
-        let items = ["同城约球","热门动态",UIImage(named:"star")!]
-        let segment = UISegmentedControl()
+
         
-        self.navigationController?.navigationBar.addSubview(<#T##view: UIView##UIView#>)
+        let items = ["同城约球","热门动态", UIImage(named: "star")!] as [Any]
+        let segmented = UISegmentedControl(items:items)
+        segmented.selectedSegmentIndex = 1 //默认选中第二项
+        segmented.addTarget(self, action: #selector(segmentDidchange), for: .touchUpInside)
+        self.view.addSubview(segmented)
+        self.navigationController?.navigationBar.addSubview(segmented)
         
+//        segmented.snp.makeConstraints { (make) in
+//            make.top.equalTo((self.navigationController?.navigationBar.snp.top)!).offset(
+//            10)
+//            make.centerX.equalTo((self.navigationController?.navigationBar)!)
+////            make.width.equalTo(80)
+////            make.height.equalTo(20)
+    //    }
+
+//        
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,15 +39,12 @@ class CircleFriendsController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func segmentDidchange(segmented:UISegmentedControl){
+        //获得选项的索引
+        //print(segmented.selectedSegmentIndex)
+        //获得选择的文字
+       // print(segmented.titleForSegmentAtIndex(segmented.selectedSegmentIndex))
     }
-    */
+   
 
 }
