@@ -9,31 +9,36 @@
 import UIKit
 
 class CircleFriendsController: UIViewController {
-
+    
+    var segmented = UISegmentedControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white;
         // Do any additional setup after loading the view.
 
         
-        let items = ["同城约球","热门动态", UIImage(named: "star")!] as [Any]
-        let segmented = UISegmentedControl(items:items)
-        segmented.selectedSegmentIndex = 1 //默认选中第二项
-        segmented.addTarget(self, action: #selector(segmentDidchange), for: .touchUpInside)
-        self.view.addSubview(segmented)
-        self.navigationController?.navigationBar.addSubview(segmented)
+        let items = ["同城约球","热门动态"]
+        self.segmented = UISegmentedControl(items:items)
+        self.segmented.selectedSegmentIndex = 0 //默认选中第二项
+        self.segmented.addTarget(self, action: #selector(segmentDidchange(segmented:)), for: .valueChanged)
         
-//        segmented.snp.makeConstraints { (make) in
-//            make.top.equalTo((self.navigationController?.navigationBar.snp.top)!).offset(
-//            10)
-//            make.centerX.equalTo((self.navigationController?.navigationBar)!)
-////            make.width.equalTo(80)
-////            make.height.equalTo(20)
-    //    }
-
-//        
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.addSubview(self.segmented)
+        self.segmented.snp.makeConstraints { (make) in
+            make.top.equalTo((self.navigationController?.navigationBar.snp.top)!).offset(
+                10)
+            make.centerX.equalTo((self.navigationController?.navigationBar)!)
+        }
+        self.segmented.isHidden = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.segmented.isHidden = true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -41,7 +46,7 @@ class CircleFriendsController: UIViewController {
     
     func segmentDidchange(segmented:UISegmentedControl){
         //获得选项的索引
-        //print(segmented.selectedSegmentIndex)
+        print(segmented.selectedSegmentIndex)
         //获得选择的文字
        // print(segmented.titleForSegmentAtIndex(segmented.selectedSegmentIndex))
     }

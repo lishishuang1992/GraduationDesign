@@ -8,7 +8,7 @@
 
 import UIKit
 import SnapKit
-class TabelHeadView: UIView {
+class UserCenterHeadView: UIView {
     
     var nameBt = UIButton()
     var numSince = UILabel()    //点赞数

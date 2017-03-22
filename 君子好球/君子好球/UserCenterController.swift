@@ -11,7 +11,7 @@ import SnapKit
 class UserCenterController: UITableViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
     let cellID = "reuseIdentifier"
-    let headView = TabelHeadView()
+    let headView = UserCenterHeadView()
     override func viewDidLoad() {
         super.viewDidLoad()
 
