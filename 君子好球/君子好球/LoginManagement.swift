@@ -5,7 +5,7 @@
 //  Created by 李世爽 on 2017/3/1.
 //  Copyright © 2017年 myself. All rights reserved.
 //
-
+//验证是否登陆
 import UIKit
 
 class LoginManagement: NSObject {

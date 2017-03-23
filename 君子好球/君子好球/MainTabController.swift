@@ -14,6 +14,16 @@ class MainTabController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let circleVC = CircleFriendsController()
+        circleVC.tabBarItem.title = "球圈"
+        circleVC.tabBarItem.image = UIImage(named: "circle")
+        let releaseVC = ReleaseBallController()
+        releaseVC.tabBarItem.title = "发布"
+        releaseVC.tabBarItem.image = UIImage(named: "release")
+        let userVC = UserCenterController()
+        userVC.tabBarItem.title = "用户"
+        userVC.tabBarItem.image = UIImage(named : "userCenter")
+        self.viewControllers = [circleVC,releaseVC,userVC]
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,7 +31,9 @@ class MainTabController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
 
+    }
     /*
     // MARK: - Navigation
 

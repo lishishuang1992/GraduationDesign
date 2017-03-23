@@ -10,19 +10,15 @@ import UIKit
 
 class CircleFriendsController: UIViewController {
     
-    var segmented = UISegmentedControl()
+    private var segmented = UISegmentedControl()
+    private var leftView = CircleFriendLeftView()
+    private var rightView = CircleFriendRightView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white;
         // Do any additional setup after loading the view.
-
-        
-        let items = ["同城约球","热门动态"]
-        self.segmented = UISegmentedControl(items:items)
-        self.segmented.selectedSegmentIndex = 0 //默认选中第二项
-        self.segmented.addTarget(self, action: #selector(segmentDidchange(segmented:)), for: .valueChanged)
-        
+        self.initView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -43,8 +39,20 @@ class CircleFriendsController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func segmentDidchange(segmented:UISegmentedControl){
+    //init View
+    func initView() {
+        let items = ["同城约球","热门动态"]
+        self.segmented = UISegmentedControl(items:items)
+        self.segmented.selectedSegmentIndex = 0 //默认选中第二项
+        self.segmented.addTarget(self, action: #selector(segmentDidchange(segmented:)), for: .valueChanged)
+        leftView.frame = self.view.frame
+        rightView.frame = self.view.frame
+        
+        
+        
+    }
+    //
+    func segmentDidchange(segmented: UISegmentedControl){
         //获得选项的索引
         print(segmented.selectedSegmentIndex)
         //获得选择的文字

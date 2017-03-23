@@ -17,16 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let mainVC = MainTabController()
-        let circleVC = CircleFriendsController()
-        circleVC.tabBarItem.title = "球圈"
-        circleVC.tabBarItem.image = UIImage(named: "circle")
-        let releaseVC = ReleaseBallController()
-        releaseVC.tabBarItem.title = "发布"
-        releaseVC.tabBarItem.image = UIImage(named: "release")
-        let userVC = UserCenterController()
-        userVC.tabBarItem.title = "用户"
-        userVC.tabBarItem.image = UIImage(named : "userCenter")
-        mainVC.viewControllers = [circleVC,releaseVC,userVC]
         self.window?.rootViewController =  UINavigationController(rootViewController: mainVC)
         self.window?.makeKeyAndVisible()
         return true

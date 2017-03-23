@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		BD0D4FE21E77B91400E5D942 /* UserCenterHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D4FE11E77B91400E5D942 /* UserCenterHeadView.swift */; };
-		BD195E421E82B14900AA5E71 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = BD195E411E82B14900AA5E71 /* star.png */; };
+		BD195E6E1E8373CA00AA5E71 /* CircleRightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD195E6D1E8373CA00AA5E71 /* CircleRightCell.swift */; };
+		BD195E701E8373DC00AA5E71 /* CircleLeftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD195E6F1E8373DC00AA5E71 /* CircleLeftCell.swift */; };
+		BD195E721E83BA9D00AA5E71 /* BallInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD195E711E83BA9D00AA5E71 /* BallInformationModel.swift */; };
+		BD195E741E83BB0700AA5E71 /* CircleCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD195E731E83BB0700AA5E71 /* CircleCellModel.swift */; };
 		BD6627BA1E66C28D007BFEDF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6627B91E66C28D007BFEDF /* LoginController.swift */; };
 		BD6627BC1E66C58A007BFEDF /* LoginManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6627BB1E66C58A007BFEDF /* LoginManagement.swift */; };
 		BD6627BE1E66D883007BFEDF /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6627BD1E66D883007BFEDF /* RegisterController.swift */; };
@@ -18,6 +21,9 @@
 		BD6780ED1E5E76E900AD4D93 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6780E81E5E76E900AD4D93 /* MainTabController.swift */; };
 		BD6780EF1E5E76E900AD4D93 /* ReleaseBallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6780EA1E5E76E900AD4D93 /* ReleaseBallController.swift */; };
 		BD6780F01E5E76E900AD4D93 /* CircleFriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6780EB1E5E76E900AD4D93 /* CircleFriendsController.swift */; };
+		BD7624901E83C3A500B68D8A /* EnrolmentFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76248F1E83C3A500B68D8A /* EnrolmentFormModel.swift */; };
+		BD7624921E83D2DA00B68D8A /* enrollment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD7624911E83D2DA00B68D8A /* enrollment@2x.png */; };
+		BD7624941E83D91C00B68D8A /* CircleHotTrendsCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7624931E83D91C00B68D8A /* CircleHotTrendsCellModel.swift */; };
 		BDA499A91E66713F001DB844 /* UserCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA499A81E66713F001DB844 /* UserCenterController.swift */; };
 		BDA499B41E6676EE001DB844 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = BDA499B11E6676EE001DB844 /* circle.png */; };
 		BDA499B51E6676EE001DB844 /* release.png in Resources */ = {isa = PBXBuildFile; fileRef = BDA499B21E6676EE001DB844 /* release.png */; };
@@ -34,7 +40,10 @@
 		7C91930395D07A9FAACA906E /* Pods-君子好球.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-君子好球.release.xcconfig"; path = "Pods/Target Support Files/Pods-君子好球/Pods-君子好球.release.xcconfig"; sourceTree = "<group>"; };
 		BD0D4FD21E76DEEE00E5D942 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
 		BD0D4FE11E77B91400E5D942 /* UserCenterHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterHeadView.swift; sourceTree = "<group>"; };
-		BD195E411E82B14900AA5E71 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		BD195E6D1E8373CA00AA5E71 /* CircleRightCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleRightCell.swift; sourceTree = "<group>"; };
+		BD195E6F1E8373DC00AA5E71 /* CircleLeftCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleLeftCell.swift; sourceTree = "<group>"; };
+		BD195E711E83BA9D00AA5E71 /* BallInformationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallInformationModel.swift; sourceTree = "<group>"; };
+		BD195E731E83BB0700AA5E71 /* CircleCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleCellModel.swift; sourceTree = "<group>"; };
 		BD6627B91E66C28D007BFEDF /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		BD6627BB1E66C58A007BFEDF /* LoginManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManagement.swift; sourceTree = "<group>"; };
 		BD6627BD1E66D883007BFEDF /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
@@ -46,6 +55,9 @@
 		BD6780E81E5E76E900AD4D93 /* MainTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		BD6780EA1E5E76E900AD4D93 /* ReleaseBallController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReleaseBallController.swift; sourceTree = "<group>"; };
 		BD6780EB1E5E76E900AD4D93 /* CircleFriendsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleFriendsController.swift; sourceTree = "<group>"; };
+		BD76248F1E83C3A500B68D8A /* EnrolmentFormModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnrolmentFormModel.swift; sourceTree = "<group>"; };
+		BD7624911E83D2DA00B68D8A /* enrollment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "enrollment@2x.png"; sourceTree = "<group>"; };
+		BD7624931E83D91C00B68D8A /* CircleHotTrendsCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleHotTrendsCellModel.swift; sourceTree = "<group>"; };
 		BDA499A81E66713F001DB844 /* UserCenterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterController.swift; sourceTree = "<group>"; };
 		BDA499B11E6676EE001DB844 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
 		BDA499B21E6676EE001DB844 /* release.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = release.png; sourceTree = "<group>"; };
@@ -87,7 +99,7 @@
 		BD195E401E82B12A00AA5E71 /* image */ = {
 			isa = PBXGroup;
 			children = (
-				BD195E411E82B14900AA5E71 /* star.png */,
+				BD7624911E83D2DA00B68D8A /* enrollment@2x.png */,
 			);
 			name = image;
 			sourceTree = "<group>";
@@ -130,6 +142,10 @@
 			children = (
 				BDA499AA1E6673ED001DB844 /* image */,
 				BD6627BB1E66C58A007BFEDF /* LoginManagement.swift */,
+				BD195E711E83BA9D00AA5E71 /* BallInformationModel.swift */,
+				BD195E731E83BB0700AA5E71 /* CircleCellModel.swift */,
+				BD76248F1E83C3A500B68D8A /* EnrolmentFormModel.swift */,
+				BD7624931E83D91C00B68D8A /* CircleHotTrendsCellModel.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -137,6 +153,8 @@
 		BDA499A61E666D95001DB844 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				BD195E6F1E8373DC00AA5E71 /* CircleLeftCell.swift */,
+				BD195E6D1E8373CA00AA5E71 /* CircleRightCell.swift */,
 				BDBC2D951E82E0E500E5BEC0 /* CircleFriendRightView.swift */,
 				BD0D4FE11E77B91400E5D942 /* UserCenterHeadView.swift */,
 				BDBC2D931E82E0CF00E5BEC0 /* CircleFriendLeftView.swift */,
@@ -237,8 +255,8 @@
 				BDA499B61E6676EE001DB844 /* userCenter.png in Resources */,
 				BDA499B41E6676EE001DB844 /* circle.png in Resources */,
 				BD6780D21E5E76C200AD4D93 /* LaunchScreen.storyboard in Resources */,
-				BD195E421E82B14900AA5E71 /* star.png in Resources */,
 				BD6780CF1E5E76C200AD4D93 /* Assets.xcassets in Resources */,
+				BD7624921E83D2DA00B68D8A /* enrollment@2x.png in Resources */,
 				BDA499B51E6676EE001DB844 /* release.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,15 +316,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD195E6E1E8373CA00AA5E71 /* CircleRightCell.swift in Sources */,
 				BD6780ED1E5E76E900AD4D93 /* MainTabController.swift in Sources */,
 				BD6780EF1E5E76E900AD4D93 /* ReleaseBallController.swift in Sources */,
+				BD195E701E8373DC00AA5E71 /* CircleLeftCell.swift in Sources */,
+				BD7624941E83D91C00B68D8A /* CircleHotTrendsCellModel.swift in Sources */,
 				BD6780EC1E5E76E900AD4D93 /* AppDelegate.swift in Sources */,
 				BD6627BC1E66C58A007BFEDF /* LoginManagement.swift in Sources */,
 				BD0D4FE21E77B91400E5D942 /* UserCenterHeadView.swift in Sources */,
 				BD6627BE1E66D883007BFEDF /* RegisterController.swift in Sources */,
 				BDBC2D961E82E0E500E5BEC0 /* CircleFriendRightView.swift in Sources */,
+				BD195E721E83BA9D00AA5E71 /* BallInformationModel.swift in Sources */,
 				BD6780F01E5E76E900AD4D93 /* CircleFriendsController.swift in Sources */,
 				BDA499A91E66713F001DB844 /* UserCenterController.swift in Sources */,
+				BD7624901E83C3A500B68D8A /* EnrolmentFormModel.swift in Sources */,
+				BD195E741E83BB0700AA5E71 /* CircleCellModel.swift in Sources */,
 				BD6627BA1E66C28D007BFEDF /* LoginController.swift in Sources */,
 				BDBC2D941E82E0CF00E5BEC0 /* CircleFriendLeftView.swift in Sources */,
 			);
