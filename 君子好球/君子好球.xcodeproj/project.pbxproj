@@ -24,6 +24,10 @@
 		BD7624901E83C3A500B68D8A /* EnrolmentFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76248F1E83C3A500B68D8A /* EnrolmentFormModel.swift */; };
 		BD7624921E83D2DA00B68D8A /* enrollment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD7624911E83D2DA00B68D8A /* enrollment@2x.png */; };
 		BD7624941E83D91C00B68D8A /* CircleHotTrendsCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7624931E83D91C00B68D8A /* CircleHotTrendsCellModel.swift */; };
+		BD7624971E84C85A00B68D8A /* heart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD7624951E84C85A00B68D8A /* heart@2x.png */; };
+		BD7624981E84C85A00B68D8A /* heart_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD7624961E84C85A00B68D8A /* heart_gray@2x.png */; };
+		BD76249A1E84C8AD00B68D8A /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD7624991E84C8AD00B68D8A /* share@2x.png */; };
+		BD76249E1E84EFC200B68D8A /* InitiatingBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76249D1E84EFC200B68D8A /* InitiatingBallView.swift */; };
 		BDA499A91E66713F001DB844 /* UserCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA499A81E66713F001DB844 /* UserCenterController.swift */; };
 		BDA499B41E6676EE001DB844 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = BDA499B11E6676EE001DB844 /* circle.png */; };
 		BDA499B51E6676EE001DB844 /* release.png in Resources */ = {isa = PBXBuildFile; fileRef = BDA499B21E6676EE001DB844 /* release.png */; };
@@ -58,6 +62,10 @@
 		BD76248F1E83C3A500B68D8A /* EnrolmentFormModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnrolmentFormModel.swift; sourceTree = "<group>"; };
 		BD7624911E83D2DA00B68D8A /* enrollment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "enrollment@2x.png"; sourceTree = "<group>"; };
 		BD7624931E83D91C00B68D8A /* CircleHotTrendsCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleHotTrendsCellModel.swift; sourceTree = "<group>"; };
+		BD7624951E84C85A00B68D8A /* heart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart@2x.png"; sourceTree = "<group>"; };
+		BD7624961E84C85A00B68D8A /* heart_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart_gray@2x.png"; sourceTree = "<group>"; };
+		BD7624991E84C8AD00B68D8A /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share@2x.png"; sourceTree = "<group>"; };
+		BD76249D1E84EFC200B68D8A /* InitiatingBallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitiatingBallView.swift; sourceTree = "<group>"; };
 		BDA499A81E66713F001DB844 /* UserCenterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterController.swift; sourceTree = "<group>"; };
 		BDA499B11E6676EE001DB844 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
 		BDA499B21E6676EE001DB844 /* release.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = release.png; sourceTree = "<group>"; };
@@ -99,6 +107,13 @@
 		BD195E401E82B12A00AA5E71 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				BDA499B21E6676EE001DB844 /* release.png */,
+				BDA499B31E6676EE001DB844 /* userCenter.png */,
+				BD7624991E84C8AD00B68D8A /* share@2x.png */,
+				BDA499B11E6676EE001DB844 /* circle.png */,
+				BDA499B71E669AB8001DB844 /* default_face.png */,
+				BD7624951E84C85A00B68D8A /* heart@2x.png */,
+				BD7624961E84C85A00B68D8A /* heart_gray@2x.png */,
 				BD7624911E83D2DA00B68D8A /* enrollment@2x.png */,
 			);
 			name = image;
@@ -137,10 +152,29 @@
 			path = "君子好球";
 			sourceTree = "<group>";
 		};
+		BD76249B1E84CB5C00B68D8A /* RootVC */ = {
+			isa = PBXGroup;
+			children = (
+				BD6780EA1E5E76E900AD4D93 /* ReleaseBallController.swift */,
+				BDA499A81E66713F001DB844 /* UserCenterController.swift */,
+				BD6780EB1E5E76E900AD4D93 /* CircleFriendsController.swift */,
+				BD6780E81E5E76E900AD4D93 /* MainTabController.swift */,
+			);
+			name = RootVC;
+			sourceTree = "<group>";
+		};
+		BD76249C1E84CB9600B68D8A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				BD6627B91E66C28D007BFEDF /* LoginController.swift */,
+				BD6627BD1E66D883007BFEDF /* RegisterController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		BDA499A51E666D8B001DB844 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				BDA499AA1E6673ED001DB844 /* image */,
 				BD6627BB1E66C58A007BFEDF /* LoginManagement.swift */,
 				BD195E711E83BA9D00AA5E71 /* BallInformationModel.swift */,
 				BD195E731E83BB0700AA5E71 /* CircleCellModel.swift */,
@@ -153,6 +187,7 @@
 		BDA499A61E666D95001DB844 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				BD76249D1E84EFC200B68D8A /* InitiatingBallView.swift */,
 				BD195E6F1E8373DC00AA5E71 /* CircleLeftCell.swift */,
 				BD195E6D1E8373CA00AA5E71 /* CircleRightCell.swift */,
 				BDBC2D951E82E0E500E5BEC0 /* CircleFriendRightView.swift */,
@@ -166,25 +201,10 @@
 		BDA499A71E666D9B001DB844 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				BD6780E81E5E76E900AD4D93 /* MainTabController.swift */,
-				BD6780EA1E5E76E900AD4D93 /* ReleaseBallController.swift */,
-				BD6780EB1E5E76E900AD4D93 /* CircleFriendsController.swift */,
-				BDA499A81E66713F001DB844 /* UserCenterController.swift */,
-				BD6627B91E66C28D007BFEDF /* LoginController.swift */,
-				BD6627BD1E66D883007BFEDF /* RegisterController.swift */,
+				BD76249C1E84CB9600B68D8A /* Login */,
+				BD76249B1E84CB5C00B68D8A /* RootVC */,
 			);
 			name = controller;
-			sourceTree = "<group>";
-		};
-		BDA499AA1E6673ED001DB844 /* image */ = {
-			isa = PBXGroup;
-			children = (
-				BDA499B71E669AB8001DB844 /* default_face.png */,
-				BDA499B11E6676EE001DB844 /* circle.png */,
-				BDA499B21E6676EE001DB844 /* release.png */,
-				BDA499B31E6676EE001DB844 /* userCenter.png */,
-			);
-			name = image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,11 +271,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD76249A1E84C8AD00B68D8A /* share@2x.png in Resources */,
 				BDA499B81E669AB8001DB844 /* default_face.png in Resources */,
 				BDA499B61E6676EE001DB844 /* userCenter.png in Resources */,
 				BDA499B41E6676EE001DB844 /* circle.png in Resources */,
+				BD7624981E84C85A00B68D8A /* heart_gray@2x.png in Resources */,
 				BD6780D21E5E76C200AD4D93 /* LaunchScreen.storyboard in Resources */,
 				BD6780CF1E5E76C200AD4D93 /* Assets.xcassets in Resources */,
+				BD7624971E84C85A00B68D8A /* heart@2x.png in Resources */,
 				BD7624921E83D2DA00B68D8A /* enrollment@2x.png in Resources */,
 				BDA499B51E6676EE001DB844 /* release.png in Resources */,
 			);
@@ -331,6 +354,7 @@
 				BDA499A91E66713F001DB844 /* UserCenterController.swift in Sources */,
 				BD7624901E83C3A500B68D8A /* EnrolmentFormModel.swift in Sources */,
 				BD195E741E83BB0700AA5E71 /* CircleCellModel.swift in Sources */,
+				BD76249E1E84EFC200B68D8A /* InitiatingBallView.swift in Sources */,
 				BD6627BA1E66C28D007BFEDF /* LoginController.swift in Sources */,
 				BDBC2D941E82E0CF00E5BEC0 /* CircleFriendLeftView.swift in Sources */,
 			);

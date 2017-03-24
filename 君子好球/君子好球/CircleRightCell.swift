@@ -35,6 +35,7 @@ class CircleRightCell: UITableViewCell {
         headImageBt.setImage(hotCellModel.headImage, for: .normal)
         headImageBt.layer.cornerRadius = 8
         self.addSubview(headImageBt)
+        
         headImageBt.snp.makeConstraints{ (make) in
             make.left.equalTo(self.snp.left).offset(10)
             make.top.equalTo(self.snp.top).offset(10)
@@ -84,30 +85,40 @@ class CircleRightCell: UITableViewCell {
         pointPraise.textAlignment = .left
         self.addSubview(pointPraise)
         pointPraise.snp.makeConstraints{ (make) in
-            make.centerY.equalTo(headImageBt.snp.centerY)
-            make.right.equalTo(self.snp.right).offset(-10)
+            make.left.equalTo(self.snp.left).offset(10)
+            make.bottom.equalTo(self.snp.bottom).offset(-10)
         }
-        
         
         //点赞按钮
-        let headImageBt = UIButton()
-        headImageBt.setImage(hotCellModel.headImage, for: .normal)
-        headImageBt.layer.cornerRadius = 8
-        self.addSubview(headImageBt)
-        headImageBt.snp.makeConstraints{ (make) in
-            make.left.equalTo(self.snp.left).offset(10)
-            make.top.equalTo(self.snp.top).offset(10)
+        let praiseBt = UIButton()
+        praiseBt.setImage(UIImage(named:"heart_gray"), for: .normal)
+        self.addSubview(praiseBt)
+        praiseBt.snp.makeConstraints{ (make) in
+            make.left.equalTo(pointPraise.snp.right).offset(10)
+            make.bottom.equalTo(pointPraise.snp.bottom)
+        }
+        //分享按钮
+        let shareBt = UIButton()
+        shareBt.setImage(UIImage(named:"share"), for: .normal)
+        self.addSubview(shareBt)
+        shareBt.snp.makeConstraints{ (make) in
+            make.left.equalTo(praiseBt.snp.left).offset(10)
+             make.bottom.equalTo(pointPraise.snp.bottom)
+        }
+        
+        //点击头像事件
+        func addTargetHeadImageBt(target: Any?, action: Selector, for controlEvents: UIControlEvents){
+            headImageBt.addTarget(target, action:action, for:.touchUpInside)
+        }
+        //点赞事件
+        func addTargetPraiseBt(target: Any?, action: Selector, for controlEvents: UIControlEvents){
+            praiseBt.addTarget(target, action:action, for:.touchUpInside)
+        }
+        //点击分享事件
+        func addTargetShareBt(target: Any?, action: Selector, for controlEvents: UIControlEvents){
+            shareBt.addTarget(target, action:action, for:.touchUpInside)
         }
 
-        //分享按钮
-        let headImageBt = UIButton()
-        headImageBt.setImage(hotCellModel.headImage, for: .normal)
-        headImageBt.layer.cornerRadius = 8
-        self.addSubview(headImageBt)
-        headImageBt.snp.makeConstraints{ (make) in
-            make.left.equalTo(self.snp.left).offset(10)
-            make.top.equalTo(self.snp.top).offset(10)
-        }
 
         
 
