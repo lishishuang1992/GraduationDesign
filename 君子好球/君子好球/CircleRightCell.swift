@@ -9,7 +9,12 @@
 import UIKit
 
 class CircleRightCell: UITableViewCell {
-    let hotCellModel = CircleHotTrendsCellModel()
+    
+    var headImageBt = UIButton()
+    var nickname = UILabel()
+    var time = UILabel()
+    var backImageView = UIImageView()
+    var pointPraise = UILabel()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,60 +36,54 @@ class CircleRightCell: UITableViewCell {
     }
     func setUpUI() {
         //头像
-        let headImageBt = UIButton()
-        headImageBt.setImage(hotCellModel.headImage, for: .normal)
-        headImageBt.layer.cornerRadius = 8
-        self.addSubview(headImageBt)
-        
-        headImageBt.snp.makeConstraints{ (make) in
+        self.headImageBt = UIButton()
+        self.headImageBt.layer.cornerRadius = 8
+        self.addSubview(self.headImageBt)
+        self.headImageBt.snp.makeConstraints{ (make) in
             make.left.equalTo(self.snp.left).offset(10)
             make.top.equalTo(self.snp.top).offset(10)
         }
         //昵称
-        let nickname = UILabel()
-        nickname.text = hotCellModel.nickname
-        nickname.backgroundColor = UIColor.clear
-        nickname.textColor = UIColor.red
-        nickname.font = UIFont.systemFont(ofSize: 13)
-        nickname.textAlignment = .left
-        self.addSubview(nickname)
-        nickname.snp.makeConstraints{ (make) in
+        self.nickname = UILabel()
+        self.nickname.backgroundColor = UIColor.clear
+        self.nickname.textColor = UIColor.red
+        self.nickname.font = UIFont.systemFont(ofSize: 13)
+        self.nickname.textAlignment = .left
+        self.addSubview(self.nickname)
+        self.nickname.snp.makeConstraints{ (make) in
             make.centerY.equalTo(headImageBt.snp.centerY)
             make.left.equalTo(headImageBt.snp.right).offset(10)
         }
         
         //时间
-        let time = UILabel()
-        time.text = hotCellModel.time
-        time.backgroundColor = UIColor.clear
-        time.textColor = UIColor.red
-        time.font = UIFont.systemFont(ofSize: 10)
-        time.textAlignment = .left
-        self.addSubview(time)
-        time.snp.makeConstraints{ (make) in
-            make.centerY.equalTo(headImageBt.snp.centerY)
+        self.time = UILabel()
+        self.time.backgroundColor = UIColor.clear
+        self.time.textColor = UIColor.red
+        self.time.font = UIFont.systemFont(ofSize: 10)
+        self.time.textAlignment = .left
+        self.addSubview(self.time)
+        self.time.snp.makeConstraints{ (make) in
+            make.centerY.equalTo(self.headImageBt.snp.centerY)
             make.right.equalTo(self.snp.right).offset(-10)
         }
         //背景图
-        let backImageView = UIImageView()
-        backImageView.image = hotCellModel.imageArray?[0]
-        self.addSubview(backImageView)
+        self.backImageView = UIImageView()
+        self.addSubview(self.backImageView)
         backImageView.snp.makeConstraints{ (make) in
-            make.top.equalTo(headImageBt.snp.bottom).offset(5)
+            make.top.equalTo(self.headImageBt.snp.bottom).offset(5)
             make.left.equalTo(self)
             make.right.equalTo(self)
             make.bottom.equalTo(self.snp.bottom).offset(-60)
         }
         
         //点赞数
-        let pointPraise = UILabel()
-        pointPraise.text = hotCellModel.pointPraise
-        pointPraise.backgroundColor = UIColor.clear
-        pointPraise.textColor = UIColor.red
-        pointPraise.font = UIFont.systemFont(ofSize: 10)
-        pointPraise.textAlignment = .left
-        self.addSubview(pointPraise)
-        pointPraise.snp.makeConstraints{ (make) in
+        self.pointPraise = UILabel()
+        self.pointPraise.backgroundColor = UIColor.clear
+        self.pointPraise.textColor = UIColor.red
+        self.pointPraise.font = UIFont.systemFont(ofSize: 10)
+        self.pointPraise.textAlignment = .left
+        self.addSubview(self.pointPraise)
+        self.pointPraise.snp.makeConstraints{ (make) in
             make.left.equalTo(self.snp.left).offset(10)
             make.bottom.equalTo(self.snp.bottom).offset(-10)
         }
@@ -92,18 +91,18 @@ class CircleRightCell: UITableViewCell {
         //点赞按钮
         let praiseBt = UIButton()
         praiseBt.setImage(UIImage(named:"heart_gray"), for: .normal)
-        self.addSubview(praiseBt)
+        addSubview(praiseBt)
         praiseBt.snp.makeConstraints{ (make) in
-            make.left.equalTo(pointPraise.snp.right).offset(10)
-            make.bottom.equalTo(pointPraise.snp.bottom)
+            make.left.equalTo(self.pointPraise.snp.right).offset(10)
+            make.bottom.equalTo(self.pointPraise.snp.bottom)
         }
         //分享按钮
         let shareBt = UIButton()
         shareBt.setImage(UIImage(named:"share"), for: .normal)
-        self.addSubview(shareBt)
+        addSubview(shareBt)
         shareBt.snp.makeConstraints{ (make) in
             make.left.equalTo(praiseBt.snp.left).offset(10)
-             make.bottom.equalTo(pointPraise.snp.bottom)
+            make.bottom.equalTo(pointPraise.snp.bottom)
         }
         
         //点击头像事件
@@ -119,7 +118,14 @@ class CircleRightCell: UITableViewCell {
             shareBt.addTarget(target, action:action, for:.touchUpInside)
         }
 
-
+        func postData(hotCellModel :CircleHotTrendsCellModel) {
+            self.headImageBt.setImage(hotCellModel.headImage, for: .normal)
+            self.nickname.text = hotCellModel.nickname
+            self.time.text = hotCellModel.time
+            self.backImageView.image = hotCellModel.imageArray?[0]
+            self.pointPraise.text = hotCellModel.pointPraise
+            //self.content
+        }
         
 
     }

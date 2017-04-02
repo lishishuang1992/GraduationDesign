@@ -10,7 +10,13 @@ import UIKit
 
 class CircleLeftCell: UITableViewCell {
 
-    var circleCellModel = CircleCellModel()
+    var headImage: UIImageView?            //头像
+    var time = UILabel()
+    var subjectTitle = UILabel()
+    var place = UILabel()
+    var places_enrollment = UILabel()
+    var format = UILabel()
+    var cost = UILabel()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,52 +40,50 @@ class CircleLeftCell: UITableViewCell {
     
     func setUpUI() {
         //头像
-        let headImage = UIImageView()
-        headImage.image = circleCellModel.headImage
-        headImage.contentMode = .scaleAspectFit
-        headImage.layer.cornerRadius = 8
-        self.addSubview(headImage)
-        headImage.snp.makeConstraints{ (make) in
+        self.headImage = UIImageView()
+       // self.headImage?.contentMode = .scaleAspectFit
+        self.headImage?.clipsToBounds = true
+        self.headImage?.layer.cornerRadius = 14
+        self.addSubview(self.headImage!)
+        self.headImage?.snp.makeConstraints{ (make) in
             make.centerY.equalTo(self)
             make.left.equalTo(self.snp.left).offset(10)
-            make.bottom.equalTo(self.snp.bottom).offset(-10)
+            make.height.equalTo(136/2.0)
+            make.width.equalTo(136/2.0)
         }
         //主题
-        let subjectTitle = UILabel()
-        subjectTitle.text = circleCellModel.subjectTitle
-        subjectTitle.backgroundColor = UIColor.clear
-        subjectTitle.textColor = UIColor.red
-        subjectTitle.font = UIFont.systemFont(ofSize: 13)
-        subjectTitle.textAlignment = .left
-        self.addSubview(subjectTitle)
+        self.subjectTitle = UILabel()
+        self.subjectTitle.backgroundColor = UIColor.clear
+        self.subjectTitle.textColor = UIColor.init(colorLiteralRed: 0, green: 0, blue: 0, alpha: 1.0)
+        self.subjectTitle.font = UIFont.systemFont(ofSize: 15)
+        self.subjectTitle.textAlignment = .left
+        self.addSubview(self.subjectTitle)
         subjectTitle.snp.makeConstraints{ (make) in
-            make.top.equalTo(headImage)
-            make.left.equalTo(headImage.snp.right).offset(10)
+            make.top.equalTo(self.headImage!)
+            make.left.equalTo(self.headImage!.snp.right).offset(10)
         }
         
         //时间
-        let time = UILabel()
-        time.text = circleCellModel.time
-        time.backgroundColor = UIColor.clear
-        time.textColor = UIColor.red
-        time.font = UIFont.systemFont(ofSize: 10)
-        time.textAlignment = .left
-        self.addSubview(time)
-        time.snp.makeConstraints{ (make) in
+        self.time = UILabel()
+        self.time.backgroundColor = UIColor.clear
+        self.time.textColor = UIColor.red
+        self.time.font = UIFont.systemFont(ofSize: 10)
+        self.time.textAlignment = .left
+        self.addSubview(self.time)
+        self.time.snp.makeConstraints{ (make) in
             make.top.equalTo(subjectTitle.snp.bottom).offset(5)
             make.left.equalTo(subjectTitle)
         }
         //地点
-        let place = UILabel()
-        place.text = circleCellModel.place
-        place.backgroundColor = UIColor.clear
-        place.textColor = UIColor.red
-        place.font = UIFont.systemFont(ofSize: 10)
-        place.textAlignment = .left
+        self.place = UILabel()
+        self.place.backgroundColor = UIColor.clear
+        self.place.textColor = UIColor.red
+        self.place.font = UIFont.systemFont(ofSize: 10)
+        self.place.textAlignment = .left
         self.addSubview(place)
-        place.snp.makeConstraints{ (make) in
-            make.top.equalTo(time.snp.bottom).offset(5)
-            make.left.equalTo(subjectTitle)
+        self.place.snp.makeConstraints{ (make) in
+            make.top.equalTo(self.time.snp.bottom).offset(5)
+            make.left.equalTo(self.subjectTitle)
         }
         //距离
 //        let distance = UILabel()
@@ -98,50 +102,57 @@ class CircleLeftCell: UITableViewCell {
         let signUp = UIImageView()
         signUp.image = UIImage(named:"enrollment")
         signUp.contentMode = .scaleAspectFit
-        signUp.layer.cornerRadius = 8
         self.addSubview(signUp)
         signUp.snp.makeConstraints{ (make) in
             make.centerY.equalTo(self)
             make.right.equalTo(self.snp.right).offset(-10)
+            make.height.equalTo(60/2.0)
+            make.width.equalTo(60/2.0)
         }
         
         //报名情况
-        let places_enrollment = UILabel()
-        places_enrollment.text = circleCellModel.enrollment + "/" + circleCellModel.places 
-        places_enrollment.backgroundColor = UIColor.clear
-        places_enrollment.textColor = UIColor.red
-        places_enrollment.font = UIFont.systemFont(ofSize: 15)
-        places_enrollment.textAlignment = .right
-        self.addSubview(places_enrollment)
-        places_enrollment.snp.makeConstraints{ (make) in
+        self.places_enrollment = UILabel()
+        self.places_enrollment.backgroundColor = UIColor.clear
+        self.places_enrollment.textColor = UIColor.red
+        self.places_enrollment.font = UIFont.systemFont(ofSize: 15)
+        self.places_enrollment.textAlignment = .right
+        self.addSubview(self.places_enrollment)
+        self.places_enrollment.snp.makeConstraints{ (make) in
             make.top.equalTo(signUp.snp.bottom).offset(10)
             make.right.equalTo(self.snp.right).offset(-10)
         }
         //赛制
-        let format = UILabel()
-        format.text = circleCellModel.format
-        format.backgroundColor = UIColor.clear
-        format.textColor = UIColor.red
-        format.font = UIFont.systemFont(ofSize: 15)
-        format.textAlignment = .center
-        self.addSubview(format)
-        format.snp.makeConstraints{ (make) in
-            make.top.equalTo(place.snp.bottom).offset(10)
-            make.left.equalTo(subjectTitle)
+        self.format = UILabel()
+        self.format.backgroundColor = UIColor.gray
+        self.format.textColor = UIColor.red
+        self.format.font = UIFont.systemFont(ofSize: 15)
+        self.format.textAlignment = .center
+        self.addSubview(self.format)
+        self.format.snp.makeConstraints{ (make) in
+            make.top.equalTo(self.place.snp.bottom).offset(10)
+            make.left.equalTo(self.subjectTitle)
         }
         //费用
-        let cost = UILabel()
-        cost.text = circleCellModel.format
-        cost.backgroundColor = UIColor.clear
-        cost.textColor = UIColor.red
-        cost.font = UIFont.systemFont(ofSize: 15)
-        cost.textAlignment = .center
-        self.addSubview(cost)
-        cost.snp.makeConstraints{ (make) in
-            make.top.equalTo(format)
-            make.left.equalTo(format.snp.right).offset(20)
+        self.cost = UILabel()
+        self.cost.backgroundColor = UIColor.gray
+        self.cost.textColor = UIColor.red
+        self.cost.font = UIFont.systemFont(ofSize: 15)
+        self.cost.textAlignment = .center
+        self.addSubview(self.cost)
+        self.cost.snp.makeConstraints{ (make) in
+            make.top.equalTo(self.format)
+            make.left.equalTo(self.format.snp.right).offset(20)
         }
     
+    }
+    func postData(circleCellModel :CircleCellModel) {
+        self.headImage?.image = circleCellModel.headImage
+        self.subjectTitle.text = circleCellModel.subjectTitle
+        self.time.text = circleCellModel.time
+        self.place.text = circleCellModel.place
+        self.places_enrollment.text = circleCellModel.enrollment + "/" + circleCellModel.places
+        self.format.text = circleCellModel.format
+        self.cost.text = circleCellModel.cost
     }
 
 }

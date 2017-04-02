@@ -52,14 +52,11 @@ class InitiatingBallView: UITableViewCell {
         if indexPath.section == 0 {
             //indexPath.row
         }else if indexPath.section == 1{
-            let message = UILabel()
             if indexPath.row == 0 {
-                message.text = "查看收到的赞"
+                cell.textLabel?.text = "查看收到的赞"
             }else{
-                message.text = "查看发布的动态"
+                cell.textLabel?.text = "查看发布的动态"
             }
-            message.frame = CGRect(x :0,y :0,width :100,height :80)
-            cell.contentView.addSubview(message)
         }
         return cell
     }
@@ -81,41 +78,20 @@ class InitiatingBallView: UITableViewCell {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         //return CGFloat(heightForHeader[section])
+        return 0
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headView = UIView()
-        //        if section == 0 {
-        //            self.headView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 200)
-        //            self.headView.backgroundColor = UIColor.gray
-        //            self.headView.nameBt.titleLabel?.text = "小明"
-        //            self.headView.addTargetNameBt(target: self, action:#selector(nameBtClick), for: .touchUpInside)
-        //            self.headView.addTargetUserAvatar(target: self, action: #selector(userAvatarClick), for: .touchUpInside)
-        //            self.headView.sinceAndReleaseNum(numSince: "1", numRelease: "2")
-        //        }else if section == 1 {
-        //            return nil
-        //        }
+
         return headView
     }
-    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        //return CGFloat(heightForRoot[section])
+        return 0
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let rootView = UIView()
-        //        if section == 0 {
-        //
-        //        }else{
-        //            rootView.frame = CGRect(x:0 , y: 0, width: self.view.frame.size.width/2, height: 100)
-        //            let exitLogin = UIButton()
-        //            exitLogin.frame = CGRect(x:self.view.frame.size.width/2-40 ,y:60 ,width: 80,height:80)
-        //            exitLogin.backgroundColor = UIColor.orange
-        //            exitLogin.titleLabel?.text = "退出登录"
-        //            exitLogin.addTarget(self, action:#selector(exitLoginClick), for:.touchUpInside)
-        //            rootView.addSubview(exitLogin)
-        //            
-        //        }
-        return rootView
-    }
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let rootView = UIView()
+//        return rootView
+//    }
 
 }
