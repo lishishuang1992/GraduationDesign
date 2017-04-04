@@ -8,8 +8,8 @@
 //热门动态cell model
 import UIKit
 
-class CircleHotTrendsCellModel: NSObject {
-    var headImage: UIImage?            //头像
+class CircleHotCellModel: NSObject {
+    var headImageUrl: String = ""//头像
     var nickname: String = ""            //昵称
     var time: String = ""                //发布时间
     var contentText: String = ""            //文字内容

@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Kingfisher.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-君子好球.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>B12B097CA4925CF9895900DB2BD85D90</key>
+		<key>03903CF098A2F29193F2C36665019408</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BF8738CC8A51B00BF936041A70F1B63A</key>
+		<key>3D46AA9BC16B099031F3CC34F753F530</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FFE4E9C463D09AA55C4BFE47604B4E52</key>
+		<key>4A0193F296C0FFA62C7F25F3F33842D3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C4944FEC314D1A66588651D006273ADE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

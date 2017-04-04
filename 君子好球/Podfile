@@ -3,4 +3,5 @@ use_frameworks!
 target '君子好球' do
 	pod 'SnapKit'
         pod 'SQLite.swift'
+        pod 'Kingfisher'
 end

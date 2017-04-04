@@ -9,7 +9,7 @@
 import UIKit
 
 class CircleCellModel: NSObject {
-    var headImage: UIImage?            //头像
+    var headImageUrl: String = ""            //头像
     var subjectTitle: String = ""       //主题
     var time: String = ""             //时间
     var place: String = ""              //地点

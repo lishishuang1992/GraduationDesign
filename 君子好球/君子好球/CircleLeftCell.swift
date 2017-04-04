@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CircleLeftCell: UITableViewCell {
-
+    
     var headImage: UIImageView?            //头像
     var time = UILabel()
     var subjectTitle = UILabel()
@@ -22,10 +23,10 @@ class CircleLeftCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -41,7 +42,7 @@ class CircleLeftCell: UITableViewCell {
     func setUpUI() {
         //头像
         self.headImage = UIImageView()
-       // self.headImage?.contentMode = .scaleAspectFit
+        // self.headImage?.contentMode = .scaleAspectFit
         self.headImage?.clipsToBounds = true
         self.headImage?.layer.cornerRadius = 14
         self.addSubview(self.headImage!)
@@ -86,17 +87,17 @@ class CircleLeftCell: UITableViewCell {
             make.left.equalTo(self.subjectTitle)
         }
         //距离
-//        let distance = UILabel()
-//        distance.text = circleCellModel.place
-//        distance.backgroundColor = UIColor.clear
-//        distance.textColor = UIColor.red
-//        distance.font = UIFont.systemFont(ofSize: 10)
-//        distance.textAlignment = .left
-//        self.addSubview(distance)
-//        distance.snp.makeConstraints{ (make) in
-//            make.top.equalTo(self.snp.top).offset(10)
-//            make.right.equalTo(self.snp.right).offset(-10)
-//        }
+        //        let distance = UILabel()
+        //        distance.text = circleCellModel.place
+        //        distance.backgroundColor = UIColor.clear
+        //        distance.textColor = UIColor.red
+        //        distance.font = UIFont.systemFont(ofSize: 10)
+        //        distance.textAlignment = .left
+        //        self.addSubview(distance)
+        //        distance.snp.makeConstraints{ (make) in
+        //            make.top.equalTo(self.snp.top).offset(10)
+        //            make.right.equalTo(self.snp.right).offset(-10)
+        //        }
         
         //报名图标
         let signUp = UIImageView()
@@ -143,10 +144,10 @@ class CircleLeftCell: UITableViewCell {
             make.top.equalTo(self.format)
             make.left.equalTo(self.format.snp.right).offset(20)
         }
-    
+        
     }
     func postData(circleCellModel :CircleCellModel) {
-        self.headImage?.image = circleCellModel.headImage
+        self.headImage?.kf.setImage(with: ImageResource.init(downloadURL: URL.init(string: circleCellModel.headImageUrl)!), placeholder: UIImage(named:"default_face"), options: [KingfisherOptionsInfoItem.transition(ImageTransition.fade(1)), KingfisherOptionsInfoItem.forceRefresh], progressBlock: nil, completionHandler: nil)
         self.subjectTitle.text = circleCellModel.subjectTitle
         self.time.text = circleCellModel.time
         self.place.text = circleCellModel.place
@@ -154,5 +155,5 @@ class CircleLeftCell: UITableViewCell {
         self.format.text = circleCellModel.format
         self.cost.text = circleCellModel.cost
     }
-
+    
 }

@@ -10,9 +10,9 @@ import UIKit
 
 class BallInformationModel: NSObject {
     var circleCellModel = CircleCellModel()
-    var nickname = NSString()                   //昵称
-    var project = NSString()                    //项目
-    var introduce = NSString()                  //简介
-    var deadLine = NSString()                   //截止时间
-    var object = NSString()                     //对象__个人赛,
+    var nickname: String = ""                   //昵称
+    var project: String = ""                    //项目
+    var introduce: String = ""                  //简介
+    var deadLine: String = ""                  //截止时间
+    var object: String = ""                     //对象__个人赛,
 }

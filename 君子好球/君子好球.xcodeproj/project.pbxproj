@@ -23,7 +23,7 @@
 		BD6780F01E5E76E900AD4D93 /* CircleFriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6780EB1E5E76E900AD4D93 /* CircleFriendsController.swift */; };
 		BD7624901E83C3A500B68D8A /* EnrolmentFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76248F1E83C3A500B68D8A /* EnrolmentFormModel.swift */; };
 		BD7624921E83D2DA00B68D8A /* enrollment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD7624911E83D2DA00B68D8A /* enrollment@2x.png */; };
-		BD7624941E83D91C00B68D8A /* CircleHotTrendsCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7624931E83D91C00B68D8A /* CircleHotTrendsCellModel.swift */; };
+		BD7624941E83D91C00B68D8A /* CircleHotCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7624931E83D91C00B68D8A /* CircleHotCellModel.swift */; };
 		BD7624971E84C85A00B68D8A /* heart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD7624951E84C85A00B68D8A /* heart@2x.png */; };
 		BD7624981E84C85A00B68D8A /* heart_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD7624961E84C85A00B68D8A /* heart_gray@2x.png */; };
 		BD76249A1E84C8AD00B68D8A /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD7624991E84C8AD00B68D8A /* share@2x.png */; };
@@ -59,7 +59,7 @@
 		BD6780EB1E5E76E900AD4D93 /* CircleFriendsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleFriendsController.swift; sourceTree = "<group>"; };
 		BD76248F1E83C3A500B68D8A /* EnrolmentFormModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnrolmentFormModel.swift; sourceTree = "<group>"; };
 		BD7624911E83D2DA00B68D8A /* enrollment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "enrollment@2x.png"; sourceTree = "<group>"; };
-		BD7624931E83D91C00B68D8A /* CircleHotTrendsCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleHotTrendsCellModel.swift; sourceTree = "<group>"; };
+		BD7624931E83D91C00B68D8A /* CircleHotCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleHotCellModel.swift; sourceTree = "<group>"; };
 		BD7624951E84C85A00B68D8A /* heart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart@2x.png"; sourceTree = "<group>"; };
 		BD7624961E84C85A00B68D8A /* heart_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart_gray@2x.png"; sourceTree = "<group>"; };
 		BD7624991E84C8AD00B68D8A /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share@2x.png"; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 				BD195E711E83BA9D00AA5E71 /* BallInformationModel.swift */,
 				BD195E731E83BB0700AA5E71 /* CircleCellModel.swift */,
 				BD76248F1E83C3A500B68D8A /* EnrolmentFormModel.swift */,
-				BD7624931E83D91C00B68D8A /* CircleHotTrendsCellModel.swift */,
+				BD7624931E83D91C00B68D8A /* CircleHotCellModel.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -337,7 +337,7 @@
 				BD6780ED1E5E76E900AD4D93 /* MainTabController.swift in Sources */,
 				BD6780EF1E5E76E900AD4D93 /* ReleaseBallController.swift in Sources */,
 				BD195E701E8373DC00AA5E71 /* CircleLeftCell.swift in Sources */,
-				BD7624941E83D91C00B68D8A /* CircleHotTrendsCellModel.swift in Sources */,
+				BD7624941E83D91C00B68D8A /* CircleHotCellModel.swift in Sources */,
 				BD6780EC1E5E76E900AD4D93 /* AppDelegate.swift in Sources */,
 				BD6627BC1E66C58A007BFEDF /* LoginManagement.swift in Sources */,
 				BD0D4FE21E77B91400E5D942 /* UserCenterHeadView.swift in Sources */,
