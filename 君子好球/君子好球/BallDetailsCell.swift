@@ -109,7 +109,7 @@ class BallDetailsCell: UITableViewCell {
             make.left.equalTo(self.projectName)
             make.width.equalTo(180/2.0)
         }
-        
+        //简介
         self.contentText = UILabel()
         self.contentText.font = UIFont.systemFont(ofSize: 14)
         self.contentText.numberOfLines = 0

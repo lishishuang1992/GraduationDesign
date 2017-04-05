@@ -215,7 +215,11 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        self.hidesBottomBarWhenPushed = true
+        let next = BallDetailsVC();
+        next.ballInformationModel.circleCellModel = modelLeftArray[indexPath.row]
+        self.navigationController?.pushViewController(next, animated: true)
+        self.hidesBottomBarWhenPushed = false
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

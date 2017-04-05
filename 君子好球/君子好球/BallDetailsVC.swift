@@ -11,9 +11,13 @@ import UIKit
 class BallDetailsVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
 
     var tableView = UITableView()
-    let cellID:String = "reuseIdentifier"
-    //BallInformationModel
+    let cellID:String = "HeadNameCell"
+    let cellIDBall:String = "BallDetailsCell"
+    var joinButton = UIButton()
     
+    //测试数据
+    var ballInformationModel = BallInformationModel()
+    //BallInformationModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,15 +30,50 @@ class BallDetailsVC: UIViewController ,UITableViewDelegate,UITableViewDataSource
         // Dispose of any resources that can be recreated.
     }
     func initView() {
+        //测试数据
+        ballInformationModel.nickname = "小李"
+        ballInformationModel.project = "篮球"
+        ballInformationModel.introduce = "阿斯顿发哈加快地方哈哈地方哈地方哈快大法好的发掘"
+        ballInformationModel.deadLine = "2017年4月10日"
+        
+        let enrolmentFormModel1 = EnrolmentFormModel()
+        enrolmentFormModel1.headImageUrl = "http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"
+        enrolmentFormModel1.nickname = "李世爽"
+        enrolmentFormModel1.time = "2017:2:23"
+        enrolmentFormModel1.registrationStatus = "0"
+        
+        let enrolmentFormModel2 = EnrolmentFormModel()
+        enrolmentFormModel2.headImageUrl = "http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"
+        enrolmentFormModel2.nickname = "liu"
+        enrolmentFormModel2.time = "2017:2:23"
+        enrolmentFormModel2.registrationStatus = "1"
+        
+        let enrolmentFormModel3 = EnrolmentFormModel()
+        enrolmentFormModel3.headImageUrl = "http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"
+        enrolmentFormModel3.nickname = "waner"
+        enrolmentFormModel3.time = "2017:2:23"
+        enrolmentFormModel3.registrationStatus = "2"
+        ballInformationModel.enrolmentFormModel.append(enrolmentFormModel1)
+        ballInformationModel.enrolmentFormModel.append(enrolmentFormModel2)
+        ballInformationModel.enrolmentFormModel.append(enrolmentFormModel3)
+        
         self.tableView = UITableView()
         self.view.addSubview(self.tableView)
         self.tableView.snp.makeConstraints{ (make) in
             make.left.equalTo(self.view)
             make.top.equalTo(self.view)
             make.right.equalTo(self.view)
-            make.bottom.equalTo(self.view).offset(-64)
+            make.bottom.equalTo(self.view).offset(-40)
         }
-        self.tableView.register(CircleLeftCell.classForCoder(), forCellReuseIdentifier:cellID)
+        self.tableView.register(HeadNameCell.classForCoder(), forCellReuseIdentifier:cellID)
+        self.joinButton = UIButton()
+        self.view.addSubview(self.joinButton)
+        self.joinButton.snp.makeConstraints { (make) in
+            make.left.equalTo(self.view)
+            make.right.equalTo(self.view)
+            make.bottom.equalTo(self.view)
+            make.height.equalTo(40)
+        }
     }
     func initData() {
         self.tableView.delegate = self
@@ -44,30 +83,33 @@ class BallDetailsVC: UIViewController ,UITableViewDelegate,UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
-        if self.segmentIndex == 0{
-            return modelLeftArray.count
-        }else if(self.segmentIndex == 1){
-            return modelRightArray.count
+        if section == 0{
+            return 10
+        }else if(section == 1){
+            return 30
         }else{
             return 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if self.segmentIndex == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellID[self.segmentIndex], for: indexPath) as! CircleLeftCell
-            cell.postData(circleCellModel: modelLeftArray[indexPath.row])
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! HeadNameCell
+            cell.postPublisherData(ballInformationModel: ballInformationModel)
+            return cell
+        }else if indexPath.section == 1{
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIDBall, for: indexPath) as! BallDetailsCell
+            cell.postData(ballInformationModel: ballInformationModel)
             return cell
         }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellID[self.segmentIndex], for: indexPath) as! CircleRightCell
-            //self.tableView.register(CircleLeftCell.classForCoder(), forCellReuseIdentifier: cellIDRight) as! CircleRightCell
-            cell.postData(hotCellModel: modelRightArray[indexPath.row])
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! HeadNameCell
+            cell.postApplicantData(enrolmentFormModel: ballInformationModel.enrolmentFormModel[indexPath.row])
             return cell
         }
     }
@@ -77,12 +119,12 @@ class BallDetailsVC: UIViewController ,UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if self.segmentIndex == 0{
-            return 220/2.0
-        }else if(self.segmentIndex == 1){
-            return self.cellHeight[indexPath.row] + 80
+        if indexPath.section == 0{
+            return 200/2.0
+        }else if(indexPath.section == 1){
+            return 350
         }else{
-            return 0
+            return CGFloat(ballInformationModel.enrolmentFormModel.count)*60
         }
         
     }
