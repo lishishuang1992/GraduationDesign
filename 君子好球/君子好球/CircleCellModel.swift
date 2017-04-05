@@ -14,6 +14,7 @@ class CircleCellModel: NSObject {
     var time: String = ""             //时间
     var place: String = ""              //地点
     var format: String = ""           //赛制
+    var object :String = ""             //对象   3对3
     //var distance = NSString()           //距离
     var places: String = ""                  //名额
     var enrollment: String = ""              //已经报名人数

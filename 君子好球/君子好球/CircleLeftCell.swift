@@ -18,7 +18,7 @@ class CircleLeftCell: UITableViewCell {
     var places_enrollment = UILabel()
     var format = UILabel()
     var cost = UILabel()
-    
+    var object = UILabel()
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -132,7 +132,9 @@ class CircleLeftCell: UITableViewCell {
         self.format.snp.makeConstraints{ (make) in
             make.top.equalTo(self.place.snp.bottom).offset(10)
             make.left.equalTo(self.subjectTitle)
+            make.width.equalTo(100/2.0)
         }
+        
         //费用
         self.cost = UILabel()
         self.cost.backgroundColor = UIColor.gray
@@ -142,7 +144,21 @@ class CircleLeftCell: UITableViewCell {
         self.addSubview(self.cost)
         self.cost.snp.makeConstraints{ (make) in
             make.top.equalTo(self.format)
+            make.right.equalTo(signUp.snp.left).offset(-10)
+            make.width.equalTo(75/2.0)
+        }
+        
+        //对象  3对3
+        self.object = UILabel()
+        self.object.backgroundColor = UIColor.gray
+        self.object.textColor = UIColor.red
+        self.object.font = UIFont.systemFont(ofSize: 15)
+        self.object.textAlignment = .center
+        self.addSubview(self.object)
+        self.object.snp.makeConstraints{ (make) in
+            make.top.equalTo(self.format)
             make.left.equalTo(self.format.snp.right).offset(20)
+            make.right.equalTo(self.cost.snp.left).offset(-20)
         }
         
     }
@@ -154,6 +170,7 @@ class CircleLeftCell: UITableViewCell {
         self.places_enrollment.text = circleCellModel.enrollment + "/" + circleCellModel.places
         self.format.text = circleCellModel.format
         self.cost.text = circleCellModel.cost
+        self.object.text = circleCellModel.object
     }
     
 }

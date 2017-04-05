@@ -14,5 +14,6 @@ class BallInformationModel: NSObject {
     var project: String = ""                    //项目
     var introduce: String = ""                  //简介
     var deadLine: String = ""                  //截止时间
-    var object: String = ""                     //对象__个人赛,
+    var enrolmentFormModel:[EnrolmentFormModel] = []    //报名人员相关信息
+    
 }

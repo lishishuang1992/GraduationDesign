@@ -12,6 +12,10 @@
 		BD195E701E8373DC00AA5E71 /* CircleLeftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD195E6F1E8373DC00AA5E71 /* CircleLeftCell.swift */; };
 		BD195E721E83BA9D00AA5E71 /* BallInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD195E711E83BA9D00AA5E71 /* BallInformationModel.swift */; };
 		BD195E741E83BB0700AA5E71 /* CircleCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD195E731E83BB0700AA5E71 /* CircleCellModel.swift */; };
+		BD33613F1E949D8D009E4A78 /* CalculateCellHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD33613E1E949D8D009E4A78 /* CalculateCellHeight.swift */; };
+		BD3361411E94DF22009E4A78 /* BallDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3361401E94DF22009E4A78 /* BallDetailsVC.swift */; };
+		BD3361441E94E013009E4A78 /* BallDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3361431E94E013009E4A78 /* BallDetailsCell.swift */; };
+		BD3361481E94F3A9009E4A78 /* HeadNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3361471E94F3A9009E4A78 /* HeadNameCell.swift */; };
 		BD6627BA1E66C28D007BFEDF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6627B91E66C28D007BFEDF /* LoginController.swift */; };
 		BD6627BC1E66C58A007BFEDF /* LoginManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6627BB1E66C58A007BFEDF /* LoginManagement.swift */; };
 		BD6627BE1E66D883007BFEDF /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6627BD1E66D883007BFEDF /* RegisterController.swift */; };
@@ -46,6 +50,10 @@
 		BD195E6F1E8373DC00AA5E71 /* CircleLeftCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleLeftCell.swift; sourceTree = "<group>"; };
 		BD195E711E83BA9D00AA5E71 /* BallInformationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallInformationModel.swift; sourceTree = "<group>"; };
 		BD195E731E83BB0700AA5E71 /* CircleCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleCellModel.swift; sourceTree = "<group>"; };
+		BD33613E1E949D8D009E4A78 /* CalculateCellHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateCellHeight.swift; sourceTree = "<group>"; };
+		BD3361401E94DF22009E4A78 /* BallDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallDetailsVC.swift; sourceTree = "<group>"; };
+		BD3361431E94E013009E4A78 /* BallDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallDetailsCell.swift; sourceTree = "<group>"; };
+		BD3361471E94F3A9009E4A78 /* HeadNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadNameCell.swift; sourceTree = "<group>"; };
 		BD6627B91E66C28D007BFEDF /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		BD6627BB1E66C58A007BFEDF /* LoginManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManagement.swift; sourceTree = "<group>"; };
 		BD6627BD1E66D883007BFEDF /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
@@ -115,6 +123,14 @@
 			name = image;
 			sourceTree = "<group>";
 		};
+		BD3361421E94DF28009E4A78 /* sonVc */ = {
+			isa = PBXGroup;
+			children = (
+				BD3361401E94DF22009E4A78 /* BallDetailsVC.swift */,
+			);
+			name = sonVc;
+			sourceTree = "<group>";
+		};
 		BD6780BB1E5E76C100AD4D93 = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +167,7 @@
 		BD76249B1E84CB5C00B68D8A /* RootVC */ = {
 			isa = PBXGroup;
 			children = (
+				BD3361421E94DF28009E4A78 /* sonVc */,
 				BD6780EA1E5E76E900AD4D93 /* ReleaseBallController.swift */,
 				BDA499A81E66713F001DB844 /* UserCenterController.swift */,
 				BD6780EB1E5E76E900AD4D93 /* CircleFriendsController.swift */,
@@ -176,6 +193,7 @@
 				BD195E731E83BB0700AA5E71 /* CircleCellModel.swift */,
 				BD76248F1E83C3A500B68D8A /* EnrolmentFormModel.swift */,
 				BD7624931E83D91C00B68D8A /* CircleHotCellModel.swift */,
+				BD33613E1E949D8D009E4A78 /* CalculateCellHeight.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -183,6 +201,8 @@
 		BDA499A61E666D95001DB844 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				BD3361471E94F3A9009E4A78 /* HeadNameCell.swift */,
+				BD3361431E94E013009E4A78 /* BallDetailsCell.swift */,
 				BD76249D1E84EFC200B68D8A /* InitiatingBallView.swift */,
 				BD195E6F1E8373DC00AA5E71 /* CircleLeftCell.swift */,
 				BD195E6D1E8373CA00AA5E71 /* CircleRightCell.swift */,
@@ -334,12 +354,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD195E6E1E8373CA00AA5E71 /* CircleRightCell.swift in Sources */,
+				BD33613F1E949D8D009E4A78 /* CalculateCellHeight.swift in Sources */,
 				BD6780ED1E5E76E900AD4D93 /* MainTabController.swift in Sources */,
 				BD6780EF1E5E76E900AD4D93 /* ReleaseBallController.swift in Sources */,
 				BD195E701E8373DC00AA5E71 /* CircleLeftCell.swift in Sources */,
+				BD3361441E94E013009E4A78 /* BallDetailsCell.swift in Sources */,
 				BD7624941E83D91C00B68D8A /* CircleHotCellModel.swift in Sources */,
 				BD6780EC1E5E76E900AD4D93 /* AppDelegate.swift in Sources */,
+				BD3361481E94F3A9009E4A78 /* HeadNameCell.swift in Sources */,
 				BD6627BC1E66C58A007BFEDF /* LoginManagement.swift in Sources */,
+				BD3361411E94DF22009E4A78 /* BallDetailsVC.swift in Sources */,
 				BD0D4FE21E77B91400E5D942 /* UserCenterHeadView.swift in Sources */,
 				BD6627BE1E66D883007BFEDF /* RegisterController.swift in Sources */,
 				BD195E721E83BA9D00AA5E71 /* BallInformationModel.swift in Sources */,

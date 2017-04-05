@@ -16,7 +16,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
     var tableView = UITableView()
     var segmentIndex: Int = 0;
     let cellID:Array = ["reuseIdentifierLeft","reuseIdentifierRight"]
-    
+    var cellHeight:Array = Array<CGFloat>()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white;
@@ -54,6 +54,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         text1.place = "黑龙江大学"
         text1.format = "个人赛"
         text1.places = "3"
+        text1.object = "1对1"
         text1.enrollment = "0"
         text1.cost = "无"
         
@@ -64,6 +65,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         text2.place = "哈尔滨理工大学"
         text2.format = "个人赛"
         text2.places = "4"
+        text2.object = "1对1"
         text2.enrollment = "0"
         text2.cost = "5¥"
         
@@ -75,6 +77,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         text3.place = "黑龙江大学C区"
         text3.format = "对抗赛"
         text3.places = "3"
+        text3.object = "1对1"
         text3.enrollment = "2"
         text3.cost = "50$"
         
@@ -85,6 +88,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         text4.place = "黑龙江大学"
         text4.format = "团体赛"
         text4.places = "3"
+        text4.object = "1对1"
         text4.enrollment = "4"
         text4.cost = "无"
         
@@ -95,6 +99,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         text5.place = "黑龙江大学A区"
         text5.format = "个人赛"
         text5.places = "3"
+        text5.object = "1对1"
         text5.enrollment = "0"
         text5.cost = "无"
         
@@ -106,7 +111,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         textRight1.time = "2000年1月1日"
         textRight1.contentText = "一起嗨起来"
         textRight1.pointPraise = "3"
-        textRight1.imageArray = [UIImage(named:"default_face")!,UIImage(named:"default_face")!]
+        textRight1.imageUrlArray = ["http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"]
 
         
         let textRight2 = CircleHotCellModel()
@@ -115,15 +120,14 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         textRight2.time = "2000年1月1日"
         textRight2.contentText = "一起嗨起来13而且俄 v 去玩儿去玩儿去玩儿去玩儿冯绍峰水淀粉"
         textRight2.pointPraise = "3"
-        textRight2.imageArray = [UIImage(named:"default_face")!,UIImage(named:"default_face")!]
-
+        textRight2.imageUrlArray = ["http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"]
         let textRight3 = CircleHotCellModel()
         textRight3.headImageUrl = "http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"
         textRight3.nickname = "咋呢噶"
         textRight3.time = "2000年1月1日"
         textRight3.contentText = "一起嗨起来请问范围乏味费"
         textRight3.pointPraise = "3"
-        textRight3.imageArray = [UIImage(named:"default_face")!,UIImage(named:"default_face")!]
+        textRight3.imageUrlArray = ["http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"]
         
         let textRight4 = CircleHotCellModel()
         textRight4.headImageUrl = "http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"
@@ -131,7 +135,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         textRight4.time = "2000年1月1日"
         textRight4.contentText = "一起嗨起来其二去玩儿企鹅企鹅分"
         textRight4.pointPraise = "3"
-        textRight4.imageArray = [UIImage(named:"default_face")!,UIImage(named:"default_face")!]
+        textRight4.imageUrlArray = ["http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"]
         
         let textRight5 = CircleHotCellModel()
         textRight5.headImageUrl = "http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"
@@ -139,8 +143,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         textRight5.time = "2000年1月1日"
         textRight5.contentText = "一起嗨起来"
         textRight5.pointPraise = "3"
-        textRight5.imageArray = [UIImage(named:"default_face")!,UIImage(named:"default_face")!]
-        
+        textRight5.imageUrlArray = ["http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"]
         self.modelLeftArray = Array<CircleCellModel>()
         self.modelLeftArray.append(text1)
         self.modelLeftArray.append(text2)
@@ -165,15 +168,18 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         self.tableView = UITableView()
         self.view.addSubview(self.tableView)
         self.tableView.snp.makeConstraints{ (make) in
-            make.edges.equalTo(self.view)
+            make.left.equalTo(self.view)
+            make.top.equalTo(self.view)
+            make.right.equalTo(self.view)
+            make.bottom.equalTo(self.view).offset(-64)
         }
         self.tableView.register(CircleLeftCell.classForCoder(), forCellReuseIdentifier: cellID[0])
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
     }
     
     func initData() {
         self.segmentIndex = 0;
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
     }
     
     // MARK: - Table view data source
@@ -216,7 +222,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         if self.segmentIndex == 0{
             return 220/2.0
         }else if(self.segmentIndex == 1){
-            return 300/2.0
+            return self.cellHeight[indexPath.row] + 80
         }else{
             return 0
         }
@@ -229,6 +235,8 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
            self.tableView.register(CircleLeftCell.classForCoder(), forCellReuseIdentifier:     cellID[segmentIndex])
         }else{
             self.tableView.register(CircleRightCell.classForCoder(), forCellReuseIdentifier:     cellID[segmentIndex])
+            let calculateCellHeight = CalculateCellHeight()
+            self.cellHeight = calculateCellHeight.calculateCellHeight(array: self.modelRightArray)
         }
         self.tableView.reloadData()
     }

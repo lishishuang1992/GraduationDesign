@@ -14,8 +14,5 @@ class CircleHotCellModel: NSObject {
     var time: String = ""                //发布时间
     var contentText: String = ""            //文字内容
     var pointPraise: String = ""         //点赞数
-    var imageArray:Array<UIImage>?     //发布的图片（多张）
-   // var ReviewerUsername = <#value#>
-    
-    
+    var imageUrlArray:[String] = []     //发布的图片（多张）
 }

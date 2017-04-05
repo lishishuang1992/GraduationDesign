@@ -54,7 +54,7 @@ class CircleRightCell: UITableViewCell {
         self.nickname.textAlignment = .left
         self.addSubview(self.nickname)
         self.nickname.snp.makeConstraints{ (make) in
-            make.centerY.equalTo(headImageBt.snp.centerY)
+            make.top.equalTo(headImageBt.snp.top)
             make.left.equalTo(headImageBt.snp.right).offset(10)
             make.width.equalTo(180/2.0)
         }
@@ -71,43 +71,62 @@ class CircleRightCell: UITableViewCell {
             make.right.equalTo(self.snp.right).offset(-10)
             make.width.equalTo(145/2.0)
         }
+        
+        self.contentText = UILabel()
+        self.contentText.font = UIFont.systemFont(ofSize: 14)
+        self.contentText.numberOfLines = 0
+        self.addSubview(self.contentText)
+        self.contentText.snp.makeConstraints { (make) in
+            make.top.equalTo(self.nickname.snp.bottom).offset(10)
+            make.left.equalTo(self.nickname)
+            make.right.equalTo(self).offset(-20)
+        }
+        
         //背景图
         self.backImageView = UIImageView()
         self.addSubview(self.backImageView)
         backImageView.snp.makeConstraints{ (make) in
-            make.top.equalTo(self.headImageBt.snp.bottom).offset(5)
-            make.left.equalTo(self.headImageBt.snp.right).offset(10)
-            make.right.equalTo(self)
-            make.bottom.equalTo(self.snp.bottom).offset(-60)
+            make.top.equalTo(self.contentText.snp.bottom).offset(10)
+            make.left.equalTo(self.contentText)
+            make.right.equalTo(self.contentText)
+            make.height.equalTo(30)
         }
+        
+       
+        //点赞按钮
+        self.praiseBt = UIButton()
+        self.praiseBt.setImage(UIImage(named:"heart_gray"), for: .normal)
+        addSubview(praiseBt)
+        self.praiseBt.snp.makeConstraints{ (make) in
+            make.left.equalTo(self.contentText)
+            make.bottom.equalTo(self).offset(-10)
+            make.height.equalTo(40/2.0)
+            make.width.equalTo(40/2.0)
+        }
+        
         
         //点赞数
         self.pointPraise = UILabel()
         self.pointPraise.backgroundColor = UIColor.clear
         self.pointPraise.textColor = UIColor.red
         self.pointPraise.font = UIFont.systemFont(ofSize: 10)
-        self.pointPraise.textAlignment = .left
+        self.pointPraise.textAlignment = .center
         self.addSubview(self.pointPraise)
         self.pointPraise.snp.makeConstraints{ (make) in
-            make.left.equalTo(self.snp.left).offset(10)
+            make.left.equalTo(self.praiseBt.snp.right).offset(10)
             make.bottom.equalTo(self.snp.bottom).offset(-10)
+            make.width.equalTo(30/2.0)
         }
         
-        //点赞按钮
-        praiseBt = UIButton()
-        praiseBt.setImage(UIImage(named:"heart_gray"), for: .normal)
-        addSubview(praiseBt)
-        praiseBt.snp.makeConstraints{ (make) in
-            make.left.equalTo(self.pointPraise.snp.right).offset(10)
-            make.bottom.equalTo(self.pointPraise.snp.bottom)
-        }
         //分享按钮
-        shareBt = UIButton()
-        shareBt.setImage(UIImage(named:"share"), for: .normal)
-        addSubview(shareBt)
-        shareBt.snp.makeConstraints{ (make) in
-            make.left.equalTo(praiseBt.snp.left).offset(10)
-            make.bottom.equalTo(pointPraise.snp.bottom)
+        self.shareBt = UIButton()
+        self.shareBt.setImage(UIImage(named:"share"), for: .normal)
+        addSubview(self.shareBt)
+        self.shareBt.snp.makeConstraints{ (make) in
+            make.left.equalTo(self.pointPraise.snp.right).offset(15)
+            make.bottom.equalTo(self.snp.bottom).offset(-10)
+            make.height.equalTo(40/2.0)
+            make.width.equalTo(40/2.0)
         }
     }
     //点击头像事件
@@ -127,9 +146,15 @@ class CircleRightCell: UITableViewCell {
         self.headImageBt.kf.setImage(with: ImageResource.init(downloadURL: NSURL(string: hotCellModel.headImageUrl)! as URL), for: .normal)
         self.nickname.text = hotCellModel.nickname
         self.time.text = hotCellModel.time
-        self.backImageView.image = hotCellModel.imageArray?[0]
+        self.contentText.text = hotCellModel.contentText
+        self.backImageView.kf.setImage(with: ImageResource.init(downloadURL: NSURL(string: (hotCellModel.imageUrlArray[0]))! as URL), placeholder: nil, options: [KingfisherOptionsInfoItem.transition(ImageTransition.fade(1)), KingfisherOptionsInfoItem.forceRefresh], progressBlock: nil, completionHandler:{ (image, error, cacheType, imageURL) -> () in
+            DispatchQueue.main.async(execute: {
+                self.backImageView.snp.updateConstraints { (make) in
+                   make.height.equalTo(((self.frame.size.width)-10-180/2.0)/(image?.size.width)!*(image?.size.height)!)
+                }
+            })
+        })
         self.pointPraise.text = hotCellModel.pointPraise
-        //self.content
     }
     
 
