@@ -4,4 +4,5 @@ target '君子好球' do
 	pod 'SnapKit'
         pod 'SQLite.swift'
         pod 'Kingfisher'
+        pod 'Alamofire'
 end
