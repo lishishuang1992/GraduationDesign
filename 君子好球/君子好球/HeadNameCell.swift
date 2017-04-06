@@ -43,14 +43,15 @@ class HeadNameCell: UITableViewCell {
         }
         
         self.stateBt = UIButton()
-        self.stateBt.layer.cornerRadius = 8
+        self.stateBt.layer.cornerRadius = 3
+        self.stateBt.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13) //文字大小
         self.stateBt.isHidden = true
         self.addSubview(self.stateBt)
         self.stateBt.snp.makeConstraints{ (make) in
             make.right.equalTo(self).offset(-20)
             make.centerY.equalTo(self.headImageBt)
-            make.height.equalTo(80/2.0)
-            make.width.equalTo(45/2.0)
+            make.height.equalTo(45/2.0)
+            make.width.equalTo(90/2.0)
         }
         
         self.nickname = UILabel()
@@ -69,10 +70,13 @@ class HeadNameCell: UITableViewCell {
         self.headImageBt.kf.setImage(with: ImageResource.init(downloadURL: NSURL(string: enrolmentFormModel.headImageUrl)! as URL), for: .normal)
         self.stateBt.isHidden = false
         if enrolmentFormModel.registrationStatus == "0"{  //拒绝
+            self.stateBt.backgroundColor = UIColor.red
             self.stateBt.setTitle("未通过", for: .normal)
         }else if enrolmentFormModel.registrationStatus == "1"{    //审核通过
+            self.stateBt.backgroundColor = UIColor.green
             self.stateBt.setTitle("通过", for: .normal)
         }else{             //正在审核中
+            self.stateBt.backgroundColor = UIColor.gray
             self.stateBt.setTitle("审核中", for: .normal)
         }
     }

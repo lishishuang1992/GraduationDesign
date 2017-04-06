@@ -13,10 +13,11 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
     private var segmented = UISegmentedControl()
     var modelLeftArray = Array<CircleCellModel>()
     var modelRightArray = Array<CircleHotCellModel>()
-    var tableView = UITableView()
+    var tableView: UITableView?
     var segmentIndex: Int = 0;
     let cellID:Array = ["reuseIdentifierLeft","reuseIdentifierRight"]
     var cellHeight:Array = Array<CGFloat>()
+    var refreshControl: UIRefreshControl?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white;
@@ -166,20 +167,24 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         self.segmented.selectedSegmentIndex = 0 
         self.segmented.addTarget(self, action: #selector(segmentDidchange(segmented:)), for: .valueChanged)
         self.tableView = UITableView()
-        self.view.addSubview(self.tableView)
-        self.tableView.snp.makeConstraints{ (make) in
+        self.view.addSubview(self.tableView!)
+        self.tableView?.snp.makeConstraints{ (make) in
             make.left.equalTo(self.view)
             make.top.equalTo(self.view)
             make.right.equalTo(self.view)
             make.bottom.equalTo(self.view).offset(-64)
         }
-        self.tableView.register(CircleLeftCell.classForCoder(), forCellReuseIdentifier: cellID[0])
+        self.tableView?.register(CircleLeftCell.classForCoder(), forCellReuseIdentifier: cellID[0])
+        self.refreshControl = UIRefreshControl();
+        self.tableView?.addSubview(self.refreshControl!);
+        self.refreshControl?.addTarget(self, action: #selector(loadData), for: .valueChanged);
+
     }
     
     func initData() {
         self.segmentIndex = 0;
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+        self.tableView?.delegate = self
+        self.tableView?.dataSource = self
     }
     
     // MARK: - Table view data source
@@ -236,14 +241,17 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         //获得选项的索引
         self.segmentIndex = segmented.selectedSegmentIndex
         if segmentIndex == 0{
-           self.tableView.register(CircleLeftCell.classForCoder(), forCellReuseIdentifier:     cellID[segmentIndex])
+           self.tableView?.register(CircleLeftCell.classForCoder(), forCellReuseIdentifier:     cellID[segmentIndex])
         }else{
-            self.tableView.register(CircleRightCell.classForCoder(), forCellReuseIdentifier:     cellID[segmentIndex])
+            self.tableView?.register(CircleRightCell.classForCoder(), forCellReuseIdentifier:     cellID[segmentIndex])
             let calculateCellHeight = CalculateCellHeight()
             self.cellHeight = calculateCellHeight.calculateCellHeight(array: self.modelRightArray)
         }
-        self.tableView.reloadData()
+        self.tableView?.reloadData()
     }
-        // print(segmented.titleForSegmentAtIndex(segmented.selectedSegmentIndex))
+    func loadData() {
+        self.tableView?.reloadData()
+        self.refreshControl?.endRefreshing()
+    }
 }
 

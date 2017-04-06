@@ -16,6 +16,11 @@
 		BD3361411E94DF22009E4A78 /* BallDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3361401E94DF22009E4A78 /* BallDetailsVC.swift */; };
 		BD3361441E94E013009E4A78 /* BallDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3361431E94E013009E4A78 /* BallDetailsCell.swift */; };
 		BD3361481E94F3A9009E4A78 /* HeadNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3361471E94F3A9009E4A78 /* HeadNameCell.swift */; };
+		BD33614C1E96166D009E4A78 /* wrong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD33614B1E96166D009E4A78 /* wrong@2x.png */; };
+		BD3361571E96227F009E4A78 /* aboutBall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD3361551E96227F009E4A78 /* aboutBall@2x.png */; };
+		BD3361581E96227F009E4A78 /* circleMe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD3361561E96227F009E4A78 /* circleMe@2x.png */; };
+		BD33615A1E962D35009E4A78 /* AboutBallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3361591E962D35009E4A78 /* AboutBallVC.swift */; };
+		BD33615C1E964AB3009E4A78 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD33615B1E964AB3009E4A78 /* PickerView.swift */; };
 		BD6627BA1E66C28D007BFEDF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6627B91E66C28D007BFEDF /* LoginController.swift */; };
 		BD6627BC1E66C58A007BFEDF /* LoginManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6627BB1E66C58A007BFEDF /* LoginManagement.swift */; };
 		BD6627BE1E66D883007BFEDF /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6627BD1E66D883007BFEDF /* RegisterController.swift */; };
@@ -54,6 +59,11 @@
 		BD3361401E94DF22009E4A78 /* BallDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallDetailsVC.swift; sourceTree = "<group>"; };
 		BD3361431E94E013009E4A78 /* BallDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallDetailsCell.swift; sourceTree = "<group>"; };
 		BD3361471E94F3A9009E4A78 /* HeadNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadNameCell.swift; sourceTree = "<group>"; };
+		BD33614B1E96166D009E4A78 /* wrong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wrong@2x.png"; sourceTree = "<group>"; };
+		BD3361551E96227F009E4A78 /* aboutBall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aboutBall@2x.png"; sourceTree = "<group>"; };
+		BD3361561E96227F009E4A78 /* circleMe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circleMe@2x.png"; sourceTree = "<group>"; };
+		BD3361591E962D35009E4A78 /* AboutBallVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutBallVC.swift; sourceTree = "<group>"; };
+		BD33615B1E964AB3009E4A78 /* PickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		BD6627B91E66C28D007BFEDF /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		BD6627BB1E66C58A007BFEDF /* LoginManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManagement.swift; sourceTree = "<group>"; };
 		BD6627BD1E66D883007BFEDF /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
@@ -111,6 +121,9 @@
 		BD195E401E82B12A00AA5E71 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				BD3361551E96227F009E4A78 /* aboutBall@2x.png */,
+				BD3361561E96227F009E4A78 /* circleMe@2x.png */,
+				BD33614B1E96166D009E4A78 /* wrong@2x.png */,
 				BDA499B21E6676EE001DB844 /* release.png */,
 				BDA499B31E6676EE001DB844 /* userCenter.png */,
 				BD7624991E84C8AD00B68D8A /* share@2x.png */,
@@ -127,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				BD3361401E94DF22009E4A78 /* BallDetailsVC.swift */,
+				BD3361591E962D35009E4A78 /* AboutBallVC.swift */,
 			);
 			name = sonVc;
 			sourceTree = "<group>";
@@ -201,6 +215,7 @@
 		BDA499A61E666D95001DB844 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				BD33615B1E964AB3009E4A78 /* PickerView.swift */,
 				BD3361471E94F3A9009E4A78 /* HeadNameCell.swift */,
 				BD3361431E94E013009E4A78 /* BallDetailsCell.swift */,
 				BD76249D1E84EFC200B68D8A /* InitiatingBallView.swift */,
@@ -291,10 +306,13 @@
 				BDA499B41E6676EE001DB844 /* circle.png in Resources */,
 				BD7624981E84C85A00B68D8A /* heart_gray@2x.png in Resources */,
 				BD6780D21E5E76C200AD4D93 /* LaunchScreen.storyboard in Resources */,
+				BD33614C1E96166D009E4A78 /* wrong@2x.png in Resources */,
 				BD6780CF1E5E76C200AD4D93 /* Assets.xcassets in Resources */,
 				BD7624971E84C85A00B68D8A /* heart@2x.png in Resources */,
 				BD7624921E83D2DA00B68D8A /* enrollment@2x.png in Resources */,
 				BDA499B51E6676EE001DB844 /* release.png in Resources */,
+				BD3361581E96227F009E4A78 /* circleMe@2x.png in Resources */,
+				BD3361571E96227F009E4A78 /* aboutBall@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +376,7 @@
 				BD6780ED1E5E76E900AD4D93 /* MainTabController.swift in Sources */,
 				BD6780EF1E5E76E900AD4D93 /* ReleaseBallController.swift in Sources */,
 				BD195E701E8373DC00AA5E71 /* CircleLeftCell.swift in Sources */,
+				BD33615A1E962D35009E4A78 /* AboutBallVC.swift in Sources */,
 				BD3361441E94E013009E4A78 /* BallDetailsCell.swift in Sources */,
 				BD7624941E83D91C00B68D8A /* CircleHotCellModel.swift in Sources */,
 				BD6780EC1E5E76E900AD4D93 /* AppDelegate.swift in Sources */,
@@ -368,6 +387,7 @@
 				BD6627BE1E66D883007BFEDF /* RegisterController.swift in Sources */,
 				BD195E721E83BA9D00AA5E71 /* BallInformationModel.swift in Sources */,
 				BD6780F01E5E76E900AD4D93 /* CircleFriendsController.swift in Sources */,
+				BD33615C1E964AB3009E4A78 /* PickerView.swift in Sources */,
 				BDA499A91E66713F001DB844 /* UserCenterController.swift in Sources */,
 				BD7624901E83C3A500B68D8A /* EnrolmentFormModel.swift in Sources */,
 				BD195E741E83BB0700AA5E71 /* CircleCellModel.swift in Sources */,

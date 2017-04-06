@@ -40,82 +40,88 @@ class BallDetailsCell: UITableViewCell {
         self.projectName = UILabel()
         self.projectName.backgroundColor = UIColor.clear
         self.projectName.textColor = UIColor.red
-        self.projectName.font = UIFont.systemFont(ofSize: 13)
+        self.projectName.font = UIFont.systemFont(ofSize: 15)
         self.projectName.textAlignment = .left
         self.addSubview(self.projectName)
         self.projectName.snp.makeConstraints{ (make) in
             make.top.equalTo(self).offset(10)
-            make.left.equalTo(self).offset(20)
-            make.width.equalTo(180/2.0)
+            make.left.equalTo(self).offset(40)
+            make.width.equalTo(self.frame.size.width-50)
+            make.height.equalTo(45/2.0)
         }
 
         //赛制
         self.format = UILabel()
         self.format.backgroundColor = UIColor.clear
         self.format.textColor = UIColor.red
-        self.format.font = UIFont.systemFont(ofSize: 13)
+        self.format.font = UIFont.systemFont(ofSize: 15)
         self.format.textAlignment = .left
         self.addSubview(self.format)
-        self.projectName.snp.makeConstraints{ (make) in
+        self.format.snp.makeConstraints{ (make) in
             make.top.equalTo(self.projectName.snp.bottom).offset(8)
             make.left.equalTo(self.projectName)
-            make.width.equalTo(180/2.0)
+            make.width.equalTo(self.projectName)
+            make.height.equalTo(self.projectName)
         }
         //对象
         self.object = UILabel()
         self.object.backgroundColor = UIColor.clear
         self.object.textColor = UIColor.red
-        self.object.font = UIFont.systemFont(ofSize: 13)
+        self.object.font = UIFont.systemFont(ofSize: 15)
         self.object.textAlignment = .left
         self.addSubview(self.object)
-        self.projectName.snp.makeConstraints{ (make) in
+        self.object.snp.makeConstraints{ (make) in
             make.top.equalTo(self.format.snp.bottom).offset(8)
             make.left.equalTo(self.projectName)
-            make.width.equalTo(180/2.0)
+            make.width.equalTo(self.projectName)
+            make.height.equalTo(self.projectName)
         }
         //费用
         self.cost = UILabel()
         self.cost.backgroundColor = UIColor.clear
         self.cost.textColor = UIColor.red
-        self.cost.font = UIFont.systemFont(ofSize: 13)
+        self.cost.font = UIFont.systemFont(ofSize: 15)
         self.cost.textAlignment = .left
         self.addSubview(self.cost)
-        self.projectName.snp.makeConstraints{ (make) in
+        self.cost.snp.makeConstraints{ (make) in
             make.top.equalTo(self.object.snp.bottom).offset(8)
             make.left.equalTo(self.projectName)
-            make.width.equalTo(180/2.0)
+            make.width.equalTo(self.projectName)
+            make.height.equalTo(self.projectName)
         }
         //地点
         self.place = UILabel()
         self.place.backgroundColor = UIColor.clear
         self.place.textColor = UIColor.red
-        self.place.font = UIFont.systemFont(ofSize: 13)
+        self.place.font = UIFont.systemFont(ofSize: 15)
         self.place.textAlignment = .left
         self.addSubview(self.place)
-        self.projectName.snp.makeConstraints{ (make) in
+        self.place.snp.makeConstraints{ (make) in
             make.top.equalTo(self.cost.snp.bottom).offset(8)
             make.left.equalTo(self.projectName)
-            make.width.equalTo(180/2.0)
+            make.width.equalTo(self.projectName)
+            make.height.equalTo(self.projectName)
         }
         //时间
         self.time = UILabel()
         self.time.backgroundColor = UIColor.clear
         self.time.textColor = UIColor.red
-        self.time.font = UIFont.systemFont(ofSize: 10)
+        self.time.font = UIFont.systemFont(ofSize: 15)
         self.time.textAlignment = .left
         self.addSubview(self.time)
         self.time.snp.makeConstraints{ (make) in
             make.top.equalTo(self.place.snp.bottom).offset(8)
             make.left.equalTo(self.projectName)
-            make.width.equalTo(180/2.0)
+            make.width.equalTo(self.projectName)
+            make.height.equalTo(self.projectName)
         }
         //简介
         self.contentText = UILabel()
-        self.contentText.font = UIFont.systemFont(ofSize: 14)
+        self.contentText.font = UIFont.systemFont(ofSize: 13)
         self.contentText.numberOfLines = 0
         self.addSubview(self.contentText)
         self.contentText.snp.makeConstraints { (make) in
-            make.top.equalTo(self.place.snp.bottom).offset(8)
+            make.top.equalTo(self.time.snp.bottom).offset(8)
             make.left.equalTo(self.projectName)
             make.right.equalTo(self.snp.right).offset(-30)
             make.height.equalTo(120);
@@ -123,13 +129,14 @@ class BallDetailsCell: UITableViewCell {
     }
     
     func postData(ballInformationModel :BallInformationModel) {
-        self.projectName.text = ballInformationModel.project
-        self.format.text = ballInformationModel.circleCellModel.format
-        self.object.text = ballInformationModel.circleCellModel.object
-        self.cost.text = ballInformationModel.circleCellModel.cost
-        self.place.text = ballInformationModel.circleCellModel.place
-        self.time.text = ballInformationModel.deadLine
-        self.contentText.text = ballInformationModel.introduce
+        
+        self.projectName.text = "项目: " + ballInformationModel.project
+        self.format.text = "赛制: " + ballInformationModel.circleCellModel.format
+        self.object.text = "对象: " + ballInformationModel.circleCellModel.object
+        self.cost.text = "费用: " + ballInformationModel.circleCellModel.cost
+        self.place.text = "地点: " + ballInformationModel.circleCellModel.place
+        self.time.text = "时间: " + ballInformationModel.deadLine
+        self.contentText.text = "简介: \n\n     " + ballInformationModel.introduce
     }
     
 
