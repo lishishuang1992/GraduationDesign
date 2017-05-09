@@ -143,9 +143,9 @@ class CircleRightCell: UITableViewCell {
     }
 
     func postData(hotCellModel :CircleHotCellModel) {
-        self.headImageBt.kf.setImage(with: ImageResource.init(downloadURL: NSURL(string: hotCellModel.headImageUrl)! as URL), for: .normal)
+        self.headImageBt.kf.setImage(with: ImageResource.init(downloadURL: NSURL(string: hotCellModel.user_image)! as URL), for: .normal)
         self.nickname.text = hotCellModel.nickname
-        self.time.text = hotCellModel.time
+        self.time.text = hotCellModel.current_time
         self.contentText.text = hotCellModel.contentText
         self.backImageView.kf.setImage(with: ImageResource.init(downloadURL: NSURL(string: (hotCellModel.imageUrlArray[0]))! as URL), placeholder: nil, options: [KingfisherOptionsInfoItem.transition(ImageTransition.fade(1)), KingfisherOptionsInfoItem.forceRefresh], progressBlock: nil, completionHandler:{ (image, error, cacheType, imageURL) -> () in
             DispatchQueue.main.async(execute: {

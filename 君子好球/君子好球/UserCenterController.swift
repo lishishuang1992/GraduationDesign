@@ -20,6 +20,11 @@ class UserCenterController: UITableViewController,UIImagePickerControllerDelegat
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        //检查是否已经登录
+        let loginManage = LoginManagement()
+        loginManage.loginDetection(navigationController: self.navigationController)
+        
         self.view.backgroundColor = UIColor.white;
         self.navigationItem.title = "用户中心"
         self.tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: cellID)

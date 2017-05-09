@@ -9,10 +9,16 @@
 import UIKit
 
 class CircleHotCellModel: NSObject {
-    var headImageUrl: String = ""//头像
     var nickname: String = ""            //昵称
-    var time: String = ""                //发布时间
+    var current_time: String = ""                //发布时间
     var contentText: String = ""            //文字内容
     var pointPraise: String = ""         //点赞数
     var imageUrlArray:[String] = []     //发布的图片（多张）
+    var message_id: String = ""          //球圈信息ID
+    var user_id: String = ""          //发布球圈用户ID
+    var user_image: String = ""          //用户头像
+    var user_name: String = ""          //用户名
+    var zanUser: Array<Dictionary<String, Any>> = []      //点赞人的ID 和name
+    
+    
 }

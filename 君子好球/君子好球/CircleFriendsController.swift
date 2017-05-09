@@ -18,6 +18,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
     let cellID:Array = ["reuseIdentifierLeft","reuseIdentifierRight"]
     var cellHeight:Array = Array<CGFloat>()
     var refreshControl: UIRefreshControl?
+    private var netWorkApi = NetWorkApi()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white;
@@ -46,122 +47,8 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
     }
     //init View
     func initView() {
-   
-        //测试数据
-        let text1 = CircleCellModel()
-        text1.headImageUrl = "http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"
-        text1.subjectTitle = "约个球吧1"
-        text1.time = "2000年1月1日"
-        text1.place = "黑龙江大学"
-        text1.format = "个人赛"
-        text1.places = "3"
-        text1.object = "1对1"
-        text1.enrollment = "0"
-        text1.cost = "无"
-        
-        let text2 = CircleCellModel()
-        text2.headImageUrl = "http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"
-        text2.subjectTitle = "约个球吧2"
-        text2.time = "2000年1月2日"
-        text2.place = "哈尔滨理工大学"
-        text2.format = "个人赛"
-        text2.places = "4"
-        text2.object = "1对1"
-        text2.enrollment = "0"
-        text2.cost = "5¥"
-        
-        
-        let text3 = CircleCellModel()
-        text3.headImageUrl = "http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"
-        text3.subjectTitle = "约个球吧3"
-        text3.time = "2000年1月3日"
-        text3.place = "黑龙江大学C区"
-        text3.format = "对抗赛"
-        text3.places = "3"
-        text3.object = "1对1"
-        text3.enrollment = "2"
-        text3.cost = "50$"
-        
-        let text4 = CircleCellModel()
-        text4.headImageUrl = "http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"
-        text4.subjectTitle = "约个球吧4"
-        text4.time = "2000年1月4日"
-        text4.place = "黑龙江大学"
-        text4.format = "团体赛"
-        text4.places = "3"
-        text4.object = "1对1"
-        text4.enrollment = "4"
-        text4.cost = "无"
-        
-        let text5 = CircleCellModel()
-        text5.headImageUrl = "http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"
-        text5.subjectTitle = "约个球吧5"
-        text5.time = "2000年1月5日"
-        text5.place = "黑龙江大学A区"
-        text5.format = "个人赛"
-        text5.places = "3"
-        text5.object = "1对1"
-        text5.enrollment = "0"
-        text5.cost = "无"
-        
-        //测试数据
-        
-        let textRight1 = CircleHotCellModel()
-        textRight1.headImageUrl = "http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"
-        textRight1.nickname = "阿龙"
-        textRight1.time = "2000年1月1日"
-        textRight1.contentText = "一起嗨起来"
-        textRight1.pointPraise = "3"
-        textRight1.imageUrlArray = ["http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"]
-
-        
-        let textRight2 = CircleHotCellModel()
-        textRight2.headImageUrl = "http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"
-        textRight2.nickname = "小李"
-        textRight2.time = "2000年1月1日"
-        textRight2.contentText = "一起嗨起来13而且俄 v 去玩儿去玩儿去玩儿去玩儿冯绍峰水淀粉"
-        textRight2.pointPraise = "3"
-        textRight2.imageUrlArray = ["http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"]
-        let textRight3 = CircleHotCellModel()
-        textRight3.headImageUrl = "http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"
-        textRight3.nickname = "咋呢噶"
-        textRight3.time = "2000年1月1日"
-        textRight3.contentText = "一起嗨起来请问范围乏味费"
-        textRight3.pointPraise = "3"
-        textRight3.imageUrlArray = ["http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"]
-        
-        let textRight4 = CircleHotCellModel()
-        textRight4.headImageUrl = "http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"
-        textRight4.nickname = "暗示法"
-        textRight4.time = "2000年1月1日"
-        textRight4.contentText = "一起嗨起来其二去玩儿企鹅企鹅分"
-        textRight4.pointPraise = "3"
-        textRight4.imageUrlArray = ["http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"]
-        
-        let textRight5 = CircleHotCellModel()
-        textRight5.headImageUrl = "http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"
-        textRight5.nickname = "阿斯顿发企鹅王企鹅其二"
-        textRight5.time = "2000年1月1日"
-        textRight5.contentText = "一起嗨起来"
-        textRight5.pointPraise = "3"
-        textRight5.imageUrlArray = ["http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"]
         self.modelLeftArray = Array<CircleCellModel>()
-        self.modelLeftArray.append(text1)
-        self.modelLeftArray.append(text2)
-        self.modelLeftArray.append(text3)
-        self.modelLeftArray.append(text4)
-        self.modelLeftArray.append(text5)
-        
         self.modelRightArray = Array<CircleHotCellModel>()
-        self.modelRightArray.append(textRight1)
-        self.modelRightArray.append(textRight2)
-        self.modelRightArray.append(textRight3)
-        self.modelRightArray.append(textRight4)
-        self.modelRightArray.append(textRight5)
-        
-        
-        
-        
         let items = ["同城约球","热门动态"]
         self.segmented = UISegmentedControl(items:items)
         self.segmented.selectedSegmentIndex = 0 
@@ -178,15 +65,15 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         self.refreshControl = UIRefreshControl();
         self.tableView?.addSubview(self.refreshControl!);
         self.refreshControl?.addTarget(self, action: #selector(loadData), for: .valueChanged);
-
     }
+    
     
     func initData() {
         self.segmentIndex = 0;
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
+        self.reloadAboutBall()
     }
-    
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -241,17 +128,92 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         //获得选项的索引
         self.segmentIndex = segmented.selectedSegmentIndex
         if segmentIndex == 0{
-           self.tableView?.register(CircleLeftCell.classForCoder(), forCellReuseIdentifier:     cellID[segmentIndex])
+            self.tableView?.register(CircleLeftCell.classForCoder(), forCellReuseIdentifier:     cellID[segmentIndex])
+            self.reloadAboutBall()
         }else{
             self.tableView?.register(CircleRightCell.classForCoder(), forCellReuseIdentifier:     cellID[segmentIndex])
-            let calculateCellHeight = CalculateCellHeight()
-            self.cellHeight = calculateCellHeight.calculateCellHeight(array: self.modelRightArray)
+            self.reloadBallMessage()
         }
-        self.tableView?.reloadData()
     }
     func loadData() {
         self.tableView?.reloadData()
         self.refreshControl?.endRefreshing()
+    }
+    
+    func reloadAboutBall() {
+        self.modelLeftArray.removeAll()
+        self.netWorkApi.homeData(place: "", project: "", ball_object: "", block: {(json: Dictionary)-> Void in
+            let status = json["status"] as! String
+            if status == "1006"{
+                var resultArray = Array<Dictionary<String, Any>>()
+                resultArray = json["result"] as! Array
+                for obj in resultArray {
+                    let circleModel = CircleCellModel()
+                    circleModel.headImageUrl = String(format:"http://127.0.0.1:8000/media/%@",obj["image"] as! String)
+                    circleModel.subjectTitle = obj["project"] as! String
+                    let timeStr = obj["current_time"] as! String
+                    let index = timeStr.index(timeStr.startIndex, offsetBy: 19)
+                    circleModel.time = timeStr.substring(to: index)
+                    circleModel.place = obj["place"] as! String
+                    circleModel.format = obj["ball_object"] as! String
+                    circleModel.places = obj["place"] as! String
+                    circleModel.object = obj["ball_format"] as! String
+                    circleModel.enrollment = String(format:"%d",obj["current_people"] as! CVarArg)
+                    circleModel.cost = obj["money"] as! String
+                    circleModel.ball_ID = obj["ball_ID"] as! String
+                    circleModel.user_name = obj["user_name"] as! String
+                    self.modelLeftArray.append(circleModel)
+                }
+                DispatchQueue.main.async(execute: {
+                    self.tableView?.reloadData()
+                })
+            }
+            else if status == "1005"{
+                //无数据
+            }else{
+                
+            }
+        })
+
+    }
+    
+    func reloadBallMessage() {
+        self.modelRightArray.removeAll()
+        self.netWorkApi.allBallMessage(block: {(json: Dictionary)-> Void in
+            let status = json["status"] as! String
+            if status == "1006"{
+                var resultArray = Array<Dictionary<String, Any>>()
+                resultArray = json["result"] as! Array
+                for obj in resultArray {
+                    let circleHotModel = CircleHotCellModel()
+                    let imagePath = String(format:"http://127.0.0.1:8000/media/%@",obj["image"] as! String)
+                    circleHotModel.imageUrlArray.append(imagePath)
+                    let timeStr = obj["current_time"] as! String
+                    let index = timeStr.index(timeStr.startIndex, offsetBy: 19)
+                    circleHotModel.current_time = timeStr.substring(to: index)
+                    circleHotModel.contentText = obj["message"] as! String
+                    circleHotModel.user_id = obj["user_id"] as! String
+                    circleHotModel.user_image = obj["user_image"] as! String
+                    circleHotModel.user_id = obj["user_id"] as! String
+                    circleHotModel.user_name = obj["user_name"] as! String
+                    circleHotModel.pointPraise = String(format:"%d",obj["num"] as! CVarArg)
+                    circleHotModel.zanUser = obj["zan_userId"]as! Array
+                    self.modelRightArray.append(circleHotModel)
+                }
+                DispatchQueue.main.async(execute: {
+                    let calculateCellHeight = CalculateCellHeight()
+                    print(self.modelRightArray)
+                    self.cellHeight = calculateCellHeight.calculateCellHeight(array: self.modelRightArray)
+                    self.tableView?.reloadData()
+                })
+            }
+            else if status == "1005"{
+                //无数据
+            }else{
+                
+            }
+        })
+
     }
 }
 

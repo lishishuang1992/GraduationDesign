@@ -10,7 +10,9 @@ import UIKit
 
 class LoginManagement: NSObject {
     
-    static func loginDetection(navigationController: UINavigationController? = nil) {
+   // static
+        
+    func loginDetection(navigationController: UINavigationController? = nil) {
         var shouldJumpToLogin: Bool = true
         defer {
             if shouldJumpToLogin {

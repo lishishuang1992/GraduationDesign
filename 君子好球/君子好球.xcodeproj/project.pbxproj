@@ -37,6 +37,7 @@
 		BD7624981E84C85A00B68D8A /* heart_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD7624961E84C85A00B68D8A /* heart_gray@2x.png */; };
 		BD76249A1E84C8AD00B68D8A /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD7624991E84C8AD00B68D8A /* share@2x.png */; };
 		BD76249E1E84EFC200B68D8A /* InitiatingBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76249D1E84EFC200B68D8A /* InitiatingBallView.swift */; };
+		BD840DDE1EBAB94900F51701 /* NetWorkApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD840DDD1EBAB94900F51701 /* NetWorkApi.swift */; };
 		BDA499A91E66713F001DB844 /* UserCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA499A81E66713F001DB844 /* UserCenterController.swift */; };
 		BDA499B41E6676EE001DB844 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = BDA499B11E6676EE001DB844 /* circle.png */; };
 		BDA499B51E6676EE001DB844 /* release.png in Resources */ = {isa = PBXBuildFile; fileRef = BDA499B21E6676EE001DB844 /* release.png */; };
@@ -82,6 +83,7 @@
 		BD7624961E84C85A00B68D8A /* heart_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart_gray@2x.png"; sourceTree = "<group>"; };
 		BD7624991E84C8AD00B68D8A /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share@2x.png"; sourceTree = "<group>"; };
 		BD76249D1E84EFC200B68D8A /* InitiatingBallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitiatingBallView.swift; sourceTree = "<group>"; };
+		BD840DDD1EBAB94900F51701 /* NetWorkApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetWorkApi.swift; sourceTree = "<group>"; };
 		BDA499A81E66713F001DB844 /* UserCenterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterController.swift; sourceTree = "<group>"; };
 		BDA499B11E6676EE001DB844 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
 		BDA499B21E6676EE001DB844 /* release.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = release.png; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 		BD6780C61E5E76C200AD4D93 /* 君子好球 */ = {
 			isa = PBXGroup;
 			children = (
+				BD840DDC1EBAB91F00F51701 /* NetWork */,
 				BD0D4FD21E76DEEE00E5D942 /* SnapKit.framework */,
 				BDA499A71E666D9B001DB844 /* controller */,
 				BDA499A61E666D95001DB844 /* view */,
@@ -197,6 +200,14 @@
 				BD6627BD1E66D883007BFEDF /* RegisterController.swift */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		BD840DDC1EBAB91F00F51701 /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				BD840DDD1EBAB94900F51701 /* NetWorkApi.swift */,
+			);
+			name = NetWork;
 			sourceTree = "<group>";
 		};
 		BDA499A51E666D8B001DB844 /* model */ = {
@@ -379,6 +390,7 @@
 				BD33615A1E962D35009E4A78 /* AboutBallVC.swift in Sources */,
 				BD3361441E94E013009E4A78 /* BallDetailsCell.swift in Sources */,
 				BD7624941E83D91C00B68D8A /* CircleHotCellModel.swift in Sources */,
+				BD840DDE1EBAB94900F51701 /* NetWorkApi.swift in Sources */,
 				BD6780EC1E5E76E900AD4D93 /* AppDelegate.swift in Sources */,
 				BD3361481E94F3A9009E4A78 /* HeadNameCell.swift in Sources */,
 				BD6627BC1E66C58A007BFEDF /* LoginManagement.swift in Sources */,

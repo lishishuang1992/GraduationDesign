@@ -108,9 +108,9 @@ class AboutBallVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
         if section == 0{
             return 1
         }else if(section == 1){
-            return 7
+            return 1
         }else{
-            return 2
+            return 0
         }
     }
     
@@ -120,10 +120,11 @@ class AboutBallVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
             cell.postPublisherData(ballInformationModel: ballInformationModel)
             return cell
         }else if indexPath.section == 1{
-            self.tableView.register(BallDetailsCell.classForCoder(), forCellReuseIdentifier:cellIDBall)
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellIDBall, for: indexPath) as! BallDetailsCell
+            self.tableView.register(BallDetailsCell.classForCoder(), forCellReuseIdentifier:cellID)
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! BallDetailsCell
             cell.postData(ballInformationModel: ballInformationModel)
             return cell
+            
         }else{
             self.tableView.register(HeadNameCell.classForCoder(), forCellReuseIdentifier:cellID)
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! HeadNameCell
