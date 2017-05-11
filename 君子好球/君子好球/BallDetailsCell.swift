@@ -128,15 +128,14 @@ class BallDetailsCell: UITableViewCell {
         }
     }
     
-    func postData(ballInformationModel :BallInformationModel) {
-        
-        self.projectName.text = "项目: " + ballInformationModel.project
-        self.format.text = "赛制: " + ballInformationModel.circleCellModel.format
-        self.object.text = "对象: " + ballInformationModel.circleCellModel.object
-        self.cost.text = "费用: " + ballInformationModel.circleCellModel.cost
-        self.place.text = "地点: " + ballInformationModel.circleCellModel.place
-        self.time.text = "时间: " + ballInformationModel.deadLine
-        self.contentText.text = "简介: \n\n     " + ballInformationModel.introduce
+    func postData(circleCellModel :CircleCellModel) {
+        self.projectName.text = "项目: " + circleCellModel.subjectTitle
+        self.format.text = "赛制: " + circleCellModel.format
+        self.object.text = "对象: " + circleCellModel.object
+        self.cost.text = "费用: " + circleCellModel.cost
+        self.place.text = "地点: " + circleCellModel.place
+        self.time.text = "时间: " + circleCellModel.time
+        self.contentText.text = "简介: \n\n     " + circleCellModel.introduction
     }
     
 

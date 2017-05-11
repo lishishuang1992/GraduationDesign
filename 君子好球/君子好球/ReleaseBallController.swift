@@ -70,10 +70,11 @@ class ReleaseBallController: UIViewController {
         if sender?.tag == 0 {
             self.popAnimation()
         }else if sender?.tag == 1{
-            let ballVc = AboutBallVC()
+            let ballVc = UINavigationController(rootViewController: AboutBallVC())
             self.present(ballVc, animated: true, completion: nil)
         }else{
-        
+            let ballMessageVc =  UINavigationController(rootViewController: BallMessageVc())
+            self.present(ballMessageVc, animated: true, completion: nil)
         }
         
     }

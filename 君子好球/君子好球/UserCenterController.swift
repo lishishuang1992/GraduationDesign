@@ -30,6 +30,17 @@ class UserCenterController: UITableViewController,UIImagePickerControllerDelegat
         self.tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: cellID)
 
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

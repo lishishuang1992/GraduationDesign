@@ -107,11 +107,13 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.hidesBottomBarWhenPushed = true
-        let next = BallDetailsVC();
-        next.ballInformationModel.circleCellModel = modelLeftArray[indexPath.row]
-        self.navigationController?.pushViewController(next, animated: true)
-        self.hidesBottomBarWhenPushed = false
+        if (self.segmentIndex == 0) {
+            self.hidesBottomBarWhenPushed = true
+            let next = BallDetailsVC();
+            next.circleCellModel = self.modelLeftArray[indexPath.row]
+            self.navigationController?.pushViewController(next, animated: true)
+            self.hidesBottomBarWhenPushed = false
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -156,9 +158,14 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
                     circleModel.time = timeStr.substring(to: index)
                     circleModel.place = obj["place"] as! String
                     circleModel.format = obj["ball_object"] as! String
-                    circleModel.places = obj["place"] as! String
+                    if let a = obj["num_people"] as? NSNumber {
+                        circleModel.places =  a.stringValue
+                    }
                     circleModel.object = obj["ball_format"] as! String
-                    circleModel.enrollment = String(format:"%d",obj["current_people"] as! CVarArg)
+                    if let a = obj["current_people"] as? NSNumber {
+                        circleModel.enrollment =  a.stringValue
+                    }
+                    circleModel.introduction = obj["introduction"] as! String
                     circleModel.cost = obj["money"] as! String
                     circleModel.ball_ID = obj["ball_ID"] as! String
                     circleModel.user_name = obj["user_name"] as! String
@@ -193,7 +200,12 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
                     circleHotModel.current_time = timeStr.substring(to: index)
                     circleHotModel.contentText = obj["message"] as! String
                     circleHotModel.user_id = obj["user_id"] as! String
-                    circleHotModel.user_image = obj["user_image"] as! String
+                    if (obj["user_image"] as? String) != nil
+                    {
+                        circleHotModel.user_image = obj["user_image"] as! String
+                    }else{
+                        circleHotModel.user_image = "default"
+                    }
                     circleHotModel.user_id = obj["user_id"] as! String
                     circleHotModel.user_name = obj["user_name"] as! String
                     circleHotModel.pointPraise = String(format:"%d",obj["num"] as! CVarArg)

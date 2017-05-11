@@ -10,8 +10,9 @@
 		BD0D4FE21E77B91400E5D942 /* UserCenterHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D4FE11E77B91400E5D942 /* UserCenterHeadView.swift */; };
 		BD195E6E1E8373CA00AA5E71 /* CircleRightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD195E6D1E8373CA00AA5E71 /* CircleRightCell.swift */; };
 		BD195E701E8373DC00AA5E71 /* CircleLeftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD195E6F1E8373DC00AA5E71 /* CircleLeftCell.swift */; };
-		BD195E721E83BA9D00AA5E71 /* BallInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD195E711E83BA9D00AA5E71 /* BallInformationModel.swift */; };
 		BD195E741E83BB0700AA5E71 /* CircleCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD195E731E83BB0700AA5E71 /* CircleCellModel.swift */; };
+		BD2E22AF1EC400E800620D28 /* photoGraph@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD2E22AD1EC400E800620D28 /* photoGraph@2x.png */; };
+		BD2E22B01EC400E800620D28 /* selectImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD2E22AE1EC400E800620D28 /* selectImage@2x.png */; };
 		BD33613F1E949D8D009E4A78 /* CalculateCellHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD33613E1E949D8D009E4A78 /* CalculateCellHeight.swift */; };
 		BD3361411E94DF22009E4A78 /* BallDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3361401E94DF22009E4A78 /* BallDetailsVC.swift */; };
 		BD3361441E94E013009E4A78 /* BallDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3361431E94E013009E4A78 /* BallDetailsCell.swift */; };
@@ -38,6 +39,17 @@
 		BD76249A1E84C8AD00B68D8A /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD7624991E84C8AD00B68D8A /* share@2x.png */; };
 		BD76249E1E84EFC200B68D8A /* InitiatingBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD76249D1E84EFC200B68D8A /* InitiatingBallView.swift */; };
 		BD840DDE1EBAB94900F51701 /* NetWorkApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD840DDD1EBAB94900F51701 /* NetWorkApi.swift */; };
+		BD8AACCE1EC29D1900D09F5D /* AboutUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8AACCD1EC29D1900D09F5D /* AboutUserCell.swift */; };
+		BD8AACD01EC29D3C00D09F5D /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8AACCF1EC29D3C00D09F5D /* ProjectCell.swift */; };
+		BD8AACD31EC2B45400D09F5D /* ProjectVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8AACD21EC2B45400D09F5D /* ProjectVc.swift */; };
+		BD8AACD51EC2B4F200D09F5D /* BallFormatVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8AACD41EC2B4F200D09F5D /* BallFormatVc.swift */; };
+		BD8AACD71EC2B50100D09F5D /* ObjectVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8AACD61EC2B50100D09F5D /* ObjectVc.swift */; };
+		BD8AACD91EC2B50E00D09F5D /* PeopleNumVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8AACD81EC2B50E00D09F5D /* PeopleNumVc.swift */; };
+		BD8AACDB1EC2B51A00D09F5D /* MoneyVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8AACDA1EC2B51A00D09F5D /* MoneyVc.swift */; };
+		BD8AACDD1EC2B52500D09F5D /* TimeVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8AACDC1EC2B52500D09F5D /* TimeVc.swift */; };
+		BD8AACDF1EC2B5DD00D09F5D /* PlaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8AACDE1EC2B5DD00D09F5D /* PlaceVC.swift */; };
+		BD8AACE11EC2B5FA00D09F5D /* ContentVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8AACE01EC2B5FA00D09F5D /* ContentVc.swift */; };
+		BD8AACE31EC3E26F00D09F5D /* BallMessageVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8AACE21EC3E26F00D09F5D /* BallMessageVc.swift */; };
 		BDA499A91E66713F001DB844 /* UserCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA499A81E66713F001DB844 /* UserCenterController.swift */; };
 		BDA499B41E6676EE001DB844 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = BDA499B11E6676EE001DB844 /* circle.png */; };
 		BDA499B51E6676EE001DB844 /* release.png in Resources */ = {isa = PBXBuildFile; fileRef = BDA499B21E6676EE001DB844 /* release.png */; };
@@ -54,8 +66,9 @@
 		BD0D4FE11E77B91400E5D942 /* UserCenterHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterHeadView.swift; sourceTree = "<group>"; };
 		BD195E6D1E8373CA00AA5E71 /* CircleRightCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleRightCell.swift; sourceTree = "<group>"; };
 		BD195E6F1E8373DC00AA5E71 /* CircleLeftCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleLeftCell.swift; sourceTree = "<group>"; };
-		BD195E711E83BA9D00AA5E71 /* BallInformationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallInformationModel.swift; sourceTree = "<group>"; };
 		BD195E731E83BB0700AA5E71 /* CircleCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleCellModel.swift; sourceTree = "<group>"; };
+		BD2E22AD1EC400E800620D28 /* photoGraph@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photoGraph@2x.png"; sourceTree = "<group>"; };
+		BD2E22AE1EC400E800620D28 /* selectImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selectImage@2x.png"; sourceTree = "<group>"; };
 		BD33613E1E949D8D009E4A78 /* CalculateCellHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateCellHeight.swift; sourceTree = "<group>"; };
 		BD3361401E94DF22009E4A78 /* BallDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallDetailsVC.swift; sourceTree = "<group>"; };
 		BD3361431E94E013009E4A78 /* BallDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallDetailsCell.swift; sourceTree = "<group>"; };
@@ -84,6 +97,17 @@
 		BD7624991E84C8AD00B68D8A /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share@2x.png"; sourceTree = "<group>"; };
 		BD76249D1E84EFC200B68D8A /* InitiatingBallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitiatingBallView.swift; sourceTree = "<group>"; };
 		BD840DDD1EBAB94900F51701 /* NetWorkApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetWorkApi.swift; sourceTree = "<group>"; };
+		BD8AACCD1EC29D1900D09F5D /* AboutUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUserCell.swift; sourceTree = "<group>"; };
+		BD8AACCF1EC29D3C00D09F5D /* ProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
+		BD8AACD21EC2B45400D09F5D /* ProjectVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectVc.swift; sourceTree = "<group>"; };
+		BD8AACD41EC2B4F200D09F5D /* BallFormatVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallFormatVc.swift; sourceTree = "<group>"; };
+		BD8AACD61EC2B50100D09F5D /* ObjectVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectVc.swift; sourceTree = "<group>"; };
+		BD8AACD81EC2B50E00D09F5D /* PeopleNumVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleNumVc.swift; sourceTree = "<group>"; };
+		BD8AACDA1EC2B51A00D09F5D /* MoneyVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyVc.swift; sourceTree = "<group>"; };
+		BD8AACDC1EC2B52500D09F5D /* TimeVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeVc.swift; sourceTree = "<group>"; };
+		BD8AACDE1EC2B5DD00D09F5D /* PlaceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceVC.swift; sourceTree = "<group>"; };
+		BD8AACE01EC2B5FA00D09F5D /* ContentVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentVc.swift; sourceTree = "<group>"; };
+		BD8AACE21EC3E26F00D09F5D /* BallMessageVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallMessageVc.swift; sourceTree = "<group>"; };
 		BDA499A81E66713F001DB844 /* UserCenterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterController.swift; sourceTree = "<group>"; };
 		BDA499B11E6676EE001DB844 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
 		BDA499B21E6676EE001DB844 /* release.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = release.png; sourceTree = "<group>"; };
@@ -124,6 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				BD3361551E96227F009E4A78 /* aboutBall@2x.png */,
+				BD2E22AD1EC400E800620D28 /* photoGraph@2x.png */,
+				BD2E22AE1EC400E800620D28 /* selectImage@2x.png */,
 				BD3361561E96227F009E4A78 /* circleMe@2x.png */,
 				BD33614B1E96166D009E4A78 /* wrong@2x.png */,
 				BDA499B21E6676EE001DB844 /* release.png */,
@@ -141,7 +167,9 @@
 		BD3361421E94DF28009E4A78 /* sonVc */ = {
 			isa = PBXGroup;
 			children = (
+				BD8AACD11EC2B41F00D09F5D /* AboutBallContentVc */,
 				BD3361401E94DF22009E4A78 /* BallDetailsVC.swift */,
+				BD8AACE21EC3E26F00D09F5D /* BallMessageVc.swift */,
 				BD3361591E962D35009E4A78 /* AboutBallVC.swift */,
 			);
 			name = sonVc;
@@ -210,11 +238,25 @@
 			name = NetWork;
 			sourceTree = "<group>";
 		};
+		BD8AACD11EC2B41F00D09F5D /* AboutBallContentVc */ = {
+			isa = PBXGroup;
+			children = (
+				BD8AACD21EC2B45400D09F5D /* ProjectVc.swift */,
+				BD8AACD41EC2B4F200D09F5D /* BallFormatVc.swift */,
+				BD8AACD61EC2B50100D09F5D /* ObjectVc.swift */,
+				BD8AACD81EC2B50E00D09F5D /* PeopleNumVc.swift */,
+				BD8AACDA1EC2B51A00D09F5D /* MoneyVc.swift */,
+				BD8AACDC1EC2B52500D09F5D /* TimeVc.swift */,
+				BD8AACDE1EC2B5DD00D09F5D /* PlaceVC.swift */,
+				BD8AACE01EC2B5FA00D09F5D /* ContentVc.swift */,
+			);
+			name = AboutBallContentVc;
+			sourceTree = "<group>";
+		};
 		BDA499A51E666D8B001DB844 /* model */ = {
 			isa = PBXGroup;
 			children = (
 				BD6627BB1E66C58A007BFEDF /* LoginManagement.swift */,
-				BD195E711E83BA9D00AA5E71 /* BallInformationModel.swift */,
 				BD195E731E83BB0700AA5E71 /* CircleCellModel.swift */,
 				BD76248F1E83C3A500B68D8A /* EnrolmentFormModel.swift */,
 				BD7624931E83D91C00B68D8A /* CircleHotCellModel.swift */,
@@ -226,6 +268,8 @@
 		BDA499A61E666D95001DB844 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				BD8AACCF1EC29D3C00D09F5D /* ProjectCell.swift */,
+				BD8AACCD1EC29D1900D09F5D /* AboutUserCell.swift */,
 				BD33615B1E964AB3009E4A78 /* PickerView.swift */,
 				BD3361471E94F3A9009E4A78 /* HeadNameCell.swift */,
 				BD3361431E94E013009E4A78 /* BallDetailsCell.swift */,
@@ -313,6 +357,7 @@
 			files = (
 				BD76249A1E84C8AD00B68D8A /* share@2x.png in Resources */,
 				BDA499B81E669AB8001DB844 /* default_face.png in Resources */,
+				BD2E22B01EC400E800620D28 /* selectImage@2x.png in Resources */,
 				BDA499B61E6676EE001DB844 /* userCenter.png in Resources */,
 				BDA499B41E6676EE001DB844 /* circle.png in Resources */,
 				BD7624981E84C85A00B68D8A /* heart_gray@2x.png in Resources */,
@@ -323,6 +368,7 @@
 				BD7624921E83D2DA00B68D8A /* enrollment@2x.png in Resources */,
 				BDA499B51E6676EE001DB844 /* release.png in Resources */,
 				BD3361581E96227F009E4A78 /* circleMe@2x.png in Resources */,
+				BD2E22AF1EC400E800620D28 /* photoGraph@2x.png in Resources */,
 				BD3361571E96227F009E4A78 /* aboutBall@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,7 +403,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FA7F9CE4510D572BBAABE4E8 /* [CP] Embed Pods Frameworks */ = {
@@ -382,22 +428,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD8AACDD1EC2B52500D09F5D /* TimeVc.swift in Sources */,
 				BD195E6E1E8373CA00AA5E71 /* CircleRightCell.swift in Sources */,
 				BD33613F1E949D8D009E4A78 /* CalculateCellHeight.swift in Sources */,
+				BD8AACD31EC2B45400D09F5D /* ProjectVc.swift in Sources */,
 				BD6780ED1E5E76E900AD4D93 /* MainTabController.swift in Sources */,
 				BD6780EF1E5E76E900AD4D93 /* ReleaseBallController.swift in Sources */,
+				BD8AACDF1EC2B5DD00D09F5D /* PlaceVC.swift in Sources */,
 				BD195E701E8373DC00AA5E71 /* CircleLeftCell.swift in Sources */,
+				BD8AACDB1EC2B51A00D09F5D /* MoneyVc.swift in Sources */,
 				BD33615A1E962D35009E4A78 /* AboutBallVC.swift in Sources */,
 				BD3361441E94E013009E4A78 /* BallDetailsCell.swift in Sources */,
+				BD8AACD71EC2B50100D09F5D /* ObjectVc.swift in Sources */,
 				BD7624941E83D91C00B68D8A /* CircleHotCellModel.swift in Sources */,
 				BD840DDE1EBAB94900F51701 /* NetWorkApi.swift in Sources */,
+				BD8AACD91EC2B50E00D09F5D /* PeopleNumVc.swift in Sources */,
 				BD6780EC1E5E76E900AD4D93 /* AppDelegate.swift in Sources */,
 				BD3361481E94F3A9009E4A78 /* HeadNameCell.swift in Sources */,
 				BD6627BC1E66C58A007BFEDF /* LoginManagement.swift in Sources */,
 				BD3361411E94DF22009E4A78 /* BallDetailsVC.swift in Sources */,
+				BD8AACE11EC2B5FA00D09F5D /* ContentVc.swift in Sources */,
+				BD8AACD01EC29D3C00D09F5D /* ProjectCell.swift in Sources */,
+				BD8AACE31EC3E26F00D09F5D /* BallMessageVc.swift in Sources */,
 				BD0D4FE21E77B91400E5D942 /* UserCenterHeadView.swift in Sources */,
 				BD6627BE1E66D883007BFEDF /* RegisterController.swift in Sources */,
-				BD195E721E83BA9D00AA5E71 /* BallInformationModel.swift in Sources */,
+				BD8AACD51EC2B4F200D09F5D /* BallFormatVc.swift in Sources */,
+				BD8AACCE1EC29D1900D09F5D /* AboutUserCell.swift in Sources */,
 				BD6780F01E5E76E900AD4D93 /* CircleFriendsController.swift in Sources */,
 				BD33615C1E964AB3009E4A78 /* PickerView.swift in Sources */,
 				BDA499A91E66713F001DB844 /* UserCenterController.swift in Sources */,

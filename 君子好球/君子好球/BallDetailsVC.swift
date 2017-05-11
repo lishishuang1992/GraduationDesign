@@ -14,10 +14,12 @@ class BallDetailsVC: UIViewController ,UITableViewDelegate,UITableViewDataSource
     let cellID:String = "HeadNameCell"
     let cellIDBall:String = "BallDetailsCell"
     var joinButton = UIButton()
+    private var netWorkApi = NetWorkApi()
     //测试数据
-    var ballInformationModel = BallInformationModel()
+    var circleCellModel = CircleCellModel()
+    var enrolmentModelArray:Array<EnrolmentFormModel> = []
     //BallInformationModel
-    
+    var flag:Int = 0   //标记是否报名过
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initView()
@@ -29,33 +31,6 @@ class BallDetailsVC: UIViewController ,UITableViewDelegate,UITableViewDataSource
         // Dispose of any resources that can be recreated.
     }
     func initView() {
-        //测试数据
-        ballInformationModel.nickname = "小李"
-        ballInformationModel.project = "篮球"
-        ballInformationModel.introduce = "阿斯顿发哈加快地方哈哈地方哈地方哈快大法好的发掘"
-        ballInformationModel.deadLine = "2017年4月10日"
-        
-        let enrolmentFormModel1 = EnrolmentFormModel()
-        enrolmentFormModel1.headImageUrl = "http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"
-        enrolmentFormModel1.nickname = "李世爽"
-        enrolmentFormModel1.time = "2017:2:23"
-        enrolmentFormModel1.registrationStatus = "0"
-        
-        let enrolmentFormModel2 = EnrolmentFormModel()
-        enrolmentFormModel2.headImageUrl = "http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"
-        enrolmentFormModel2.nickname = "liu"
-        enrolmentFormModel2.time = "2017:2:23"
-        enrolmentFormModel2.registrationStatus = "1"
-        
-        let enrolmentFormModel3 = EnrolmentFormModel()
-        enrolmentFormModel3.headImageUrl = "http://pic29.nipic.com/20130512/12428836_110546647149_2.jpg"
-        enrolmentFormModel3.nickname = "waner"
-        enrolmentFormModel3.time = "2017:2:23"
-        enrolmentFormModel3.registrationStatus = "2"
-        ballInformationModel.enrolmentFormModel.append(enrolmentFormModel1)
-        ballInformationModel.enrolmentFormModel.append(enrolmentFormModel2)
-        ballInformationModel.enrolmentFormModel.append(enrolmentFormModel3)
-        
         self.view.backgroundColor = UIColor.init(colorLiteralRed: 240/255.0, green: 255.0/255.0, blue: 240/255.0, alpha: 1.0)
         self.tableView = UITableView()
         self.view.addSubview(self.tableView)
@@ -69,6 +44,7 @@ class BallDetailsVC: UIViewController ,UITableViewDelegate,UITableViewDataSource
        
         self.joinButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15) //文字大小
         self.joinButton.setTitle("报名", for: .normal)
+        self.joinButton.addTarget(self, action: #selector(joinButtonClick), for: .touchUpInside)
         self.joinButton.layer.cornerRadius = 5
         self.joinButton.backgroundColor = UIColor.init(colorLiteralRed: 142/255.0, green: 229/255.0, blue: 238/255.0, alpha: 1.0)
         self.view.addSubview(self.joinButton)
@@ -83,6 +59,8 @@ class BallDetailsVC: UIViewController ,UITableViewDelegate,UITableViewDataSource
     func initData() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        reloadSearchBallEnroll()
+       
     }
     // MARK: - Table view data source
     
@@ -99,24 +77,24 @@ class BallDetailsVC: UIViewController ,UITableViewDelegate,UITableViewDataSource
         }else if(section == 1){
             return 1
         }else{
-            return Int(ballInformationModel.enrolmentFormModel.count)
+            return self.enrolmentModelArray.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! HeadNameCell
-            cell.postPublisherData(ballInformationModel: ballInformationModel)
+            cell.postPublisherData(userName: self.circleCellModel.user_name ,image:self.circleCellModel.headImageUrl)
             return cell
         }else if indexPath.section == 1{
             self.tableView.register(BallDetailsCell.classForCoder(), forCellReuseIdentifier:cellIDBall)
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIDBall, for: indexPath) as! BallDetailsCell
-            cell.postData(ballInformationModel: ballInformationModel)
+            cell.postData(circleCellModel: self.circleCellModel)
             return cell
         }else{
              self.tableView.register(HeadNameCell.classForCoder(), forCellReuseIdentifier:cellID)
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! HeadNameCell
-            cell.postApplicantData(enrolmentFormModel: ballInformationModel.enrolmentFormModel[indexPath.row])
+            cell.postApplicantData(enrolmentFormModel: self.enrolmentModelArray[indexPath.row])
             return cell
         }
     }
@@ -154,7 +132,7 @@ class BallDetailsVC: UIViewController ,UITableViewDelegate,UITableViewDataSource
             label.textColor = UIColor.init(red: 238/255.0, green: 130/255.0, blue: 238/255.0, alpha: 1.0)
             label.textAlignment = .right
             label.font = UIFont.systemFont(ofSize: 13)
-            label.text = "报名成功: " + ballInformationModel.circleCellModel.places + "/" + ballInformationModel.circleCellModel.enrollment
+            label.text = "报名成功: " + self.circleCellModel.enrollment + "/" + self.circleCellModel.places
             headView.addSubview(label)
             label.snp.makeConstraints{ (make) in
                     make.centerY.equalTo(headView)
@@ -167,8 +145,96 @@ class BallDetailsVC: UIViewController ,UITableViewDelegate,UITableViewDataSource
             return nil
         }
     }
+    
+    func reloadSearchBallEnroll() {
+        self.netWorkApi.searchBallEnroll(ball_id:self.circleCellModel.ball_ID , block: {(json: Dictionary)-> Void in
+            print(json)
+            let status = json["status"] as! String
+            if status == "1006"{
+                var resultArray = Array<Dictionary<String, Any>>()
+                resultArray = json["result"] as! Array
+                for obj in resultArray {
+                    let enrolmentModel = EnrolmentFormModel()
+                    if (obj["image"] as? String) != nil
+                    {
+                        enrolmentModel.headImageUrl = String(format:"http://127.0.0.1:8000/media/%@",obj["image"] as! String)
+                    }else{
+                        enrolmentModel.headImageUrl = "default"
+                    }
+                    enrolmentModel.user_name = obj["user_name"] as! String
+                    enrolmentModel.user_id = obj["user_id"] as! String
+                    enrolmentModel.status = obj["status"] as! String
+                    self.enrolmentModelArray.append(enrolmentModel)
+                    //检查是否报名过  user_id
+                    if "pUY7Lz5o" == enrolmentModel.user_id{
+                        self.flag = 1
+                    }
+                }
+                DispatchQueue.main.async(execute: {
+                    self.tableView.reloadData()
+                    if self.flag == 1{
+                        self.joinButton.setTitle("取消报名", for: .normal)
+                    }
+                })
+            }else if status == "1008" {
+                print("没有用户报名")
+            }else if status == "1005"{
+                print("其他错误")
+            }else{
+                
+            }
+        })
 
+    }
+    
 
+    func joinButtonClick() {
+        if self.flag == 0{  //没有报过名
+            self.netWorkApi.ballEnroll(ball_id:self.circleCellModel.ball_ID, user_id:"4deTDaA8", block: {(json: Dictionary)-> Void in
+                //print(json)
+                let status = json["status"] as! String
+                if status == "1006"{
+                    print("报名成功")
+                    DispatchQueue.main.async(execute: {
+                        let enrolmentModel = EnrolmentFormModel()
+                        enrolmentModel.user_name = self.circleCellModel.user_name
+                        enrolmentModel.user_id = "4deTDaA8"
+                        enrolmentModel.status = "1"
+                        enrolmentModel.headImageUrl = "imageUrl"
+                        self.enrolmentModelArray.append(enrolmentModel)
+                        let indexPath = NSIndexSet.init(index:2)
+                        self.tableView.reloadSections(indexPath as IndexSet, with: .automatic)
+                        self.joinButton.setTitle("取消报名", for: .normal)
+                        self.flag = 1
+                    })
+                    //更新,
+                }else if status == "1005"{
+                    print("其他错误")
+                }else{
+                    
+                }
+            })
+        }else{ //取消报名
+            self.netWorkApi.cancelBallEnroll(ball_id:self.circleCellModel.ball_ID, user_id:"4deTDaA8", block: {(json: Dictionary)-> Void in
+                //print(json)
+                let status = json["status"] as! String
+                if status == "1006"{
+                    DispatchQueue.main.async(execute: {
+                        self.enrolmentModelArray.remove(at: self.enrolmentModelArray.count-1)
+                        let indexPath = NSIndexSet.init(index:2)
+                        self.tableView.reloadSections(indexPath as IndexSet, with: .automatic)
+                        self.joinButton.setTitle("报名", for: .normal)
+                        self.flag = 0
+                    })
+                    //更新,
+                }else if status == "1005"{
+                    print("其他错误")
+                }else{
+                    
+                }
+            })
+        }
+    }
 
 
 }

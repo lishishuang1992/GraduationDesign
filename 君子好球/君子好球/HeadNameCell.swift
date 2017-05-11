@@ -66,13 +66,13 @@ class HeadNameCell: UITableViewCell {
         }
     }
     func postApplicantData(enrolmentFormModel :EnrolmentFormModel) {
-        self.nickname.text = enrolmentFormModel.nickname
+        self.nickname.text = enrolmentFormModel.user_name
         self.headImageBt.kf.setImage(with: ImageResource.init(downloadURL: NSURL(string: enrolmentFormModel.headImageUrl)! as URL), for: .normal)
         self.stateBt.isHidden = false
-        if enrolmentFormModel.registrationStatus == "0"{  //拒绝
+        if enrolmentFormModel.status == "0"{  //拒绝
             self.stateBt.backgroundColor = UIColor.red
             self.stateBt.setTitle("未通过", for: .normal)
-        }else if enrolmentFormModel.registrationStatus == "1"{    //审核通过
+        }else if enrolmentFormModel.status == "2"{    //审核通过
             self.stateBt.backgroundColor = UIColor.green
             self.stateBt.setTitle("通过", for: .normal)
         }else{             //正在审核中
@@ -81,9 +81,9 @@ class HeadNameCell: UITableViewCell {
         }
     }
     
-    func postPublisherData(ballInformationModel :BallInformationModel) {
-        self.nickname.text = ballInformationModel.nickname
-        self.headImageBt.kf.setImage(with: ImageResource.init(downloadURL: NSURL(string: ballInformationModel.circleCellModel.headImageUrl)! as URL), for: .normal)
+    func postPublisherData(userName: String ,image: String) {
+        self.nickname.text = userName
+        self.headImageBt.kf.setImage(with: ImageResource.init(downloadURL: NSURL(string:image)! as URL), for: .normal)
     }
 
     

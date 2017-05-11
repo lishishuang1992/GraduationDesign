@@ -21,6 +21,5 @@ class CircleCellModel: NSObject {
     var cost: String = ""                        //费用
     var ball_ID: String = ""                     //约球ID
     var user_name: String = ""                  //用户名
-    
-    
+    var introduction :String = ""               //简介
 }
