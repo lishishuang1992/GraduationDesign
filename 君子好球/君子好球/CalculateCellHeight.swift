@@ -35,5 +35,14 @@ class CalculateCellHeight: NSObject {
         return heightArray
     }
 
+    //计算文字的高度
+    func getLabHeigh(labelStr:String,font:UIFont,width:CGFloat) -> CGFloat {
+        let statusLabelText: NSString = labelStr as NSString
+        let size = CGSize(width:width,height:900)
+        let dic = NSDictionary(object: font, forKey: NSFontAttributeName as NSCopying)
+        let strSize = statusLabelText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: dic as? [String : AnyObject], context: nil).size
+        return strSize.height
+    }
+
 
 }

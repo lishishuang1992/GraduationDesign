@@ -80,11 +80,14 @@ class NetWorkApi: NSObject {
     }
     
     //球圈全部信息
-    func allBallMessage(block : @escaping (_ dict:Dictionary<String, Any>) -> Void){
+    func allBallMessage(user_id:String,block : @escaping (_ dict:Dictionary<String, Any>) -> Void){
         let Url = URL.init(string:"http://127.0.0.1:8000/admin/allBallMessage")
         let request = NSMutableURLRequest.init(url: Url!)
         request.timeoutInterval = 10
         request.httpMethod = "POST"
+        let dict = ["user_id":user_id]
+        let bodayData = try? JSONSerialization.data(withJSONObject: dict, options: JSONSerialization.WritingOptions.prettyPrinted)
+        request.httpBody = bodayData
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
             if (error != nil) {
@@ -127,7 +130,7 @@ class NetWorkApi: NSObject {
         let request = NSMutableURLRequest.init(url: Url!)
         request.timeoutInterval = 10
         request.httpMethod = "POST"
-        let imageData = UIImagePNGRepresentation(image)
+        let imageData = UIImageJPEGRepresentation(image, 0.5)
         let imageString = imageData?.base64EncodedString(options: .init(rawValue: 0))
         let dict = ["message":message,"user_id":user_id,"image":imageString]
         let bodayData = try? JSONSerialization.data(withJSONObject: dict, options:JSONSerialization.WritingOptions.prettyPrinted)
@@ -219,7 +222,7 @@ class NetWorkApi: NSObject {
         let request = NSMutableURLRequest.init(url: Url!)
         request.timeoutInterval = 10
         request.httpMethod = "POST"
-        let imageData = UIImagePNGRepresentation(user_image)
+        let imageData = UIImageJPEGRepresentation(user_image, 0.3)
         let imageString = imageData?.base64EncodedString(options: .init(rawValue: 0))
         let dict = ["user_id":user_id,"image":imageString]
         let bodayData = try? JSONSerialization.data(withJSONObject: dict, options:JSONSerialization.WritingOptions.prettyPrinted)
@@ -282,5 +285,31 @@ class NetWorkApi: NSObject {
         }
         dataTask.resume()
     }
+    //删除球圈
+    func deleteBallMessage(user_id:String ,message_id:String ,block : @escaping (_ dict:Dictionary<String, Any>) -> Void){
+        let Url = URL.init(string:"http://127.0.0.1:8000/admin/deleteBallMessage")
+        let request = NSMutableURLRequest.init(url: Url!)
+        request.timeoutInterval = 5
+        request.httpMethod = "POST"
+        print(user_id,message_id)
+        let dict = ["user_id":user_id,"message_id":message_id]
+        let bodayData = try? JSONSerialization.data(withJSONObject: dict, options:JSONSerialization.WritingOptions.prettyPrinted)
+        request.httpBody = bodayData
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
+            if (error != nil) {
+                return
+            }
+            else {
+                //此处是具体的解析，具体请移步下面
+                let json = try? JSONSerialization.jsonObject(with: data!,options:.allowFragments) as! [String: Any]
+                block(json!)
+            }
+        }
+        dataTask.resume()
+    }
+
+    
+    
 
 }

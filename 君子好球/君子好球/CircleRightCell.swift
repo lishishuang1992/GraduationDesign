@@ -8,12 +8,19 @@
 
 import UIKit
 import Kingfisher
+protocol CircleRightCellDelegate:NSObjectProtocol {
+    func praiseBtClick(sender:UIButton)
+    func headImageBtClick(sender:UIButton)
+    func shareBtClick(sender:UIButton)
+}
 class CircleRightCell: UITableViewCell {
-    
+    weak var delegate:CircleRightCellDelegate?
+    var index:Int = 0
     var headImageBt = UIButton()
     var nickname = UILabel()
     var time = UILabel()
     var contentText = UILabel()
+    var zanText = UILabel()
     var backImageView = UIImageView()
     var pointPraise = UILabel()
     var praiseBt = UIButton ()
@@ -39,6 +46,7 @@ class CircleRightCell: UITableViewCell {
         //头像
         self.headImageBt = UIButton()
         self.headImageBt.layer.cornerRadius = 8
+        self.headImageBt.addTarget(self, action:#selector(headImageBtClick(sender:)), for: .touchUpInside)
         self.addSubview(self.headImageBt)
         self.headImageBt.snp.makeConstraints{ (make) in
             make.left.equalTo(self.snp.left).offset(10)
@@ -54,57 +62,51 @@ class CircleRightCell: UITableViewCell {
         self.nickname.textAlignment = .left
         self.addSubview(self.nickname)
         self.nickname.snp.makeConstraints{ (make) in
-            make.top.equalTo(headImageBt.snp.top)
+            make.centerY.equalTo(self.headImageBt)
             make.left.equalTo(headImageBt.snp.right).offset(10)
-            make.width.equalTo(180/2.0)
+            make.width.equalTo(90/2.0)
         }
-        
         //时间
         self.time = UILabel()
         self.time.backgroundColor = UIColor.clear
         self.time.textColor = UIColor.red
-        self.time.font = UIFont.systemFont(ofSize: 10)
-        self.time.textAlignment = .left
+        self.time.font = UIFont.systemFont(ofSize: 12)
+        self.time.textAlignment = .right
         self.addSubview(self.time)
         self.time.snp.makeConstraints{ (make) in
             make.centerY.equalTo(self.headImageBt.snp.centerY)
             make.right.equalTo(self.snp.right).offset(-10)
-            make.width.equalTo(145/2.0)
+            make.width.equalTo(200)
         }
-        
         self.contentText = UILabel()
         self.contentText.font = UIFont.systemFont(ofSize: 14)
         self.contentText.numberOfLines = 0
         self.addSubview(self.contentText)
         self.contentText.snp.makeConstraints { (make) in
-            make.top.equalTo(self.nickname.snp.bottom).offset(10)
+            make.top.equalTo(self.headImageBt.snp.bottom).offset(10)
             make.left.equalTo(self.nickname)
             make.right.equalTo(self).offset(-20)
         }
-        
         //背景图
         self.backImageView = UIImageView()
         self.addSubview(self.backImageView)
-        backImageView.snp.makeConstraints{ (make) in
+        self.backImageView.snp.makeConstraints{ (make) in
             make.top.equalTo(self.contentText.snp.bottom).offset(10)
             make.left.equalTo(self.contentText)
             make.right.equalTo(self.contentText)
-            make.height.equalTo(30)
+            make.height.equalTo(0)
         }
-        
-       
         //点赞按钮
         self.praiseBt = UIButton()
         self.praiseBt.setImage(UIImage(named:"heart_gray"), for: .normal)
-        addSubview(praiseBt)
+        self.praiseBt.addTarget(self, action:#selector(praiseBtClick(sender:)), for: .touchUpInside)
+        self.addSubview(self.praiseBt)
         self.praiseBt.snp.makeConstraints{ (make) in
             make.left.equalTo(self.contentText)
-            make.bottom.equalTo(self).offset(-10)
+            make.top.equalTo(self.backImageView.snp.bottom).offset(5)
             make.height.equalTo(40/2.0)
             make.width.equalTo(40/2.0)
         }
-        
-        
         //点赞数
         self.pointPraise = UILabel()
         self.pointPraise.backgroundColor = UIColor.clear
@@ -114,39 +116,55 @@ class CircleRightCell: UITableViewCell {
         self.addSubview(self.pointPraise)
         self.pointPraise.snp.makeConstraints{ (make) in
             make.left.equalTo(self.praiseBt.snp.right).offset(10)
-            make.bottom.equalTo(self.snp.bottom).offset(-10)
+            make.centerY.equalTo(self.praiseBt)
             make.width.equalTo(30/2.0)
         }
         
         //分享按钮
         self.shareBt = UIButton()
         self.shareBt.setImage(UIImage(named:"share"), for: .normal)
+        self.shareBt.addTarget(self, action:#selector(shareBtClick(sender:)), for: .touchUpInside)
         addSubview(self.shareBt)
         self.shareBt.snp.makeConstraints{ (make) in
             make.left.equalTo(self.pointPraise.snp.right).offset(15)
-            make.bottom.equalTo(self.snp.bottom).offset(-10)
+             make.centerY.equalTo(self.praiseBt)
             make.height.equalTo(40/2.0)
             make.width.equalTo(40/2.0)
         }
+        self.zanText = UILabel()
+        self.zanText.text = ""
+        self.zanText.font = UIFont.systemFont(ofSize: 14)
+        self.zanText.numberOfLines = 0
+        self.addSubview(self.zanText)
+        self.zanText.snp.makeConstraints { (make) in
+            make.top.equalTo(self.shareBt.snp.bottom).offset(5)
+            make.left.equalTo(self.nickname)
+            make.right.equalTo(self).offset(-20)
+        }
     }
-    //点击头像事件
-    func addTargetHeadImageBt(target: Any?, action: Selector, for controlEvents: UIControlEvents){
-        headImageBt.addTarget(target, action:action, for:.touchUpInside)
+    
+    func praiseBtClick(sender:UIButton) {
+        sender.tag = self.index
+        self.delegate?.praiseBtClick(sender: sender)
     }
-    //点赞事件
-    func addTargetPraiseBt(target: Any?, action: Selector, for controlEvents: UIControlEvents){
-        self.praiseBt.addTarget(target, action:action, for:.touchUpInside)
+    func headImageBtClick(sender:UIButton) {
+        sender.tag = self.index
+        self.delegate?.headImageBtClick(sender: sender)
     }
-    //点击分享事件
-    func addTargetShareBt(target: Any?, action: Selector, for controlEvents: UIControlEvents){
-        self.shareBt.addTarget(target, action:action, for:.touchUpInside)
+    func shareBtClick(sender:UIButton) {
+        sender.tag = self.index
+        self.delegate?.shareBtClick(sender: sender)
     }
 
-    func postData(hotCellModel :CircleHotCellModel) {
+    func postData(hotCellModel :CircleHotCellModel ) {
         self.headImageBt.kf.setImage(with: ImageResource.init(downloadURL: NSURL(string: hotCellModel.user_image)! as URL), for: .normal)
-        self.nickname.text = hotCellModel.nickname
+        self.nickname.text = hotCellModel.user_name
         self.time.text = hotCellModel.current_time
         self.contentText.text = hotCellModel.contentText
+        for zanUser in hotCellModel.zanUser{
+            self.zanText.text = String(format:"%@,%@",self.zanText.text!,zanUser["user_name"] as! String)
+        }
+        
         self.backImageView.kf.setImage(with: ImageResource.init(downloadURL: NSURL(string: (hotCellModel.imageUrlArray[0]))! as URL), placeholder: nil, options: [KingfisherOptionsInfoItem.transition(ImageTransition.fade(1)), KingfisherOptionsInfoItem.forceRefresh], progressBlock: nil, completionHandler:{ (image, error, cacheType, imageURL) -> () in
             DispatchQueue.main.async(execute: {
                 self.backImageView.snp.updateConstraints { (make) in
@@ -157,5 +175,13 @@ class CircleRightCell: UITableViewCell {
         self.pointPraise.text = hotCellModel.pointPraise
     }
     
+    //计算文字的高度
+    func getLabHeigh(labelStr:String,font:UIFont,width:CGFloat) -> CGFloat {
+        let statusLabelText: NSString = labelStr as NSString
+        let size = CGSize(width:width,height:900)
+        let dic = NSDictionary(object: font, forKey: NSFontAttributeName as NSCopying)
+        let strSize = statusLabelText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: dic as? [String : AnyObject], context: nil).size
+        return strSize.height
+    }
 
 }

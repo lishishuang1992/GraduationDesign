@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CircleFriendsController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class CircleFriendsController: UIViewController,UITableViewDataSource,UITableViewDelegate,CircleRightCellDelegate {
     
     private var segmented = UISegmentedControl()
     var modelLeftArray = Array<CircleCellModel>()
@@ -16,7 +16,8 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
     var tableView: UITableView?
     var segmentIndex: Int = 0;
     let cellID:Array = ["reuseIdentifierLeft","reuseIdentifierRight"]
-    var cellHeight:Array = Array<CGFloat>()
+    var cellImageHeight:Array = Array<CGFloat>()
+    var cellTextHeight:Array = Array<CGFloat>()
     var refreshControl: UIRefreshControl?
     private var netWorkApi = NetWorkApi()
     override func viewDidLoad() {
@@ -57,7 +58,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         self.view.addSubview(self.tableView!)
         self.tableView?.snp.makeConstraints{ (make) in
             make.left.equalTo(self.view)
-            make.top.equalTo(self.view).offset(64)
+            make.top.equalTo(self.view)
             make.right.equalTo(self.view)
             make.bottom.equalTo(self.view).offset(-64)
         }
@@ -102,6 +103,9 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID[self.segmentIndex], for: indexPath) as! CircleRightCell
             //self.tableView.register(CircleLeftCell.classForCoder(), forCellReuseIdentifier: cellIDRight) as! CircleRightCell
             cell.postData(hotCellModel: self.modelRightArray[indexPath.row])
+            cell.index = indexPath.row
+            cell.selectionStyle = .none;
+            cell.delegate = self
             return cell
         }
     }
@@ -120,7 +124,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         if self.segmentIndex == 0{
             return 220/2.0
         }else if(self.segmentIndex == 1){
-            return self.cellHeight[indexPath.row] + 80
+            return self.cellTextHeight[indexPath.row] + 100 + self.cellImageHeight[indexPath.row]
         }else{
             return 0
         }
@@ -138,8 +142,11 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         }
     }
     func loadData() {
-        self.tableView?.reloadData()
-        self.refreshControl?.endRefreshing()
+        if self.segmentIndex == 0 {
+            reloadAboutBall()
+        }else{
+            reloadBallMessage()
+        }
     }
     
     func reloadAboutBall() {
@@ -173,6 +180,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
                 }
                 DispatchQueue.main.async(execute: {
                     self.tableView?.reloadData()
+                    self.refreshControl?.endRefreshing()
                 })
             }
             else if status == "1005"{
@@ -186,7 +194,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
     
     func reloadBallMessage() {
         self.modelRightArray.removeAll()
-        self.netWorkApi.allBallMessage(block: {(json: Dictionary)-> Void in
+        self.netWorkApi.allBallMessage(user_id:"",block: {(json: Dictionary)-> Void in
             let status = json["status"] as! String
             if status == "1006"{
                 var resultArray = Array<Dictionary<String, Any>>()
@@ -214,8 +222,20 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
                 }
                 DispatchQueue.main.async(execute: {
                     let calculateCellHeight = CalculateCellHeight()
-                    print(self.modelRightArray)
-                    self.cellHeight = calculateCellHeight.calculateCellHeight(array: self.modelRightArray)
+                    for circleHotModel in self.modelRightArray{
+                        var textString:String = ""
+                        if circleHotModel.zanUser.count == 0{
+                            self.cellTextHeight.append(0)
+                        }else{
+                            for obj in circleHotModel.zanUser{
+                                textString = String(format:"%@,%@",textString,obj["user_name"] as! CVarArg)
+                                let textHeight = calculateCellHeight.getLabHeigh(labelStr: textString, font: UIFont.systemFont(ofSize: 12), width: self.view.frame.size.width-72.5)
+                                self.cellTextHeight.append(textHeight)
+                            }
+                        }
+                    }
+                    self.cellImageHeight = calculateCellHeight.calculateCellHeight(array: self.modelRightArray)
+                    self.refreshControl?.endRefreshing()
                     self.tableView?.reloadData()
                 })
             }
@@ -227,5 +247,28 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         })
 
     }
+   // CircleRightCellDelegate
+    func praiseBtClick(sender:UIButton){
+        let dict = ["user_name":UserDefaults.standard.object(forKey: "user_name"),"user_id":UserDefaults.standard.object(forKey: "user_id")]
+        self.modelRightArray[sender.tag].zanUser.append(dict)
+        let indexPath = NSIndexPath.init(row: sender.tag, section: 0)
+        self.tableView?.reloadRows(at: [indexPath as IndexPath], with:.none)
+    }
+    func headImageBtClick(sender:UIButton){
+        
+    }
+    func shareBtClick(sender:UIButton){
+        let textToShare = "球类约友app"
+        let imageData = NSData.init(contentsOf: URL.init(string:self.modelRightArray[sender.tag].imageUrlArray[0])!)
+        let imageToShare:UIImage = UIImage.init(data: imageData! as Data)!
+        let urlToShare:URL = URL.init(string:"http://127.0.0.1:8000/admin/resertBallMessage")!
+        let activityItems = [urlToShare,textToShare,imageToShare] as [Any]
+        let shareVc = UIActivityViewController.init(activityItems: activityItems, applicationActivities: nil)
+        self.navigationController?.present(shareVc, animated:true, completion: { 
+            
+        })
+    }
+    
+        
 }
 

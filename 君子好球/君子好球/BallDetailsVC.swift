@@ -85,16 +85,19 @@ class BallDetailsVC: UIViewController ,UITableViewDelegate,UITableViewDataSource
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! HeadNameCell
             cell.postPublisherData(userName: self.circleCellModel.user_name ,image:self.circleCellModel.headImageUrl)
+            cell.selectionStyle = .none;
             return cell
         }else if indexPath.section == 1{
             self.tableView.register(BallDetailsCell.classForCoder(), forCellReuseIdentifier:cellIDBall)
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIDBall, for: indexPath) as! BallDetailsCell
             cell.postData(circleCellModel: self.circleCellModel)
+            cell.selectionStyle = .none;
             return cell
         }else{
              self.tableView.register(HeadNameCell.classForCoder(), forCellReuseIdentifier:cellID)
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! HeadNameCell
             cell.postApplicantData(enrolmentFormModel: self.enrolmentModelArray[indexPath.row])
+            cell.selectionStyle = .none;
             return cell
         }
     }
