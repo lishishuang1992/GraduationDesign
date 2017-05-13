@@ -10,45 +10,26 @@ import UIKit
 import SnapKit
 class UserCenterHeadView: UIView {
     
-    var nameBt = UIButton()
-    var numSince = UILabel()    //点赞数
-    var numRelease = UILabel()   //发布数
-    let userAvatar = UIButton()
+    var user_name = UILabel()
+    let user_image = UIButton()
     override init(frame: CGRect) {
         super.init(frame:frame)
         self.frame = frame
-        userAvatar.layer.cornerRadius = 80/2;
-        userAvatar.layer.masksToBounds = true
-        userAvatar.setImage(UIImage(named:"default_face"),for:.normal)
-        self.addSubview(userAvatar)
-        userAvatar.snp.makeConstraints { (make) in
+        user_image.layer.cornerRadius = 80/2;
+        user_image.layer.masksToBounds = true
+        user_image.setImage(UIImage(named:"default_face"),for:.normal)
+        self.addSubview(user_image)
+        user_image.snp.makeConstraints { (make) in
             make.centerX.equalTo(self.snp.centerX)
             make.centerY.equalTo(self.snp.centerY)
             make.width.equalTo(80)
             make.height.equalTo(80)
         }
-        self.nameBt.backgroundColor = UIColor.clear
-        self.addSubview(nameBt)
-        self.nameBt.snp.makeConstraints {(make) in
-            make.top.equalTo(userAvatar.snp.bottom).offset(20)
+        self.user_name.backgroundColor = UIColor.clear
+        self.addSubview(user_name)
+        self.user_name.snp.makeConstraints {(make) in
+            make.top.equalTo(user_image.snp.bottom).offset(20)
             make.centerX.equalTo(self.snp.centerX)
-            make.width.equalTo(80)
-            make.height.equalTo(20)
-        }
-      
-        self.numSince = UILabel()
-        self.addSubview(self.numSince)
-        self.numSince.snp.makeConstraints { (make) in
-            make.bottom.equalTo(self.snp.bottom)
-            make.left.equalTo(self.snp.left)
-            make.width.equalTo(80)
-            make.height.equalTo(20)
-        }
-        self.numRelease = UILabel()
-        self.addSubview(self.numRelease)
-        self.numRelease.snp.makeConstraints { (make) in
-            make.bottom.equalTo(self.snp.bottom)
-            make.right.equalTo(self.snp.right)
             make.width.equalTo(80)
             make.height.equalTo(20)
         }
@@ -59,14 +40,6 @@ class UserCenterHeadView: UIView {
     }
     
     func addTargetUserAvatar(target: Any?, action: Selector, for controlEvents: UIControlEvents){
-        userAvatar.addTarget(target, action:action, for:.touchUpInside)
+        user_image.addTarget(target, action:action, for:.touchUpInside)
     }
-    func addTargetNameBt(target: Any?, action: Selector, for controlEvents: UIControlEvents){
-        nameBt.addTarget(target, action:action, for:.touchUpInside)
-    }
-    func sinceAndReleaseNum(numSince: NSString,numRelease: NSString)->Void {
-        self.numSince.text = "点赞数:" + (numSince as String)
-        self.numRelease.text = "已发布:" + (numRelease as String)
-    }
-    
 }

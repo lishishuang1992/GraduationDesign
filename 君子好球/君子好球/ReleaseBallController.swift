@@ -9,10 +9,11 @@
 import UIKit
 
 class ReleaseBallController: UIViewController {
-
+    var flag:Int = 0            //标记是否已经登录
     var backBt: UIButton?          //退出按钮
     var circleBt: UIButton?             //发布朋友圈
     var aboutBallBt: UIButton?                  //发布约球信息
+    let userDefault = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initView()
@@ -26,6 +27,13 @@ class ReleaseBallController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.tabBarController?.tabBar.isHidden = true
+        //检查是否已经登录
+        let str = (self.userDefault.object(forKey: "user_id")as!String)
+        if str.characters.count > 1{
+            self.flag = 0
+        }else{
+            self.flag = 1
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -70,11 +78,19 @@ class ReleaseBallController: UIViewController {
         if sender?.tag == 0 {
             self.popAnimation()
         }else if sender?.tag == 1{
-            let ballVc = UINavigationController(rootViewController: AboutBallVC())
-            self.present(ballVc, animated: true, completion: nil)
+            if self.flag == 0{   //已经登录
+                let ballVc = UINavigationController(rootViewController: AboutBallVC())
+                self.present(ballVc, animated: true, completion: nil)
+            }else{
+                print("用户没有登录")
+            }
         }else{
-            let ballMessageVc =  UINavigationController(rootViewController: BallMessageVc())
-            self.present(ballMessageVc, animated: true, completion: nil)
+            if self.flag == 0 {
+                let ballMessageVc =  UINavigationController(rootViewController: BallMessageVc())
+                self.present(ballMessageVc, animated: true, completion: nil)
+            }else{
+                print("用户没有登录")
+            }
         }
         
     }

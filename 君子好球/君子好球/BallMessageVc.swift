@@ -22,11 +22,19 @@ class BallMessageVc: UIViewController ,UITextViewDelegate,UIImagePickerControlle
         self.initData()
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     func initView()  {
         
@@ -71,7 +79,7 @@ class BallMessageVc: UIViewController ,UITextViewDelegate,UIImagePickerControlle
         }
         self.backBt = UIButton()
         self.backBt?.setTitle("取消", for: .normal)
-        self.backBt?.titleLabel?.textColor = UIColor.red
+        self.backBt?.setTitleColor(UIColor.blue, for: .normal)
         self.backBt?.addTarget(self, action: #selector(backBtClick), for: .touchUpInside)
         navView.addSubview(self.backBt!)
         self.backBt?.snp.makeConstraints{ (make) in
@@ -111,7 +119,7 @@ class BallMessageVc: UIViewController ,UITextViewDelegate,UIImagePickerControlle
     }
     func deterMineButtonClick() {
         if (self.postImage != nil)&&(self.textview.text.characters.count > 0){
-            self.netWorkApi.resertBallMessage(message: self.textview.text, user_id: "4deTDaA8", image: self.postImage!,  block: {(json: Dictionary)-> Void in
+            self.netWorkApi.resertBallMessage(message: self.textview.text, user_id:UserDefaults.standard.object(forKey: "user_id") as! String, image: self.postImage!,  block: {(json: Dictionary)-> Void in
                 print(json)
                 let status = json["status"] as! String
                 if status == "1006"{

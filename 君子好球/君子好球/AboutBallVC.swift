@@ -33,6 +33,14 @@ class AboutBallVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
         self.initData()
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -52,7 +60,7 @@ class AboutBallVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
         
         self.backBt = UIButton()
         self.backBt?.setTitle("取消", for: .normal)
-        self.backBt?.titleLabel?.textColor = UIColor.red
+        self.backBt?.setTitleColor(UIColor.blue, for: .normal)
         self.backBt?.addTarget(self, action: #selector(backBtClick), for: .touchUpInside)
         navView.addSubview(self.backBt!)
         self.backBt?.snp.makeConstraints{ (make) in
@@ -175,7 +183,7 @@ class AboutBallVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID[0], for: indexPath) as! AboutUserCell
-            cell.postData(headImageUrl:"777", userName: "user_name")
+            cell.postData(headImageUrl:UserDefaults.standard.object(forKey: "headImageUrl") as!String, userName: UserDefaults.standard.object(forKey: "user_name")as!String)
             return cell
         }else if indexPath.section == 1{
             self.tableView.register(ProjectCell.classForCoder(), forCellReuseIdentifier:     cellID[1])
@@ -241,7 +249,7 @@ class AboutBallVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
     func releaseButtonClick()  {
         let index = self.defaultName[3].index(self.defaultName[3].startIndex, offsetBy: 1)
         self.defaultName[3] = self.defaultName[3].substring(to: index)
-        let dict:Dictionary<String,Any> = ["user_id":"pUY7Lz5o","end_time":self.defaultName[5],"ball_object":self.defaultName[2],"money":self.defaultName[4],"project":self.defaultName[0],"ball_format":self.defaultName[1],"num_people":self.defaultName[3],"introduction":self.contentString,"place":self.defaultName[6]]
+        let dict:Dictionary<String,Any> = ["user_id":UserDefaults.standard.object(forKey: "user_id")as!String,"end_time":self.defaultName[5],"ball_object":self.defaultName[2],"money":self.defaultName[4],"project":self.defaultName[0],"ball_format":self.defaultName[1],"num_people":self.defaultName[3],"introduction":self.contentString,"place":self.defaultName[6]]
         self.netWorkApi.resertBallTable(postDate: dict, block: {(json: Dictionary)-> Void in
             print(json)
             let status = json["status"] as! String

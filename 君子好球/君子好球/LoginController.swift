@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 class LoginController: UIViewController,UITextFieldDelegate {
-
+    var myblock : blockBtnClickSendValue?
     private var userName = UITextField()
     private var passWord = UITextField()
     private var registerVc = RegisterController()
@@ -34,8 +34,6 @@ class LoginController: UIViewController,UITextFieldDelegate {
     func initView(){
         let tap = UITapGestureRecognizer(target: self, action: #selector(LoginController.tapView))
         self.view.addGestureRecognizer(tap)
-        
-    
         self.view.backgroundColor = UIColor.init(red: 224/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0)
         //userName.frame = CGRect(x: WIETH/2-150/2 ,y: 64 ,width: 150 , height: 50)
         self.userName.placeholder = "请输入用户名"
@@ -86,7 +84,17 @@ class LoginController: UIViewController,UITextFieldDelegate {
             make.right.equalTo(self.userName).offset(-20)
             make.height.equalTo(45)
         }
-        
+        let backBt = UIButton()
+        backBt.setTitle("取消", for: .normal)
+        backBt.setTitleColor(UIColor.blue, for: .normal)
+        backBt.addTarget(self, action: #selector(backBtClick), for: .touchUpInside)
+        self.view.addSubview(backBt)
+        backBt.snp.makeConstraints{ (make) in
+            make.left.equalTo(self.view).offset(15)
+            make.top.equalTo(self.view).offset(15)
+            make.width.equalTo(80)
+            make.height.equalTo(40)
+        }
         //注册账号按钮
         let registerButton = UIButton()
         registerButton.setTitle("没有账号？", for: .normal)
@@ -102,18 +110,57 @@ class LoginController: UIViewController,UITextFieldDelegate {
             make.right.equalTo(self.userName)
             make.bottom.equalTo(loginButton.snp.top).offset(-10)
         }
+        self.registerVc.myblock = {(message:String) -> Void in
+            DispatchQueue.main.async(execute: {
+                self.userName.text = message
+            })
+        }
 
         
     }
     
-    
+    func backBtClick() {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     func loginButtonClick() {
-        self.netWorkApi.login(username:self.userName.text!, password:self.passWord.text!)
+        self.netWorkApi.login(username:self.userName.text!, password:self.passWord.text!, block: {(json: Dictionary)-> Void in
+            let status = json["status"] as! String
+            if status == "1006"{
+                let user_id = json["user_id"] as! String
+                let userDefault = UserDefaults.standard
+                userDefault.set(self.userName.text, forKey: "user_name")
+                userDefault.set(self.passWord.text, forKey: "passWord")
+                userDefault.set(user_id, forKey: "user_id")
+                var headImageUrl:String = ""
+                if (json["image"] as? String) != nil
+                {
+                    headImageUrl = String(format:"http://127.0.0.1:8000/media/%@",json["image"] as! String)
+                }else{
+                    headImageUrl = "default"
+                }
+                userDefault.set(headImageUrl, forKey: "headImageUrl")
+                self.dismiss(animated: true, completion: {
+                    
+                })
+                if self.myblock != nil
+                {
+                    self.myblock!("")
+                }
+
+                print("登录成功")
+            }
+            else if status == "1005"{
+                print("用户不存在")
+            }else if status == "1004"{
+                print("密码错误")
+            }
+        })
+        
     }
     
     func registerButtonClick() {
-        self.navigationController?.pushViewController(self.registerVc, animated: true)
+        present(self.registerVc, animated: true)
     }
     
     func tapView() {

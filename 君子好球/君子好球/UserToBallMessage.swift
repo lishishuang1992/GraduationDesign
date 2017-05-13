@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserToExamineVc: UIViewController {
+class UserToBallMessage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

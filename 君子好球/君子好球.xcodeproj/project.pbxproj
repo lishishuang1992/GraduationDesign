@@ -13,6 +13,10 @@
 		BD195E741E83BB0700AA5E71 /* CircleCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD195E731E83BB0700AA5E71 /* CircleCellModel.swift */; };
 		BD2E22AF1EC400E800620D28 /* photoGraph@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD2E22AD1EC400E800620D28 /* photoGraph@2x.png */; };
 		BD2E22B01EC400E800620D28 /* selectImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD2E22AE1EC400E800620D28 /* selectImage@2x.png */; };
+		BD2E22B31EC683CE00620D28 /* UserAboutBallVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2E22B21EC683CE00620D28 /* UserAboutBallVc.swift */; };
+		BD2E22B51EC6843000620D28 /* UserToBallMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2E22B41EC6843000620D28 /* UserToBallMessage.swift */; };
+		BD2E22B71EC689C900620D28 /* ExamineVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2E22B61EC689C900620D28 /* ExamineVc.swift */; };
+		BD2E22B91EC6A36500620D28 /* ExamineViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2E22B81EC6A36500620D28 /* ExamineViewCell.swift */; };
 		BD33613F1E949D8D009E4A78 /* CalculateCellHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD33613E1E949D8D009E4A78 /* CalculateCellHeight.swift */; };
 		BD3361411E94DF22009E4A78 /* BallDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3361401E94DF22009E4A78 /* BallDetailsVC.swift */; };
 		BD3361441E94E013009E4A78 /* BallDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3361431E94E013009E4A78 /* BallDetailsCell.swift */; };
@@ -21,7 +25,6 @@
 		BD3361571E96227F009E4A78 /* aboutBall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD3361551E96227F009E4A78 /* aboutBall@2x.png */; };
 		BD3361581E96227F009E4A78 /* circleMe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD3361561E96227F009E4A78 /* circleMe@2x.png */; };
 		BD33615A1E962D35009E4A78 /* AboutBallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3361591E962D35009E4A78 /* AboutBallVC.swift */; };
-		BD33615C1E964AB3009E4A78 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD33615B1E964AB3009E4A78 /* PickerView.swift */; };
 		BD6627BA1E66C28D007BFEDF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6627B91E66C28D007BFEDF /* LoginController.swift */; };
 		BD6627BC1E66C58A007BFEDF /* LoginManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6627BB1E66C58A007BFEDF /* LoginManagement.swift */; };
 		BD6627BE1E66D883007BFEDF /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6627BD1E66D883007BFEDF /* RegisterController.swift */; };
@@ -69,6 +72,10 @@
 		BD195E731E83BB0700AA5E71 /* CircleCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleCellModel.swift; sourceTree = "<group>"; };
 		BD2E22AD1EC400E800620D28 /* photoGraph@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photoGraph@2x.png"; sourceTree = "<group>"; };
 		BD2E22AE1EC400E800620D28 /* selectImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selectImage@2x.png"; sourceTree = "<group>"; };
+		BD2E22B21EC683CE00620D28 /* UserAboutBallVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAboutBallVc.swift; sourceTree = "<group>"; };
+		BD2E22B41EC6843000620D28 /* UserToBallMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserToBallMessage.swift; sourceTree = "<group>"; };
+		BD2E22B61EC689C900620D28 /* ExamineVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamineVc.swift; sourceTree = "<group>"; };
+		BD2E22B81EC6A36500620D28 /* ExamineViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamineViewCell.swift; sourceTree = "<group>"; };
 		BD33613E1E949D8D009E4A78 /* CalculateCellHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateCellHeight.swift; sourceTree = "<group>"; };
 		BD3361401E94DF22009E4A78 /* BallDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallDetailsVC.swift; sourceTree = "<group>"; };
 		BD3361431E94E013009E4A78 /* BallDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallDetailsCell.swift; sourceTree = "<group>"; };
@@ -77,7 +84,6 @@
 		BD3361551E96227F009E4A78 /* aboutBall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aboutBall@2x.png"; sourceTree = "<group>"; };
 		BD3361561E96227F009E4A78 /* circleMe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circleMe@2x.png"; sourceTree = "<group>"; };
 		BD3361591E962D35009E4A78 /* AboutBallVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutBallVC.swift; sourceTree = "<group>"; };
-		BD33615B1E964AB3009E4A78 /* PickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		BD6627B91E66C28D007BFEDF /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		BD6627BB1E66C58A007BFEDF /* LoginManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManagement.swift; sourceTree = "<group>"; };
 		BD6627BD1E66D883007BFEDF /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
@@ -164,9 +170,20 @@
 			name = image;
 			sourceTree = "<group>";
 		};
+		BD2E22B11EC6839700620D28 /* userCenterVc */ = {
+			isa = PBXGroup;
+			children = (
+				BD2E22B21EC683CE00620D28 /* UserAboutBallVc.swift */,
+				BD2E22B41EC6843000620D28 /* UserToBallMessage.swift */,
+				BD2E22B61EC689C900620D28 /* ExamineVc.swift */,
+			);
+			name = userCenterVc;
+			sourceTree = "<group>";
+		};
 		BD3361421E94DF28009E4A78 /* sonVc */ = {
 			isa = PBXGroup;
 			children = (
+				BD2E22B11EC6839700620D28 /* userCenterVc */,
 				BD8AACD11EC2B41F00D09F5D /* AboutBallContentVc */,
 				BD3361401E94DF22009E4A78 /* BallDetailsVC.swift */,
 				BD8AACE21EC3E26F00D09F5D /* BallMessageVc.swift */,
@@ -268,9 +285,9 @@
 		BDA499A61E666D95001DB844 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				BD2E22B81EC6A36500620D28 /* ExamineViewCell.swift */,
 				BD8AACCF1EC29D3C00D09F5D /* ProjectCell.swift */,
 				BD8AACCD1EC29D1900D09F5D /* AboutUserCell.swift */,
-				BD33615B1E964AB3009E4A78 /* PickerView.swift */,
 				BD3361471E94F3A9009E4A78 /* HeadNameCell.swift */,
 				BD3361431E94E013009E4A78 /* BallDetailsCell.swift */,
 				BD76249D1E84EFC200B68D8A /* InitiatingBallView.swift */,
@@ -432,6 +449,7 @@
 				BD195E6E1E8373CA00AA5E71 /* CircleRightCell.swift in Sources */,
 				BD33613F1E949D8D009E4A78 /* CalculateCellHeight.swift in Sources */,
 				BD8AACD31EC2B45400D09F5D /* ProjectVc.swift in Sources */,
+				BD2E22B51EC6843000620D28 /* UserToBallMessage.swift in Sources */,
 				BD6780ED1E5E76E900AD4D93 /* MainTabController.swift in Sources */,
 				BD6780EF1E5E76E900AD4D93 /* ReleaseBallController.swift in Sources */,
 				BD8AACDF1EC2B5DD00D09F5D /* PlaceVC.swift in Sources */,
@@ -453,12 +471,14 @@
 				BD0D4FE21E77B91400E5D942 /* UserCenterHeadView.swift in Sources */,
 				BD6627BE1E66D883007BFEDF /* RegisterController.swift in Sources */,
 				BD8AACD51EC2B4F200D09F5D /* BallFormatVc.swift in Sources */,
+				BD2E22B91EC6A36500620D28 /* ExamineViewCell.swift in Sources */,
 				BD8AACCE1EC29D1900D09F5D /* AboutUserCell.swift in Sources */,
+				BD2E22B71EC689C900620D28 /* ExamineVc.swift in Sources */,
 				BD6780F01E5E76E900AD4D93 /* CircleFriendsController.swift in Sources */,
-				BD33615C1E964AB3009E4A78 /* PickerView.swift in Sources */,
 				BDA499A91E66713F001DB844 /* UserCenterController.swift in Sources */,
 				BD7624901E83C3A500B68D8A /* EnrolmentFormModel.swift in Sources */,
 				BD195E741E83BB0700AA5E71 /* CircleCellModel.swift in Sources */,
+				BD2E22B31EC683CE00620D28 /* UserAboutBallVc.swift in Sources */,
 				BD76249E1E84EFC200B68D8A /* InitiatingBallView.swift in Sources */,
 				BD6627BA1E66C28D007BFEDF /* LoginController.swift in Sources */,
 			);

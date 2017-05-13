@@ -9,6 +9,7 @@
 import UIKit
 
 class RegisterController: UIViewController ,UITextFieldDelegate{
+    var myblock : blockBtnClickSendValue?
     private var userName = UITextField()
     private var passWord = UITextField()
     private var netWorkApi = NetWorkApi()
@@ -76,12 +77,38 @@ class RegisterController: UIViewController ,UITextFieldDelegate{
             make.right.equalTo(self.userName).offset(-20)
             make.height.equalTo(45)
         }
-        
+        let backBt = UIButton()
+        backBt.setTitle("取消", for: .normal)
+        backBt.setTitleColor(UIColor.blue, for: .normal)
+        backBt.addTarget(self, action: #selector(backBtClick), for: .touchUpInside)
+        self.view.addSubview(backBt)
+        backBt.snp.makeConstraints{ (make) in
+            make.left.equalTo(self.view).offset(15)
+            make.top.equalTo(self.view).offset(15)
+            make.width.equalTo(80)
+            make.height.equalTo(40)
+        }
                 
     }
     
     func registerButtonClick() {
-        self.netWorkApi.register(username:self.userName.text!, password:self.passWord.text!)
+        self.netWorkApi.register(username:self.userName.text!, password:self.passWord.text!, block: {(json: Dictionary)-> Void in
+            print(json)
+            let status = json["status"] as! String
+            if status == "1006"{
+                print("注册成功")
+                if self.myblock != nil
+                {
+                    self.myblock!(self.userName.text!)
+                }
+                self.dismiss(animated: true, completion: nil)
+            }
+            else if status == "1005"{
+                print("用户已存在")
+            }else{
+            
+            }
+        })
     }
     
     func tapView() {
@@ -93,6 +120,9 @@ class RegisterController: UIViewController ,UITextFieldDelegate{
         textField.resignFirstResponder()
         
         return true;
+    }
+    func backBtClick() {
+        self.dismiss(animated: true, completion: nil)
     }
 
     /*

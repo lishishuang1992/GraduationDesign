@@ -166,7 +166,7 @@ class BallDetailsVC: UIViewController ,UITableViewDelegate,UITableViewDataSource
                     enrolmentModel.status = obj["status"] as! String
                     self.enrolmentModelArray.append(enrolmentModel)
                     //检查是否报名过  user_id
-                    if "pUY7Lz5o" == enrolmentModel.user_id{
+                    if UserDefaults.standard.object(forKey: "user_id")as!String == enrolmentModel.user_id{
                         self.flag = 1
                     }
                 }
@@ -190,17 +190,17 @@ class BallDetailsVC: UIViewController ,UITableViewDelegate,UITableViewDataSource
 
     func joinButtonClick() {
         if self.flag == 0{  //没有报过名
-            self.netWorkApi.ballEnroll(ball_id:self.circleCellModel.ball_ID, user_id:"4deTDaA8", block: {(json: Dictionary)-> Void in
+            self.netWorkApi.ballEnroll(ball_id:self.circleCellModel.ball_ID, user_id:UserDefaults.standard.object(forKey: "user_id")as!String, block: {(json: Dictionary)-> Void in
                 //print(json)
                 let status = json["status"] as! String
                 if status == "1006"{
                     print("报名成功")
                     DispatchQueue.main.async(execute: {
                         let enrolmentModel = EnrolmentFormModel()
-                        enrolmentModel.user_name = self.circleCellModel.user_name
-                        enrolmentModel.user_id = "4deTDaA8"
+                        enrolmentModel.user_name = UserDefaults.standard.object(forKey: "user_name")as!String
+                        enrolmentModel.user_id = UserDefaults.standard.object(forKey: "user_id")as!String
                         enrolmentModel.status = "1"
-                        enrolmentModel.headImageUrl = "imageUrl"
+                        enrolmentModel.headImageUrl = UserDefaults.standard.object(forKey: "headImageUrl")as!String
                         self.enrolmentModelArray.append(enrolmentModel)
                         let indexPath = NSIndexSet.init(index:2)
                         self.tableView.reloadSections(indexPath as IndexSet, with: .automatic)
@@ -215,10 +215,11 @@ class BallDetailsVC: UIViewController ,UITableViewDelegate,UITableViewDataSource
                 }
             })
         }else{ //取消报名
-            self.netWorkApi.cancelBallEnroll(ball_id:self.circleCellModel.ball_ID, user_id:"4deTDaA8", block: {(json: Dictionary)-> Void in
+            self.netWorkApi.cancelBallEnroll(ball_id:self.circleCellModel.ball_ID, user_id:UserDefaults.standard.object(forKey: "user_id")as!String, block: {(json: Dictionary)-> Void in
                 //print(json)
                 let status = json["status"] as! String
                 if status == "1006"{
+                    print("取消报名成功")
                     DispatchQueue.main.async(execute: {
                         self.enrolmentModelArray.remove(at: self.enrolmentModelArray.count-1)
                         let indexPath = NSIndexSet.init(index:2)

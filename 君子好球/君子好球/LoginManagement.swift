@@ -8,15 +8,23 @@
 //验证是否登陆
 import UIKit
 
+protocol LoginManagementDelegate:NSObjectProtocol {
+    func loginSuccess()
+}
+
 class LoginManagement: NSObject {
-    
+    weak var delegate:LoginManagementDelegate?
    // static
         
-    func loginDetection(navigationController: UINavigationController? = nil) {
+    func loginDetection(vc: UIViewController? = nil) {
         var shouldJumpToLogin: Bool = true
         defer {
             if shouldJumpToLogin {
-                navigationController?.pushViewController(LoginController(), animated: true)
+                let loginVc = LoginController()
+                vc?.present(loginVc, animated: true, completion:nil)
+                loginVc.myblock =  {(message:String) -> Void in
+                    self.delegate?.loginSuccess()
+                }
             } else {
                 
             }

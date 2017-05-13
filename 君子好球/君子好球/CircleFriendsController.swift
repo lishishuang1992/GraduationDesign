@@ -57,7 +57,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         self.view.addSubview(self.tableView!)
         self.tableView?.snp.makeConstraints{ (make) in
             make.left.equalTo(self.view)
-            make.top.equalTo(self.view)
+            make.top.equalTo(self.view).offset(64)
             make.right.equalTo(self.view)
             make.bottom.equalTo(self.view).offset(-64)
         }
@@ -101,7 +101,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID[self.segmentIndex], for: indexPath) as! CircleRightCell
             //self.tableView.register(CircleLeftCell.classForCoder(), forCellReuseIdentifier: cellIDRight) as! CircleRightCell
-            cell.postData(hotCellModel: modelRightArray[indexPath.row])
+            cell.postData(hotCellModel: self.modelRightArray[indexPath.row])
             return cell
         }
     }
@@ -144,7 +144,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
     
     func reloadAboutBall() {
         self.modelLeftArray.removeAll()
-        self.netWorkApi.homeData(place: "", project: "", ball_object: "", block: {(json: Dictionary)-> Void in
+        self.netWorkApi.homeData(user_id:"",place: "", project: "", ball_object: "", block: {(json: Dictionary)-> Void in
             let status = json["status"] as! String
             if status == "1006"{
                 var resultArray = Array<Dictionary<String, Any>>()
@@ -202,7 +202,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
                     circleHotModel.user_id = obj["user_id"] as! String
                     if (obj["user_image"] as? String) != nil
                     {
-                        circleHotModel.user_image = obj["user_image"] as! String
+                        circleHotModel.user_image = String(format:"http://127.0.0.1:8000/media/%@",obj["user_image"] as! String)
                     }else{
                         circleHotModel.user_image = "default"
                     }
