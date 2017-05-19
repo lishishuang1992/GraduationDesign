@@ -95,13 +95,15 @@ class UserAboutBallVc: UIViewController,UITableViewDataSource,UITableViewDelegat
                 let status = json["status"] as! String
                 if status == "1006"{
                     DispatchQueue.main.async(execute: {
-                        print("删除成功")
+                       // print("删除成功")
+                        self.showNoticeText("删除成功")
                         self.modelLeftArray.remove(at: indexPath.row)
                         self.tableView?.deleteRows(at: [indexPath], with: UITableViewRowAnimation.top)
                     })
                 }
                 else if status == "1005"{
-                    print("删除失败")
+                   // print("删除失败")
+                    self.showNoticeText("删除失败")
                 }else{
                     
                 }
@@ -145,10 +147,15 @@ class UserAboutBallVc: UIViewController,UITableViewDataSource,UITableViewDelegat
             }
             else if status == "1005"{
                 //无数据
+                self.showNoticeText("无数据")
             }else{
                 
             }
         })
+    }
+    
+    override func showNoticeText(_ text: String) {
+        D3NoticeManager.sharedInstance.showText(text,time:D3NoticeManager.longTime,autoClear:true)
     }
 }
 

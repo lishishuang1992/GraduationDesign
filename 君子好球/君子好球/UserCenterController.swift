@@ -34,7 +34,7 @@ class UserCenterController: UIViewController,UIImagePickerControllerDelegate,UIN
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        //self.navigationController?.setNavigationBarHidden(true, animated: false)
         //检查是否已经登录
         let str = (self.userDefault.object(forKey: "user_id")as!String)
         if str.characters.count > 1{
@@ -45,7 +45,7 @@ class UserCenterController: UIViewController,UIImagePickerControllerDelegate,UIN
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        //self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,7 +61,7 @@ class UserCenterController: UIViewController,UIImagePickerControllerDelegate,UIN
         headView.snp.makeConstraints { (make) in
             make.left.equalTo(self.view)
             make.right.equalTo(self.view)
-            make.top.equalTo(self.view)
+            make.top.equalTo(self.view).offset(64)
             make.height.equalTo(200)
         }
         self.user_image.layer.cornerRadius = 80/2
@@ -86,7 +86,8 @@ class UserCenterController: UIViewController,UIImagePickerControllerDelegate,UIN
         }
         self.aboutBallBt.setTitle("查看发布的约球", for: .normal)
         self.aboutBallBt.setTitleColor(UIColor.black, for: .normal)
-        self.aboutBallBt.backgroundColor = UIColor.red
+        self.aboutBallBt.backgroundColor = UIColor.init(red: 192/255.0, green: 255/255.0, blue: 62/255.0, alpha: 1.0)
+
         self.aboutBallBt.addTarget(self, action:#selector(aboutBallBtClick), for:.touchUpInside)
         self.view.addSubview(self.aboutBallBt)
         self.aboutBallBt.snp.makeConstraints { (make) in
@@ -97,7 +98,7 @@ class UserCenterController: UIViewController,UIImagePickerControllerDelegate,UIN
         }
         self.messageBallBt.setTitle("查看发布的球圈", for: .normal)
         self.messageBallBt.setTitleColor(UIColor.black, for: .normal)
-        self.messageBallBt.backgroundColor = UIColor.red
+        self.messageBallBt.backgroundColor = UIColor.init(red: 192/255.0, green: 255/255.0, blue: 62/255.0, alpha: 1.0)
         self.messageBallBt.addTarget(self, action:#selector(messageBallBtClick), for:.touchUpInside)
         self.view.addSubview(self.messageBallBt)
         self.messageBallBt.snp.makeConstraints { (make) in
@@ -113,7 +114,7 @@ class UserCenterController: UIViewController,UIImagePickerControllerDelegate,UIN
         self.view.addSubview(self.exitLogin)
         self.exitLogin.snp.makeConstraints { (make) in
             make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).offset(80)
+            make.centerY.equalTo(self.view).offset(150)
             make.width.equalTo(200)
             make.height.equalTo(40)
         }
@@ -186,9 +187,11 @@ class UserCenterController: UIViewController,UIImagePickerControllerDelegate,UIN
                 print(json)
                 let status = json["status"] as! String
                 if status == "1006"{
-                    print("上传成功")
+                    //print("上传成功")
+                    self.showNoticeText("头像上传成功")
                 }else if status == "1005"{
-                    print("上传失败")
+                    //print("上传失败")
+                    self.showNoticeText("头像上传失败")
                 }else{
                     
                 }
@@ -197,6 +200,7 @@ class UserCenterController: UIViewController,UIImagePickerControllerDelegate,UIN
         }
     }
     func loginSuccess() {
+        self.showNoticeText("登录成功")
         DispatchQueue.main.async(execute: {
             self.user_image.kf.setImage(with: ImageResource.init(downloadURL: NSURL(string:self.userDefault.object(forKey: "headImageUrl") as!String)! as URL), for: .normal)
             self.user_name.text = self.userDefault.object(forKey: "user_name") as? String
@@ -207,5 +211,7 @@ class UserCenterController: UIViewController,UIImagePickerControllerDelegate,UIN
             self.exitLogin.setTitle("退出登录", for: .normal)
         })
     }
-
+    override func showNoticeText(_ text: String) {
+        D3NoticeManager.sharedInstance.showText(text,time:D3NoticeManager.longTime,autoClear:true)
+    }
 }

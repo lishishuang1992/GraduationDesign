@@ -96,7 +96,6 @@ class AboutBallVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
         
     }
     func initData() {
-        
         self.projectName = ["项目:","赛制:","对象:","人数:","费用:","时间:","地点:"]
         self.defaultName = ["篮球","1 V 1","个人赛","3 人","4¥","2017-3-23","黑龙江大学体育馆"]
         self.tableView.delegate = self
@@ -254,18 +253,23 @@ class AboutBallVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
             print(json)
             let status = json["status"] as! String
             if status == "1006"{
+                self.showNoticeText("发布成功")
                 DispatchQueue.main.async(execute: {
                     self.tableView.reloadData()
                 })
+                self.dismiss(animated: true, completion: nil)
             }
             else if status == "1005"{
                 //无数据
+                self.showNoticeText("发布失败")
             }else{
-                
+                self.showNoticeText("其他错误")
             }
         })
     }
     
-    
+    override func showNoticeText(_ text: String) {
+        D3NoticeManager.sharedInstance.showText(text,time:D3NoticeManager.longTime,autoClear:true)
+    }
     
 }

@@ -86,22 +86,24 @@ class ExamineVc: UIViewController,UITableViewDataSource,UITableViewDelegate ,Exa
     //删除cell
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
         if editingStyle == UITableViewCellEditingStyle.delete{
-//            self.netWorkApi.deleteAboutBall(user_id:UserDefaults.standard.object(forKey:"user_id") as! String ,ball_ID:self.modelLeftArray[indexPath.row].ball_ID, block: {(json: Dictionary)-> Void in
-//                print(json)
-//                let status = json["status"] as! String
-//                if status == "1006"{
-//                    DispatchQueue.main.async(execute: {
-//                        print("删除成功")
-//                        self.modelLeftArray.remove(at: indexPath.row)
-//                        self.tableView?.deleteRows(at: [indexPath], with: UITableViewRowAnimation.top)
-//                    })
-//                }
-//                else if status == "1005"{
-//                    print("删除失败")
-//                }else{
-//                    
-//                }
-//            })
+            self.netWorkApi.deleteBallEnroll(user_id:self.enrolmentModelArray[indexPath.row].user_id ,ball_id:self.circleCellModel.ball_ID, block: {(json: Dictionary)-> Void in
+                print(json)
+                let status = json["status"] as! String
+                if status == "1006"{
+                    self.showNoticeText("删除成功")
+                    DispatchQueue.main.async(execute: {
+                       // print("删除成功")
+                        self.enrolmentModelArray.remove(at: indexPath.row)
+                        self.tableView?.deleteRows(at: [indexPath], with: UITableViewRowAnimation.top)
+                    })
+                }
+                else if status == "1005"{
+                    //print("删除失败")
+                    self.showNoticeText("删除失败")
+                }else{
+                    
+                }
+            })
         }
     }
  
@@ -129,9 +131,11 @@ class ExamineVc: UIViewController,UITableViewDataSource,UITableViewDelegate ,Exa
                         self.tableView?.reloadData()
                     })
                 }else if status == "1008" {
-                    print("没有用户报名")
+                    //print("没有用户报名")
+                    self.showNoticeText("没有用户报名")
                 }else if status == "1005"{
-                    print("其他错误")
+                    //print("其他错误")
+                    self.showNoticeText("其他错误")
                 }else{
                     
                 }
@@ -149,18 +153,22 @@ class ExamineVc: UIViewController,UITableViewDataSource,UITableViewDelegate ,Exa
         self.netWorkApi.auditAbout(user_id:self.enrolmentModelArray[index].user_id,ball_id:self.circleCellModel.ball_ID,audio_status:audio_status, block: {(json: Dictionary)-> Void in
             let status = json["status"] as! String
             if status == "1006"{
-                print("审核成功")
+               // print("审核成功")
+                self.showNoticeText("审核成功")
                 DispatchQueue.main.async(execute: {
                     self.enrolmentModelArray[index].status = audio_status
                     let indexPath = NSIndexPath.init(row: index, section: 0)
                     self.tableView?.reloadRows(at: [indexPath as IndexPath], with:.automatic)
                 })
             }else if status == "1005" {
-                print("失败")
+                //print("失败")
+                self.showNoticeText("审核失败")
             }else{
             }
-
         })
+    }
+    override func showNoticeText(_ text: String) {
+        D3NoticeManager.sharedInstance.showText(text,time:D3NoticeManager.longTime,autoClear:true)
     }
 }
 

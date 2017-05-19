@@ -124,8 +124,8 @@ class CircleLeftCell: UITableViewCell {
         }
         //赛制
         self.format = UILabel()
-        self.format.backgroundColor = UIColor.gray
-        self.format.textColor = UIColor.red
+        //self.format.backgroundColor = UIColor.gray
+        self.format.textColor = UIColor.blue
         self.format.font = UIFont.systemFont(ofSize: 15)
         self.format.textAlignment = .center
         self.addSubview(self.format)
@@ -137,8 +137,8 @@ class CircleLeftCell: UITableViewCell {
         
         //费用
         self.cost = UILabel()
-        self.cost.backgroundColor = UIColor.gray
-        self.cost.textColor = UIColor.red
+        //self.cost.backgroundColor = UIColor.gray
+        self.cost.textColor = UIColor.blue
         self.cost.font = UIFont.systemFont(ofSize: 15)
         self.cost.textAlignment = .center
         self.addSubview(self.cost)
@@ -150,8 +150,8 @@ class CircleLeftCell: UITableViewCell {
         
         //对象  3对3
         self.object = UILabel()
-        self.object.backgroundColor = UIColor.gray
-        self.object.textColor = UIColor.red
+        //self.object.backgroundColor = UIColor.gray
+        self.object.textColor = UIColor.blue
         self.object.font = UIFont.systemFont(ofSize: 15)
         self.object.textAlignment = .center
         self.addSubview(self.object)

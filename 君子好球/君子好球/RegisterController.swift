@@ -92,23 +92,31 @@ class RegisterController: UIViewController ,UITextFieldDelegate{
     }
     
     func registerButtonClick() {
-        self.netWorkApi.register(username:self.userName.text!, password:self.passWord.text!, block: {(json: Dictionary)-> Void in
-            print(json)
-            let status = json["status"] as! String
-            if status == "1006"{
-                print("注册成功")
-                if self.myblock != nil
-                {
-                    self.myblock!(self.userName.text!)
+        if self.userName.text?.characters.count == 0{
+            self.showNoticeText("用户名为空")
+        }else if self.passWord.text?.characters.count == 0{
+            self.showNoticeText("密码为空")
+        }else{
+            self.netWorkApi.register(username:self.userName.text!, password:self.passWord.text!, block: {(json: Dictionary)-> Void in
+                let status = json["status"] as! String
+                if status == "1006"{
+                    //print("注册成功")
+                    //self.showNoticeText("注册成功")
+                    if self.myblock != nil
+                    {
+                        self.myblock!(self.userName.text!)
+                    }
+                    self.dismiss(animated: true, completion: { 
+                        
+                    })
                 }
-                self.dismiss(animated: true, completion: nil)
-            }
-            else if status == "1005"{
-                print("用户已存在")
-            }else{
-            
-            }
-        })
+                else if status == "1005"{
+                    self.showNoticeText("用户已存在")
+                }else{
+                    
+                }
+            })
+        }
     }
     
     func tapView() {
@@ -125,6 +133,10 @@ class RegisterController: UIViewController ,UITextFieldDelegate{
         self.dismiss(animated: true, completion: nil)
     }
 
+    override func showNoticeText(_ text: String) {
+        D3NoticeManager.sharedInstance.showText(text,time:D3NoticeManager.longTime,autoClear:true)
+    }
+    
     /*
     // MARK: - Navigation
 

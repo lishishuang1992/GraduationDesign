@@ -309,7 +309,28 @@ class NetWorkApi: NSObject {
         dataTask.resume()
     }
 
-    
-    
+    //删除报名的用户
+    func deleteBallEnroll(user_id:String ,ball_id:String ,block : @escaping (_ dict:Dictionary<String, Any>) -> Void){
+        let Url = URL.init(string:"http://127.0.0.1:8000/admin/deleteBallEnroll")
+        let request = NSMutableURLRequest.init(url: Url!)
+        request.timeoutInterval = 5
+        request.httpMethod = "POST"
+        let dict = ["user_id":user_id,"ball_id":ball_id]
+        let bodayData = try? JSONSerialization.data(withJSONObject: dict, options:JSONSerialization.WritingOptions.prettyPrinted)
+        request.httpBody = bodayData
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
+            if (error != nil) {
+                return
+            }
+            else {
+                //此处是具体的解析，具体请移步下面
+                let json = try? JSONSerialization.jsonObject(with: data!,options:.allowFragments) as! [String: Any]
+                block(json!)
+            }
+        }
+        dataTask.resume()
+    }
+
 
 }

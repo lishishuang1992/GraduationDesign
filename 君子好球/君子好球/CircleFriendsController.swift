@@ -13,7 +13,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
     private var segmented = UISegmentedControl()
     var modelLeftArray = Array<CircleCellModel>()
     var modelRightArray = Array<CircleHotCellModel>()
-    var tableView: UITableView?
+    var tableView = UITableView()
     var segmentIndex: Int = 0;
     let cellID:Array = ["reuseIdentifierLeft","reuseIdentifierRight"]
     var cellImageHeight:Array = Array<CGFloat>()
@@ -48,31 +48,32 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
     }
     //init View
     func initView() {
+        //print(self.view.frame.size.height,self.view.frame.origin.y)
+       // self.view.backgroundColor = UIColor.red
         self.modelLeftArray = Array<CircleCellModel>()
         self.modelRightArray = Array<CircleHotCellModel>()
         let items = ["同城约球","热门动态"]
         self.segmented = UISegmentedControl(items:items)
         self.segmented.selectedSegmentIndex = 0 
         self.segmented.addTarget(self, action: #selector(segmentDidchange(segmented:)), for: .valueChanged)
-        self.tableView = UITableView()
-        self.view.addSubview(self.tableView!)
-        self.tableView?.snp.makeConstraints{ (make) in
+        self.view.addSubview(self.tableView)
+        self.tableView.snp.makeConstraints{ (make) in
             make.left.equalTo(self.view)
             make.top.equalTo(self.view)
             make.right.equalTo(self.view)
-            make.bottom.equalTo(self.view).offset(-64)
+            make.bottom.equalTo(self.view).offset(-44)
         }
-        self.tableView?.register(CircleLeftCell.classForCoder(), forCellReuseIdentifier: cellID[0])
+        self.tableView.register(CircleLeftCell.classForCoder(), forCellReuseIdentifier: cellID[0])
         self.refreshControl = UIRefreshControl();
-        self.tableView?.addSubview(self.refreshControl!);
+        self.tableView.addSubview(self.refreshControl!);
         self.refreshControl?.addTarget(self, action: #selector(loadData), for: .valueChanged);
     }
     
     
     func initData() {
         self.segmentIndex = 0;
-        self.tableView?.delegate = self
-        self.tableView?.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         self.reloadAboutBall()
     }
     // MARK: - Table view data source
@@ -134,10 +135,10 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         //获得选项的索引
         self.segmentIndex = segmented.selectedSegmentIndex
         if segmentIndex == 0{
-            self.tableView?.register(CircleLeftCell.classForCoder(), forCellReuseIdentifier:     cellID[segmentIndex])
+            self.tableView.register(CircleLeftCell.classForCoder(), forCellReuseIdentifier:     cellID[segmentIndex])
             self.reloadAboutBall()
         }else{
-            self.tableView?.register(CircleRightCell.classForCoder(), forCellReuseIdentifier:     cellID[segmentIndex])
+            self.tableView.register(CircleRightCell.classForCoder(), forCellReuseIdentifier:     cellID[segmentIndex])
             self.reloadBallMessage()
         }
     }
@@ -179,12 +180,13 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
                     self.modelLeftArray.append(circleModel)
                 }
                 DispatchQueue.main.async(execute: {
-                    self.tableView?.reloadData()
+                    self.tableView.reloadData()
                     self.refreshControl?.endRefreshing()
                 })
             }
             else if status == "1005"{
                 //无数据
+                self.showNoticeText("无数据")
             }else{
                 
             }
@@ -236,11 +238,12 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
                     }
                     self.cellImageHeight = calculateCellHeight.calculateCellHeight(array: self.modelRightArray)
                     self.refreshControl?.endRefreshing()
-                    self.tableView?.reloadData()
+                    self.tableView.reloadData()
                 })
             }
             else if status == "1005"{
                 //无数据
+                self.showNoticeText("无数据")
             }else{
                 
             }
@@ -248,27 +251,42 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
 
     }
    // CircleRightCellDelegate
-    func praiseBtClick(sender:UIButton){
-        let dict = ["user_name":UserDefaults.standard.object(forKey: "user_name"),"user_id":UserDefaults.standard.object(forKey: "user_id")]
-        self.modelRightArray[sender.tag].zanUser.append(dict)
-        let indexPath = NSIndexPath.init(row: sender.tag, section: 0)
-        self.tableView?.reloadRows(at: [indexPath as IndexPath], with:.none)
+    func praiseBtClick(sender:UIButton){    //点赞
+        //检查是否已经登录
+        let str = (UserDefaults.standard.object(forKey: "user_id")as!String)
+        if str.characters.count > 1{
+            let dict = ["user_name":UserDefaults.standard.object(forKey: "user_name"),"user_id":UserDefaults.standard.object(forKey: "user_id")]
+            self.modelRightArray[sender.tag].zanUser.append(dict)
+            let indexPath = NSIndexPath.init(row: sender.tag, section: 0)
+            self.tableView.reloadRows(at: [indexPath as IndexPath], with:.none)
+        }else{
+            self.showNoticeText("您还未登录")
+        }
     }
     func headImageBtClick(sender:UIButton){
         
     }
-    func shareBtClick(sender:UIButton){
-        let textToShare = "球类约友app"
-        let imageData = NSData.init(contentsOf: URL.init(string:self.modelRightArray[sender.tag].imageUrlArray[0])!)
-        let imageToShare:UIImage = UIImage.init(data: imageData! as Data)!
-        let urlToShare:URL = URL.init(string:"http://127.0.0.1:8000/admin/resertBallMessage")!
-        let activityItems = [urlToShare,textToShare,imageToShare] as [Any]
-        let shareVc = UIActivityViewController.init(activityItems: activityItems, applicationActivities: nil)
-        self.navigationController?.present(shareVc, animated:true, completion: { 
-            
-        })
+    func shareBtClick(sender:UIButton){      //分享
+        //检查是否已经登录
+        let str = (UserDefaults.standard.object(forKey: "user_id")as!String)
+        if str.characters.count > 1{
+            let textToShare = "球类约友app"
+            let imageData = NSData.init(contentsOf: URL.init(string:self.modelRightArray[sender.tag].imageUrlArray[0])!)
+            let imageToShare:UIImage = UIImage.init(data: imageData! as Data)!
+            let urlToShare:URL = URL.init(string:"http://127.0.0.1:8000/admin/resertBallMessage")!
+            let activityItems = [urlToShare,textToShare,imageToShare] as [Any]
+            let shareVc = UIActivityViewController.init(activityItems: activityItems, applicationActivities: nil)
+            self.navigationController?.present(shareVc, animated:true, completion: {
+                
+            })
+
+        }else{
+            self.showNoticeText("您还未登录")
+        }
     }
     
-        
+    override func showNoticeText(_ text: String) {
+        D3NoticeManager.sharedInstance.showText(text,time:D3NoticeManager.longTime,autoClear:true)
+    }
 }
 

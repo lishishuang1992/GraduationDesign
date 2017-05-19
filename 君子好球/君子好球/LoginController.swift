@@ -124,38 +124,44 @@ class LoginController: UIViewController,UITextFieldDelegate {
     }
     
     func loginButtonClick() {
-        self.netWorkApi.login(username:self.userName.text!, password:self.passWord.text!, block: {(json: Dictionary)-> Void in
-            let status = json["status"] as! String
-            if status == "1006"{
-                let user_id = json["user_id"] as! String
-                let userDefault = UserDefaults.standard
-                userDefault.set(self.userName.text, forKey: "user_name")
-                userDefault.set(self.passWord.text, forKey: "passWord")
-                userDefault.set(user_id, forKey: "user_id")
-                var headImageUrl:String = ""
-                if (json["image"] as? String) != nil
-                {
-                    headImageUrl = String(format:"http://127.0.0.1:8000/media/%@",json["image"] as! String)
-                }else{
-                    headImageUrl = "default"
+        if self.userName.text?.characters.count == 0{
+            self.showNoticeText("用户名为空")
+        }else if self.passWord.text?.characters.count == 0{
+            self.showNoticeText("密码为空")
+        }else{
+            self.netWorkApi.login(username:self.userName.text!, password:self.passWord.text!, block: {(json: Dictionary)-> Void in
+                let status = json["status"] as! String
+                if status == "1006"{
+                    let user_id = json["user_id"] as! String
+                    let userDefault = UserDefaults.standard
+                    userDefault.set(self.userName.text, forKey: "user_name")
+                    userDefault.set(self.passWord.text, forKey: "passWord")
+                    userDefault.set(user_id, forKey: "user_id")
+                    var headImageUrl:String = ""
+                    if (json["image"] as? String) != nil
+                    {
+                        headImageUrl = String(format:"http://127.0.0.1:8000/media/%@",json["image"] as! String)
+                    }else{
+                        headImageUrl = "default"
+                    }
+                    userDefault.set(headImageUrl, forKey: "headImageUrl")
+                    self.dismiss(animated: true, completion: {
+        
+                    })
+                    if self.myblock != nil
+                    {
+                        self.myblock!("")
+                    }
+                    print("登录成功")
                 }
-                userDefault.set(headImageUrl, forKey: "headImageUrl")
-                self.dismiss(animated: true, completion: {
-                    
-                })
-                if self.myblock != nil
-                {
-                    self.myblock!("")
+                else if status == "1005"{
+                    self.showNoticeText("用户不存在")
+                }else if status == "1004"{
+                    self.showNoticeText("密码错误")
                 }
+            })
 
-                print("登录成功")
-            }
-            else if status == "1005"{
-                print("用户不存在")
-            }else if status == "1004"{
-                print("密码错误")
-            }
-        })
+        }
         
     }
     
@@ -174,4 +180,7 @@ class LoginController: UIViewController,UITextFieldDelegate {
         return true;
     }
 
+    override func showNoticeText(_ text: String) {
+        D3NoticeManager.sharedInstance.showText(text,time:D3NoticeManager.longTime,autoClear:true)
+    }
 }

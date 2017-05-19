@@ -164,7 +164,6 @@ class CircleRightCell: UITableViewCell {
         for zanUser in hotCellModel.zanUser{
             self.zanText.text = String(format:"%@,%@",self.zanText.text!,zanUser["user_name"] as! String)
         }
-        
         self.backImageView.kf.setImage(with: ImageResource.init(downloadURL: NSURL(string: (hotCellModel.imageUrlArray[0]))! as URL), placeholder: nil, options: [KingfisherOptionsInfoItem.transition(ImageTransition.fade(1)), KingfisherOptionsInfoItem.forceRefresh], progressBlock: nil, completionHandler:{ (image, error, cacheType, imageURL) -> () in
             DispatchQueue.main.async(execute: {
                 self.backImageView.snp.updateConstraints { (make) in

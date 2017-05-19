@@ -25,7 +25,7 @@ class ReleaseBallController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        //self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.tabBarController?.tabBar.isHidden = true
         //检查是否已经登录
         let str = (self.userDefault.object(forKey: "user_id")as!String)
@@ -37,7 +37,7 @@ class ReleaseBallController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        //self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.tabBarController?.tabBar.isHidden = false
     }
     
@@ -46,6 +46,8 @@ class ReleaseBallController: UIViewController {
     }
     
     func initView() {
+        self.navigationController?.navigationItem.title = "afadfa"
+        self.navigationItem.title = "这次呢？"
         self.view.backgroundColor = UIColor.init(red: 224/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0)
         self.backBt = UIButton()
         self.backBt?.setImage(UIImage(named:"wrong"), for: .normal)
@@ -83,6 +85,7 @@ class ReleaseBallController: UIViewController {
                 self.present(ballVc, animated: true, completion: nil)
             }else{
                 print("用户没有登录")
+                self.showNoticeText("用户没有登录")
             }
         }else{
             if self.flag == 0 {
@@ -90,6 +93,7 @@ class ReleaseBallController: UIViewController {
                 self.present(ballMessageVc, animated: true, completion: nil)
             }else{
                 print("用户没有登录")
+                self.showNoticeText("用户没有登录")
             }
         }
         
@@ -115,5 +119,8 @@ class ReleaseBallController: UIViewController {
                 self.tabBarController?.selectedIndex = 0
             }
         }
+    }
+    override func showNoticeText(_ text: String) {
+        D3NoticeManager.sharedInstance.showText(text,time:D3NoticeManager.longTime,autoClear:true)
     }
 }

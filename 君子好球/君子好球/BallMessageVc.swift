@@ -123,20 +123,25 @@ class BallMessageVc: UIViewController ,UITextViewDelegate,UIImagePickerControlle
                 print(json)
                 let status = json["status"] as! String
                 if status == "1006"{
-                    print("插入成功")
+                    //print("插入成功")
+                    self.showNoticeText("发布成功")
+                    self.dismiss(animated: true, completion: nil)
                 }
                 else if status == "1005"{
                     //无数据
-                    print("插入失败")
+                    //print("插入失败")
+                    self.showNoticeText("发布失败")
                 }else{
-                    
+                    self.showNoticeText("其他错误")
                 }
             })
 
         }else if (self.postImage == nil){
-            print("照片为空")
+           // print("照片为空")
+            self.showNoticeText("照片为空")
         }else{
-           print("文字为空")
+           //print("文字为空")
+            self.showNoticeText("文字为空")
         }
         
     }
@@ -176,13 +181,13 @@ class BallMessageVc: UIViewController ,UITextViewDelegate,UIImagePickerControlle
                 () -> Void in
             })
         }else{
-            print("读取相册错误")
+           // print("读取相册错误")
+            self.showNoticeText("读取相册错误")
         }
     }
     
     func openCamera(){
         if UIImagePickerController.isSourceTypeAvailable(.camera){
-            
             //创建图片控制器
             let picker = UIImagePickerController()
             //设置代理
@@ -196,7 +201,7 @@ class BallMessageVc: UIViewController ,UITextViewDelegate,UIImagePickerControlle
                 
             })
         }else{
-            debugPrint("找不到相机")
+             self.showNoticeText("找不到相机")
         }
     }
     
@@ -210,6 +215,9 @@ class BallMessageVc: UIViewController ,UITextViewDelegate,UIImagePickerControlle
         picker.dismiss(animated: true, completion: {
             () -> Void in
         })
+    }
+    override func showNoticeText(_ text: String) {
+        D3NoticeManager.sharedInstance.showText(text,time:D3NoticeManager.longTime,autoClear:true)
     }
     
 }

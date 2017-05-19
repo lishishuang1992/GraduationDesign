@@ -171,12 +171,16 @@ class BallDetailsVC: UIViewController ,UITableViewDelegate,UITableViewDataSource
                     //检查是否报名过  user_id
                     if UserDefaults.standard.object(forKey: "user_id")as!String == enrolmentModel.user_id{
                         self.flag = 1
+                        //self.showNoticeText("用户已经报名")
+                    }else{
+                        //self.showNoticeText("报名成功")
                     }
                 }
                 DispatchQueue.main.async(execute: {
                     self.tableView.reloadData()
                     if self.flag == 1{
                         self.joinButton.setTitle("取消报名", for: .normal)
+                        //self.showNoticeText("取消报名成功")
                     }
                 })
             }else if status == "1008" {
@@ -192,53 +196,65 @@ class BallDetailsVC: UIViewController ,UITableViewDelegate,UITableViewDataSource
     
 
     func joinButtonClick() {
-        if self.flag == 0{  //没有报过名
-            self.netWorkApi.ballEnroll(ball_id:self.circleCellModel.ball_ID, user_id:UserDefaults.standard.object(forKey: "user_id")as!String, block: {(json: Dictionary)-> Void in
-                //print(json)
-                let status = json["status"] as! String
-                if status == "1006"{
-                    print("报名成功")
-                    DispatchQueue.main.async(execute: {
-                        let enrolmentModel = EnrolmentFormModel()
-                        enrolmentModel.user_name = UserDefaults.standard.object(forKey: "user_name")as!String
-                        enrolmentModel.user_id = UserDefaults.standard.object(forKey: "user_id")as!String
-                        enrolmentModel.status = "1"
-                        enrolmentModel.headImageUrl = UserDefaults.standard.object(forKey: "headImageUrl")as!String
-                        self.enrolmentModelArray.append(enrolmentModel)
-                        let indexPath = NSIndexSet.init(index:2)
-                        self.tableView.reloadSections(indexPath as IndexSet, with: .automatic)
-                        self.joinButton.setTitle("取消报名", for: .normal)
-                        self.flag = 1
-                    })
-                    //更新,
-                }else if status == "1005"{
-                    print("其他错误")
-                }else{
-                    
-                }
-            })
-        }else{ //取消报名
-            self.netWorkApi.cancelBallEnroll(ball_id:self.circleCellModel.ball_ID, user_id:UserDefaults.standard.object(forKey: "user_id")as!String, block: {(json: Dictionary)-> Void in
-                //print(json)
-                let status = json["status"] as! String
-                if status == "1006"{
-                    print("取消报名成功")
-                    DispatchQueue.main.async(execute: {
-                        self.enrolmentModelArray.remove(at: self.enrolmentModelArray.count-1)
-                        let indexPath = NSIndexSet.init(index:2)
-                        self.tableView.reloadSections(indexPath as IndexSet, with: .automatic)
-                        self.joinButton.setTitle("报名", for: .normal)
-                        self.flag = 0
-                    })
-                    //更新,
-                }else if status == "1005"{
-                    print("其他错误")
-                }else{
-                    
-                }
-            })
+        //检查是否已经登录
+        let str = (UserDefaults.standard.object(forKey: "user_id")as!String)
+        if str.characters.count > 1{
+            if self.flag == 0{  //没有报过名
+                self.netWorkApi.ballEnroll(ball_id:self.circleCellModel.ball_ID, user_id:UserDefaults.standard.object(forKey: "user_id")as!String, block: {(json: Dictionary)-> Void in
+                    //print(json)
+                    let status = json["status"] as! String
+                    if status == "1006"{
+                        //print("报名成功")
+                        DispatchQueue.main.async(execute: {
+                            let enrolmentModel = EnrolmentFormModel()
+                            enrolmentModel.user_name = UserDefaults.standard.object(forKey: "user_name")as!String
+                            enrolmentModel.user_id = UserDefaults.standard.object(forKey: "user_id")as!String
+                            enrolmentModel.status = "1"
+                            enrolmentModel.headImageUrl = UserDefaults.standard.object(forKey: "headImageUrl")as!String
+                            self.enrolmentModelArray.append(enrolmentModel)
+                            let indexPath = NSIndexSet.init(index:2)
+                            self.tableView.reloadSections(indexPath as IndexSet, with: .automatic)
+                            self.joinButton.setTitle("取消报名", for: .normal)
+                            self.flag = 1
+                        })
+                        self.showNoticeText("报名成功")
+                        //更新,
+                    }else if status == "1005"{
+                        // print("其他错误")
+                        self.showNoticeText("其他错误")
+                    }else if status == "1008"{
+                        self.showNoticeText("名额已满")
+                    }
+                })
+            }else{ //取消报名
+                self.netWorkApi.cancelBallEnroll(ball_id:self.circleCellModel.ball_ID, user_id:UserDefaults.standard.object(forKey: "user_id")as!String, block: {(json: Dictionary)-> Void in
+                    //print(json)
+                    let status = json["status"] as! String
+                    if status == "1006"{
+                        // print("取消报名成功")
+                        self.showNoticeText("取消报名成功")
+                        DispatchQueue.main.async(execute: {
+                            self.enrolmentModelArray.remove(at: self.enrolmentModelArray.count-1)
+                            let indexPath = NSIndexSet.init(index:2)
+                            self.tableView.reloadSections(indexPath as IndexSet, with: .automatic)
+                            self.joinButton.setTitle("报名", for: .normal)
+                            self.flag = 0
+                        })
+                        //更新,
+                    }else if status == "1005"{
+                        print("其他错误")
+                        self.showNoticeText("其他错误")
+                    }else{
+                        
+                    }
+                })
+            }
+        }else{
+            self.showNoticeText("请登录后报名")
         }
     }
-
+    override func showNoticeText(_ text: String) {
+        D3NoticeManager.sharedInstance.showText(text,time:D3NoticeManager.longTime,autoClear:true)
+    }
 
 }
