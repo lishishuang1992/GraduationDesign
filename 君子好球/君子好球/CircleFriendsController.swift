@@ -16,9 +16,12 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
     var tableView = UITableView()
     var segmentIndex: Int = 0;
     let cellID:Array = ["reuseIdentifierLeft","reuseIdentifierRight"]
-    var cellImageHeight:Array = Array<CGFloat>()
-    var cellTextHeight:Array = Array<CGFloat>()
+    var cellImageHeight:Array = Array<CGFloat>()  //照片高度
+    var cellTextHeight:Array = Array<CGFloat>()   //文本内容高度
     var refreshControl: UIRefreshControl?
+    var zanLabelHeight:Array = Array<CGFloat>()  //点赞名字高度
+    var zanBoolArray = Array<Bool>()   //标记是否点赞
+    
     private var netWorkApi = NetWorkApi()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +32,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        //reloadAboutBall()
         self.navigationController?.navigationBar.addSubview(self.segmented)
         self.segmented.snp.makeConstraints { (make) in
             make.top.equalTo((self.navigationController?.navigationBar.snp.top)!).offset(
@@ -103,7 +107,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID[self.segmentIndex], for: indexPath) as! CircleRightCell
             //self.tableView.register(CircleLeftCell.classForCoder(), forCellReuseIdentifier: cellIDRight) as! CircleRightCell
-            cell.postData(hotCellModel: self.modelRightArray[indexPath.row])
+            self.zanBoolArray.append(cell.postData(hotCellModel: self.modelRightArray[indexPath.row]))
             cell.index = indexPath.row
             cell.selectionStyle = .none;
             cell.delegate = self
@@ -125,7 +129,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         if self.segmentIndex == 0{
             return 220/2.0
         }else if(self.segmentIndex == 1){
-            return self.cellTextHeight[indexPath.row] + 100 + self.cellImageHeight[indexPath.row]
+            return self.cellTextHeight[indexPath.row] + 100 + self.cellImageHeight[indexPath.row] + self.zanLabelHeight[indexPath.row]
         }else{
             return 0
         }
@@ -210,6 +214,7 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
                     circleHotModel.current_time = timeStr.substring(to: index)
                     circleHotModel.contentText = obj["message"] as! String
                     circleHotModel.user_id = obj["user_id"] as! String
+                    circleHotModel.message_id = obj["message_id"] as! String
                     if (obj["user_image"] as? String) != nil
                     {
                         circleHotModel.user_image = String(format:"http://127.0.0.1:8000/media/%@",obj["user_image"] as! String)
@@ -218,25 +223,17 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
                     }
                     circleHotModel.user_id = obj["user_id"] as! String
                     circleHotModel.user_name = obj["user_name"] as! String
-                    circleHotModel.pointPraise = String(format:"%d",obj["num"] as! CVarArg)
+                    circleHotModel.pointPraise = String(format:"%d",obj["num"] as! Int)
                     circleHotModel.zanUser = obj["zan_userId"]as! Array
                     self.modelRightArray.append(circleHotModel)
                 }
-                DispatchQueue.main.async(execute: {
+                //网络请求成功后
+                DispatchQueue.main.async(execute: { //计算图片，内容和点赞名字的高度
                     let calculateCellHeight = CalculateCellHeight()
-                    for circleHotModel in self.modelRightArray{
-                        var textString:String = ""
-                        if circleHotModel.zanUser.count == 0{
-                            self.cellTextHeight.append(0)
-                        }else{
-                            for obj in circleHotModel.zanUser{
-                                textString = String(format:"%@,%@",textString,obj["user_name"] as! CVarArg)
-                                let textHeight = calculateCellHeight.getLabHeigh(labelStr: textString, font: UIFont.systemFont(ofSize: 12), width: self.view.frame.size.width-72.5)
-                                self.cellTextHeight.append(textHeight)
-                            }
-                        }
-                    }
-                    self.cellImageHeight = calculateCellHeight.calculateCellHeight(array: self.modelRightArray)
+                    calculateCellHeight.cellArray = self.modelRightArray
+                    self.cellTextHeight = calculateCellHeight.calculateCellTextHeight()
+                    self.cellImageHeight = calculateCellHeight.calculateCellImageHeight()
+                    self.zanLabelHeight = calculateCellHeight.calculateCellZanHeight()
                     self.refreshControl?.endRefreshing()
                     self.tableView.reloadData()
                 })
@@ -255,10 +252,58 @@ class CircleFriendsController: UIViewController,UITableViewDataSource,UITableVie
         //检查是否已经登录
         let str = (UserDefaults.standard.object(forKey: "user_id")as!String)
         if str.characters.count > 1{
-            let dict = ["user_name":UserDefaults.standard.object(forKey: "user_name"),"user_id":UserDefaults.standard.object(forKey: "user_id")]
-            self.modelRightArray[sender.tag].zanUser.append(dict)
-            let indexPath = NSIndexPath.init(row: sender.tag, section: 0)
-            self.tableView.reloadRows(at: [indexPath as IndexPath], with:.none)
+            
+            if self.zanBoolArray[sender.tag]{ //已经点赞——取消点赞
+                self.netWorkApi.canleZanMessage(user_id:UserDefaults.standard.object(forKey: "user_id") as! String,message_id:self.modelRightArray[sender.tag].message_id,block: {(json: Dictionary)-> Void in
+                    let status = json["status"] as! String
+                    if status == "1006"{
+                        print("取消赞成功")
+                        self.zanBoolArray[sender.tag] = false
+                       // self.modelRightArray[sender.tag].zanUser.removeLast()
+                        var i = 0
+                        for zanUser in self.modelRightArray[sender.tag].zanUser{
+                            if zanUser["user_id"]as!String == UserDefaults.standard.object(forKey: "user_id")as!String{
+                                self.modelRightArray[sender.tag].zanUser.remove(at: i)
+                            }
+                            i = i + 1
+                        }
+                        let indexPath = NSIndexPath.init(row: sender.tag, section: 0)
+                        let myCell = self.tableView.cellForRow(at: indexPath as IndexPath) as!CircleRightCell
+                        DispatchQueue.main.async(execute: {
+                            myCell.praiseBt.setImage(UIImage(named:"heart_gray"), for: .normal)
+                            //更新内容
+                            self.zanLabelHeight[sender.tag] = myCell.upDataZanText(hotCellModel: self.modelRightArray[sender.tag])
+                            //只更新高度，不更新内容
+                            self.tableView.beginUpdates()
+                            self.tableView.endUpdates()
+                        })
+                    }
+                })
+            }else{  //没有点赞
+                self.netWorkApi.zanMessage(user_id:UserDefaults.standard.object(forKey: "user_id") as! String,message_id:self.modelRightArray[sender.tag].message_id,block: {(json: Dictionary)-> Void in
+                    let status = json["status"] as! String
+                    if status == "1006"{
+                        print("点赞成功")
+                        self.zanBoolArray[sender.tag] = true   //更改标记
+                        let dict = ["user_name":UserDefaults.standard.object(forKey: "user_name"),"user_id":UserDefaults.standard.object(forKey: "user_id")]
+                        self.modelRightArray[sender.tag].zanUser.append(dict)
+                        let indexPath = NSIndexPath.init(row: sender.tag, section: 0)
+                        let myCell = self.tableView.cellForRow(at: indexPath as IndexPath) as!CircleRightCell       //获取cell
+                        DispatchQueue.main.async(execute: {
+                            myCell.praiseBt.setImage(UIImage(named:"heart"), for: .normal)
+                            //更新内容
+                            self.zanLabelHeight[sender.tag] = myCell.upDataZanText(hotCellModel: self.modelRightArray[sender.tag])
+                            //只更新cell高度，不更cell新内容
+                            self.tableView.beginUpdates()
+                            self.tableView.endUpdates()
+                        })
+                    }else{
+                        self.showNoticeText("点赞失败")
+                    }
+                })
+                    
+
+            }
         }else{
             self.showNoticeText("您还未登录")
         }

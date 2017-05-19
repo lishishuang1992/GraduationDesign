@@ -19,6 +19,7 @@ class CircleHotCellModel: NSObject {
     var user_image: String = ""          //用户头像
     var user_name: String = ""          //用户名
     var zanUser: Array<Dictionary<String, Any>> = []      //点赞人的ID 和name
+    var zanBool:Bool = false                  //当前用户是否已经点赞  
     
     
 }

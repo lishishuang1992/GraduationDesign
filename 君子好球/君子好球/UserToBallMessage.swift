@@ -13,6 +13,7 @@ class UserToBallMessage: UIViewController,UITableViewDataSource,UITableViewDeleg
     var tableView: UITableView?
     let cellID:String = "reuseIdentifierLeft"
     var cellHeight:Array = Array<CGFloat>()
+    var zanLabelHeight:Array = Array<CGFloat>()  //点赞名字高度
     private var netWorkApi = NetWorkApi()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,7 +102,7 @@ class UserToBallMessage: UIViewController,UITableViewDataSource,UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return self.cellHeight[indexPath.row] + 80
+            return self.cellHeight[indexPath.row] + 100 + self.zanLabelHeight[indexPath.row]
     }
     func reloadBallMessage() {
         self.modelRightArray.removeAll()
@@ -128,13 +129,15 @@ class UserToBallMessage: UIViewController,UITableViewDataSource,UITableViewDeleg
                     circleHotModel.user_id = obj["user_id"] as! String
                     circleHotModel.message_id = obj["message_id"] as! String
                     circleHotModel.user_name = obj["user_name"] as! String
-                    circleHotModel.pointPraise = String(format:"%d",obj["num"] as! CVarArg)
+                    circleHotModel.pointPraise = String(format:"%d",obj["num"] as! Int)
                     circleHotModel.zanUser = obj["zan_userId"]as! Array
                     self.modelRightArray.append(circleHotModel)
                 }
                 DispatchQueue.main.async(execute: {
                     let calculateCellHeight = CalculateCellHeight()
-                    self.cellHeight = calculateCellHeight.calculateCellHeight(array: self.modelRightArray)
+                    calculateCellHeight.cellArray = self.modelRightArray
+                    self.cellHeight = calculateCellHeight.calculateCellImageHeight()
+                    self.zanLabelHeight = calculateCellHeight.calculateCellZanHeight()
                     self.tableView?.reloadData()
                 })
             }

@@ -78,6 +78,7 @@ class CircleRightCell: UITableViewCell {
             make.right.equalTo(self.snp.right).offset(-10)
             make.width.equalTo(200)
         }
+        //发布的文字内容
         self.contentText = UILabel()
         self.contentText.font = UIFont.systemFont(ofSize: 14)
         self.contentText.numberOfLines = 0
@@ -144,6 +145,7 @@ class CircleRightCell: UITableViewCell {
     }
     
     func praiseBtClick(sender:UIButton) {
+        
         sender.tag = self.index
         self.delegate?.praiseBtClick(sender: sender)
     }
@@ -156,14 +158,20 @@ class CircleRightCell: UITableViewCell {
         self.delegate?.shareBtClick(sender: sender)
     }
 
-    func postData(hotCellModel :CircleHotCellModel ) {
+    func postData(hotCellModel :CircleHotCellModel ) ->Bool{
+        var zanBool = false //是否已经赞过
         self.headImageBt.kf.setImage(with: ImageResource.init(downloadURL: NSURL(string: hotCellModel.user_image)! as URL), for: .normal)
         self.nickname.text = hotCellModel.user_name
         self.time.text = hotCellModel.current_time
         self.contentText.text = hotCellModel.contentText
+        var string = ""
         for zanUser in hotCellModel.zanUser{
-            self.zanText.text = String(format:"%@,%@",self.zanText.text!,zanUser["user_name"] as! String)
+            string = String(format:"%@,%@",string,zanUser["user_name"] as! String)
+            if zanUser["user_id"]as!String == UserDefaults.standard.object(forKey: "user_id")as!String{
+                zanBool = true
+            }
         }
+        self.zanText.text = string
         self.backImageView.kf.setImage(with: ImageResource.init(downloadURL: NSURL(string: (hotCellModel.imageUrlArray[0]))! as URL), placeholder: nil, options: [KingfisherOptionsInfoItem.transition(ImageTransition.fade(1)), KingfisherOptionsInfoItem.forceRefresh], progressBlock: nil, completionHandler:{ (image, error, cacheType, imageURL) -> () in
             DispatchQueue.main.async(execute: {
                 self.backImageView.snp.updateConstraints { (make) in
@@ -171,8 +179,26 @@ class CircleRightCell: UITableViewCell {
                 }
             })
         })
+        if zanBool{
+            self.praiseBt.setImage(UIImage(named:"heart"), for: .normal)
+        }
         self.pointPraise.text = hotCellModel.pointPraise
+        return zanBool
     }
+    
+    //更新点赞人名部分
+    func upDataZanText(hotCellModel :CircleHotCellModel)-> CGFloat {
+        var string = ""
+        for zanUser in hotCellModel.zanUser{
+            
+            string = String(format:"%@,%@",string,zanUser["user_name"] as! String)
+        }
+        print("_____________________",string)
+        self.zanText.text = string
+        return getLabHeigh(labelStr: self.zanText.text!, font: UIFont.systemFont(ofSize: 10), width: self.zanText.frame.size.width)
+    }
+    
+    
     
     //计算文字的高度
     func getLabHeigh(labelStr:String,font:UIFont,width:CGFloat) -> CGFloat {
