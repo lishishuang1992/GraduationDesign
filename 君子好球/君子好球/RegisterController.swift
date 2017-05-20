@@ -27,7 +27,7 @@ class RegisterController: UIViewController ,UITextFieldDelegate{
     func initView(){
         let tap = UITapGestureRecognizer(target: self, action: #selector(LoginController.tapView))
         self.view.addGestureRecognizer(tap)
-        self.view.backgroundColor = UIColor.init(red: 224/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0)
+        self.view.backgroundColor = UIColor.init(red: 0/255.0, green: 154/255.0, blue: 205/255.0, alpha: 1.0)
         //userName.frame = CGRect(x: WIETH/2-150/2 ,y: 64 ,width: 150 , height: 50)
         self.userName.placeholder = "请输入用户名"
         self.userName.font = UIFont(name: "Chalkduster",size: 15)

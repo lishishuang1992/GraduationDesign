@@ -25,6 +25,7 @@ class NetWorkApi: NSObject {
             else {
                 //此处是具体的解析，具体请移步下面
                 let json = try? JSONSerialization.jsonObject(with: data!,options:.allowFragments) as! [String: Any]
+                print(json)
                 block(json!)
             }
         }
@@ -50,6 +51,7 @@ class NetWorkApi: NSObject {
             else {
                 //此处是具体的解析，具体请移步下面
                 let json = try? JSONSerialization.jsonObject(with: data!,options:.allowFragments) as! [String: Any]
+                print(json)
                 block(json!)
             }
         }
@@ -72,6 +74,7 @@ class NetWorkApi: NSObject {
             else {
                 //此处是具体的解析，具体请移步下面
                 let json = try? JSONSerialization.jsonObject(with: data!,options:.allowFragments) as! [String: Any]
+                print(json)
                     block(json!)
             }
         }
@@ -96,6 +99,7 @@ class NetWorkApi: NSObject {
             else {
                 //此处是具体的解析，具体请移步下面
                 let json = try? JSONSerialization.jsonObject(with: data!,options:.allowFragments) as! [String: Any]
+                print(json)
                 block(json!)
             }
         }
@@ -118,6 +122,7 @@ class NetWorkApi: NSObject {
             else {
                 //此处是具体的解析，具体请移步下面
                 let json = try? JSONSerialization.jsonObject(with: data!,options:.allowFragments) as! [String: Any]
+                print(json)
                 block(json!)
             }
         }
@@ -143,6 +148,7 @@ class NetWorkApi: NSObject {
             else {
                 //此处是具体的解析，具体请移步下面
                 let json = try? JSONSerialization.jsonObject(with: data!,options:.allowFragments) as! [String: Any]
+                print(json)
                 block(json!)
             }
         }
@@ -166,6 +172,7 @@ class NetWorkApi: NSObject {
             else {
                 //此处是具体的解析，具体请移步下面
                 let json = try? JSONSerialization.jsonObject(with: data!,options:.allowFragments) as! [String: Any]
+                print(json)
                 block(json!)
             }
         }
@@ -189,6 +196,7 @@ class NetWorkApi: NSObject {
             else {
                 //此处是具体的解析，具体请移步下面
                 let json = try? JSONSerialization.jsonObject(with: data!,options:.allowFragments) as! [String: Any]
+                print(json)
                 block(json!)
             }
         }
@@ -211,6 +219,7 @@ class NetWorkApi: NSObject {
             else {
                 //此处是具体的解析，具体请移步下面
                 let json = try? JSONSerialization.jsonObject(with: data!,options:.allowFragments) as! [String: Any]
+                print(json)
                 block(json!)
             }
         }
@@ -235,6 +244,7 @@ class NetWorkApi: NSObject {
             else {
                 //此处是具体的解析，具体请移步下面
                 let json = try? JSONSerialization.jsonObject(with: data!,options:.allowFragments) as! [String: Any]
+                print(json)
                 block(json!)
             }
         }
@@ -257,6 +267,7 @@ class NetWorkApi: NSObject {
             else {
                 //此处是具体的解析，具体请移步下面
                 let json = try? JSONSerialization.jsonObject(with: data!,options:.allowFragments) as! [String: Any]
+                print(json)
                 block(json!)
             }
         }
@@ -280,6 +291,7 @@ class NetWorkApi: NSObject {
             else {
                 //此处是具体的解析，具体请移步下面
                 let json = try? JSONSerialization.jsonObject(with: data!,options:.allowFragments) as! [String: Any]
+                print(json)
                 block(json!)
             }
         }
@@ -303,6 +315,7 @@ class NetWorkApi: NSObject {
             else {
                 //此处是具体的解析，具体请移步下面
                 let json = try? JSONSerialization.jsonObject(with: data!,options:.allowFragments) as! [String: Any]
+                print(json)
                 block(json!)
             }
         }
@@ -326,6 +339,7 @@ class NetWorkApi: NSObject {
             else {
                 //此处是具体的解析，具体请移步下面
                 let json = try? JSONSerialization.jsonObject(with: data!,options:.allowFragments) as! [String: Any]
+                print(json)
                 block(json!)
             }
         }
@@ -349,6 +363,7 @@ class NetWorkApi: NSObject {
             else {
                 //此处是具体的解析，具体请移步下面
                 let json = try? JSONSerialization.jsonObject(with: data!,options:.allowFragments) as! [String: Any]
+                print(json)
                 block(json!)
             }
         }
@@ -371,6 +386,7 @@ class NetWorkApi: NSObject {
             else {
                 //此处是具体的解析，具体请移步下面
                 let json = try? JSONSerialization.jsonObject(with: data!,options:.allowFragments) as! [String: Any]
+                print(json)
                 block(json!)
             }
         }

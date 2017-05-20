@@ -38,7 +38,7 @@ class BallMessageVc: UIViewController ,UITextViewDelegate,UIImagePickerControlle
     
     func initView()  {
         
-        self.view.backgroundColor = UIColor.init(colorLiteralRed: 240/255.0, green: 255.0/255.0, blue: 240/255.0, alpha: 1.0)
+        self.view.backgroundColor = UIColor.init(red: 0/255.0, green: 154/255.0, blue: 205/255.0, alpha: 1.0)
         let navView = UIView()
         navView.backgroundColor = UIColor.init(colorLiteralRed: 240/255.0, green: 255.0/255.0, blue: 240/255.0, alpha: 1.0)
         self.view.addSubview(navView)
